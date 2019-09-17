@@ -54,7 +54,7 @@
                     <tbody>
                         <tr>
                             <th>{{ trans("adminlte::pages.id") }}</th>
-                            <th>{{ trans("adminlte::pages.name") }}</th>
+                            <th>{{ trans("adminlte::pages.places.name") }}</th>
                             <th>{{ trans("adminlte::pages.admin") }}</th>
                         </tr>
                         <tr>

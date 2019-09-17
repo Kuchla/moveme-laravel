@@ -2,11 +2,17 @@
 
 return [
     'list'                   => 'Lista',
+    'create'                 => 'Criar',
+    'edit'                   => 'Editar',
+    'show'                   => 'Visualizar',
+    'info'                   => 'Dados',
+    'new'                    => 'Novo',
     'management'             => 'Gerenciamento',
     'home'                   => 'Home',
     'search'                 => 'Buscar',
     'id'                     => 'Id',
     'admin'                  => 'Administração',
+    'form'                   => 'Formulário',
 
     'btn'                 =>  [
         'new'                     => 'Novo',
@@ -22,6 +28,8 @@ return [
         'name'              => 'Nome',
         'image'             => 'Imagem',
         'description'       => 'Descrição',
+        'city'              => 'Cidade',
+        'location'          => 'Localização',
     ],
 
 

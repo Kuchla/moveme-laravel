@@ -11,4 +11,19 @@ class PlaceController extends Controller
     {
         return view('admin.place.index');
     }
+
+    public function create()
+    {
+        return view('admin.place.create');
+    }
+
+    public function edit()
+    {
+        return view('admin.place.edit');
+    }
+
+    public function show()
+    {
+        return view('admin.place.show');
+    }
 }
