@@ -30,6 +30,10 @@ return [
         'description'       => 'Descrição',
         'city'              => 'Cidade',
         'location'          => 'Localização',
+        'visitation'        => 'Visitação',
+        'free'              => 'Gratuíta',
+        'paid'              => 'Paga'
+
     ],
 
 

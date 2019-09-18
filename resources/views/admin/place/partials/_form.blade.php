@@ -30,11 +30,12 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>{{ trans("adminlte::pages.places.description") }}</label>
-                <textarea
-                    class="form-control"
-                    rows="3"
-                    placeholder="Enter ..."
-                ></textarea>
+                <script>
+                    $(document).ready(function() {
+                        $("#summernote").summernote();
+                    });
+                </script>
+                <div id="summernote"><p>Hello Summernote</p></div>
             </div>
         </div>
     </div>
@@ -49,17 +50,49 @@
                 ></textarea>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleInputFile">{{
+                    trans("adminlte::pages.places.image")
+                }}</label>
+                <input type="file" id="exampleInputFile" />
+
+                <p class="help-block">
+                    <small>Example block-level help text here.</small>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-3">
             <div class="form-group">
                 <div class="form-group">
                     <label for="exampleInputFile">{{
-                        trans("adminlte::pages.places.image")
+                        trans("adminlte::pages.places.visitation")
                     }}</label>
-                    <input type="file" id="exampleInputFile" />
-
-                    <p class="help-block">
-                        <small>Example block-level help text here.</small>
-                    </p>
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios1"
+                            value="option1"
+                            checked
+                        />
+                        <label for="exampleInputFile">{{
+                            trans("adminlte::pages.places.free")
+                        }}</label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios2"
+                            value="option2"
+                        />
+                        <label for="exampleInputFile">{{
+                            trans("adminlte::pages.places.paid")
+                        }}</label>
+                    </div>
                 </div>
             </div>
         </div>

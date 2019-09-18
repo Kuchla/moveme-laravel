@@ -336,5 +336,21 @@ return [
                 ],
             ],
         ],
+        [
+            'name' => 'Summernote',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js',
+                ],
+            ],
+        ],
     ],
 ];
