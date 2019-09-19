@@ -33,7 +33,9 @@ return [
         'location'          => 'Localização',
         'visitation'        => 'Visitação',
         'free'              => 'Gratuíta',
-        'paid'              => 'Paga'
+        'paid'              => 'Paga',
+        'empty'             => 'Nenhum ponto turistico cadastrado!'
+
     ],
 
     'city'                =>  [
@@ -41,7 +43,7 @@ return [
         'index'             => 'Cidades',
         'name'              => 'Nome',
         'about'             => 'Descrição',
-        'empty'             => 'Nenhuma cidade cadatrada!'
+        'empty'             => 'Nenhuma cidade cadastrada!'
     ],
 
 
