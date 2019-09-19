@@ -178,8 +178,16 @@ return [
         'email'                 => 'e-mail',
         'remember'              => 'lembrar-se de mim',
         'city'                  => [
-                                    'name' => 'nome',
-                                    'about' => 'descrição'
+            'name' => 'nome',
+            'about' => 'descrição'
+        ],
+        'place'                  => [
+            'name' => 'nome',
+            'description' => 'descrição',
+            'location' => 'localização',
+            'image' => 'image',
+            'visitation' => 'visitação',
+            'city' => 'cidade'
         ],
     ],
 ];

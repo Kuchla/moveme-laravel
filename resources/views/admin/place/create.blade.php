@@ -1,7 +1,7 @@
 @extends('adminlte::page') @section('title', 'AdminLTE')
 @section('content_header')
 <h1>
-    {{ trans("adminlte::pages.places.page") }}
+    {{ trans("adminlte::pages.place.page") }}
     <small>{{ trans("adminlte::pages.create") }}</small>
 </h1>
 <ol class="breadcrumb">
@@ -12,7 +12,7 @@
         >
     </li>
     <li>
-        <a href="#">{{ trans("adminlte::pages.places.page") }}</a>
+        <a href="#">{{ trans("adminlte::pages.place.page") }}</a>
     </li>
     <li class="active">{{ trans("adminlte::pages.new") }}</li>
 </ol>
