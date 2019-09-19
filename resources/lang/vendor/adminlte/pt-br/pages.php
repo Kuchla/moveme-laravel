@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'list'                   => 'Lista',
+    'index'                  => 'Index',
     'create'                 => 'Criar',
     'edit'                   => 'Editar',
     'show'                   => 'Visualizar',
@@ -23,8 +23,9 @@ return [
         'save'                    => 'Salvar',
     ],
 
-    'places'                =>  [
-        'page'              => 'Locais',
+    'place'                =>  [
+        'page'              => 'Ponto Turístico',
+        'index'             => 'Ponto Turísticos',
         'name'              => 'Nome',
         'image'             => 'Imagem',
         'description'       => 'Descrição',
@@ -33,7 +34,14 @@ return [
         'visitation'        => 'Visitação',
         'free'              => 'Gratuíta',
         'paid'              => 'Paga'
+    ],
 
+    'city'                =>  [
+        'page'              => 'Cidade',
+        'index'             => 'Cidades',
+        'name'              => 'Nome',
+        'about'             => 'Descrição',
+        'empty'             => 'Nenhuma cidade cadatrada!'
     ],
 
 

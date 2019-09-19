@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Move</b>ME',
+    'logo' => '<i class="fas fa-running"></i><b> Move</b>ME',
 
     'logo_mini' => '<b>A</b>LT',
 
@@ -142,6 +142,11 @@ return [
             'text'        => 'dashboard',
             'url'         => 'admin/dashboard',
             'icon'        => 'fas fa-tachometer-alt',
+        ],
+        [
+            'text'        => 'cities',
+            'url'         => 'admin/cities',
+            'icon'        => 'fas fa-city',
         ],
         [
             'text'        => 'places',

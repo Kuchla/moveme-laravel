@@ -177,5 +177,9 @@ return [
         'year'                  => 'ano',
         'email'                 => 'e-mail',
         'remember'              => 'lembrar-se de mim',
+        'city'                  => [
+                                    'name' => 'nome',
+                                    'about' => 'descrição'
+        ],
     ],
 ];

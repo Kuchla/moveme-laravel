@@ -50,7 +50,7 @@
                 ></textarea>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-5">
             <div class="form-group">
                 <label for="exampleInputFile">{{
                     trans("adminlte::pages.places.image")
@@ -61,8 +61,10 @@
                     <small>Example block-level help text here.</small>
                 </p>
             </div>
+            <script>$("#input-id").fileinput();
+            </script>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-1">
             <div class="form-group">
                 <div class="form-group">
                     <label for="exampleInputFile">{{
