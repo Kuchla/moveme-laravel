@@ -12,4 +12,9 @@ class Activity extends Model
     protected $fillable = [
         'name', 'description', 'image', 'user_id'
     ];
+
+    public function setImageActivityAttribute($image)
+    {
+        $this->attributes['image'] = is_null($image) ? $this->image : $image;
+    }
 }
