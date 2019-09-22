@@ -16,9 +16,10 @@ return [
     'Important'                     => 'Importante',
     'Warning'                       => 'Aviso',
     'Information'                   => 'Informação',
-    'places'                        => 'Lugares',
+    'places'                        => 'Pontos Turísticos',
     'dashboard'                     => 'Dashboard',
     'events'                        => 'Eventos',
     'activities'                    => 'Atividades',
     'categories'                    => 'Categorias',
+    'cities'                        => 'Cidades',
 ];

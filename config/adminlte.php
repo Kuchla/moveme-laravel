@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Move</b>ME',
+    'logo' => '<i class="fas fa-running"></i><b> Move</b>ME',
 
     'logo_mini' => '<b>A</b>LT',
 
@@ -142,6 +142,11 @@ return [
             'text'        => 'dashboard',
             'url'         => 'admin/dashboard',
             'icon'        => 'fas fa-tachometer-alt',
+        ],
+        [
+            'text'        => 'cities',
+            'url'         => 'admin/cities',
+            'icon'        => 'fas fa-city',
         ],
         [
             'text'        => 'places',
@@ -333,6 +338,22 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Summernote',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js',
                 ],
             ],
         ],
