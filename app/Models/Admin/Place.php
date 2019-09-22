@@ -12,5 +12,10 @@ class Place extends Model
     protected $fillable = [
         'name', 'description', 'city', 'location', 'visitation', 'image'
     ];
+
+    public function setImagePlaceAttribute($image)
+    {
+        $this->attributes['image'] = is_null($image) ? $this->image : $image;
+    }
 }
 

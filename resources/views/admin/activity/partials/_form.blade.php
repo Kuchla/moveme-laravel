@@ -19,7 +19,7 @@
         <div class="col-md-12">
             <div class="form-group {{ $errors->has('activity.description') ? 'has-error' : '' }}">
                 <label for="activity-description">{{ trans("adminlte::pages.activity.description") }}</label>
-                <textarea id="activity-description" name="activity[description]">
+                <textarea id="summernote" name="activity[description]">
                             {{ old('activity.description', @$activity->description) }}
                     </textarea>
                 @if ($errors->has('activity.description'))
@@ -31,12 +31,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <div class="form-group {{ $errors->has('activity.image') ? 'has-error' : '' }}">
                 <label for="activity-image">{{
                     trans("adminlte::pages.activity.image")
                 }}</label>
-                <input type="file" id="activity-image" name="activity[image]"/>
+                <input  id="input-file" type="file" class="file" data-preview-file-type="text" name="activity[image]"
+                value="{{ @url('storage/'.$activity->image) }}"/>
                 <p class="help-block">
                     <small>Example block-level help text here.</small>
                 </p>
@@ -57,9 +58,3 @@
         {{ trans("adminlte::pages.btn.cancel") }}
     </a>
 </div>
-
-<script>
-    $(document).ready(function () {
-        $("#activity-description").summernote();
-    });
-</script>

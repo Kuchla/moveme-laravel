@@ -41,6 +41,16 @@
                             {!! $activity->description !!}
                         </p>
                     </li>
+                    <li class="list-group-item">
+                        <b>{{ trans("adminlte::pages.activity.image") }}</b>
+                        <p>
+                            <div class="row margin-bottom">
+                                <div class="col-sm-3">
+                                    <img class="img-responsive" src="{{ url('storage/'.$activity->image) }}" alt="Photo">
+                                </div>
+                            </div>
+                        </p>
+                    </li>
                 </ul>
             </div>
             <div class="box-footer">
