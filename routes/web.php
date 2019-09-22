@@ -14,6 +14,7 @@
 Route::get('/', 'Site\HomeController@index')->name('site.home');
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.home');
+    Route::resource('/activities', 'ActivityController')->names('admin.activities');
 });
 
 Auth::routes();
