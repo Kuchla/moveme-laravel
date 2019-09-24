@@ -17,4 +17,5 @@ class Activity extends Model
     {
         $this->attributes['image'] = is_null($image) ? $this->image : $image;
     }
+
 }

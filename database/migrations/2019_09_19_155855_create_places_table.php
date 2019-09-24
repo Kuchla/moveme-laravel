@@ -20,8 +20,10 @@ class CreatePlacesTable extends Migration
             $table->longText('description');
             $table->longText('location');
             $table->string('image');
-            $table->string('city');
             $table->boolean('visitation')->default(true);
+
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

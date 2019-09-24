@@ -38,11 +38,14 @@ class PlaceController extends Controller
         $this->validation($request);
         $place->user_id = Auth::id();
         $place->name = $request->place['name'];
-        $place->city = $request->place['city'];
+        $place->city_id = $request->place['city'];
         $place->location = $request->place['location'];
+        $place->visitation = $request->place['visitation'];
         $place->description = $request->place['description'];
         $place->image = $request->place['image']->store('places');
         $place->save();
+        $place->activities()->sync((array)$request->input('place.activity'));
+
         return redirect(route('admin.places.show', compact('place')));
     }
     public function edit(Place $place)
@@ -61,11 +64,13 @@ class PlaceController extends Controller
         $this->validation($request);
         $place->user_id = Auth::id();
         $place->name = $request->place['name'];
-        $place->city = $request->place['city'];
+        $place->city_id = $request->place['city'];
         $place->location = $request->place['location'];
+        $place->visitation = $request->place['visitation'];
         $place->description = $request->place['description'];
-        $place->place_image = $request->place['image']->store('places');
+        $place->place_image = isset($request->place['image']) ? $request->place['image']->store('places') : null;
         $place->update();
+        $place->activities()->sync((array)$request->input('place.activity'));
 
         return redirect(route('admin.places.show', compact('place')));
     }
@@ -76,11 +81,12 @@ class PlaceController extends Controller
     private function validation(Request $request)
     {
         $request->validate([
-            'place.name'        => 'required|min:4|max:50',
+            'place.name'        => 'required|min:4',
             'place.city'    => 'required|not_in:Selecione',
             'place.image'        => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
-            'place.location' => 'required|min:50',
-            'place.description' => 'required|min:50',
+            'place.location' => 'required|min:10',
+            'place.description' => 'required|min:10',
+            'place.activity' => 'required'
         ]);
     }
 }

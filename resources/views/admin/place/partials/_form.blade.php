@@ -4,7 +4,9 @@
         <div class="col-md-6 ">
             <div class="form-group {{ $errors->has('place.name') ? 'has-error' : '' }}">
                 <label for="place-name">{{ trans("adminlte::pages.place.name") }}</label>
-                <input type="text" name="place[name]" class="form-control" id="place-name" placeholder="{{ trans('adminlte::pages.place.name') }}" value="{{ old('place.name', @$place->name) }}" />
+                <input type="text" name="place[name]" class="form-control" id="place-name"
+                    placeholder="{{ trans('adminlte::pages.place.name') }}"
+                    value="{{ old('place.name', @$place->name) }}" />
                 @if ($errors->has('place.name'))
                 <span class="help-block">
                     <strong>{{ $errors->first('place.name') }}</strong>
@@ -20,7 +22,7 @@
                 <select id="place-city" class="form-control select2" name="place[city]">
                     <option>Selecione</option>
                     @foreach ($cities as $key => $city)
-                    <option value="{{ $key }}" @if ($key==old('place.city', @$place->city))
+                    <option value="{{ $key }}" @if ($key==old('place.city', @$place->city_id))
                         selected="selected"
                         @endif
                         >{{ $city }}</option>
@@ -55,7 +57,8 @@
                 <label for="place-image">{{
                     trans("adminlte::pages.place.image")
                 }}</label>
-                <input id="input-file" type="file" class="file" data-preview-file-type="text" name="place[image]" value="{{ @url('storage/'.$place->image) }}" />
+                <input id="input-file" type="file" class="file" data-preview-file-type="text" name="place[image]"
+                    value="{{ @$place->image ? @url('storage/'.@$place->image) : '' }}" />
                 <p class="help-block">
                     <small>Example block-level help text here.</small>
                 </p>
@@ -88,13 +91,15 @@
                         trans("adminlte::pages.place.visitation")
                     }}</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="place[visitation]" id="place-visitation-free" value="free" {{ old('place.visitation')=='free' ? 'checked' : '' }} />
+                    <input class="form-check-input" type="radio" name="place[visitation]" id="place-visitation-free"
+                        value="0" {{ old('place.visitation', @$place->visitation)==0 ? 'checked' : '' }} />
                     <label for="place_visitation_free">{{
                             trans("adminlte::pages.place.free")
                         }}</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="place[visitation]" id="place-visitation-paid" value="paid" {{ old('place.visitation')=='paid' ? 'checked' : '' }} />
+                    <input class="form-check-input" type="radio" name="place[visitation]" id="place-visitation-paid"
+                        value="1" {{ old('place.visitation', @$place->visitation)==1 ? 'checked' : '' }} />
                     <label for="place_visitation_paid">{{
                             trans("adminlte::pages.place.paid")
                         }}</label>
@@ -102,19 +107,20 @@
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="form-group {{ $errors->has('place.activity') ? 'has-error' : '' }}">
                 <label for="place-activity">{{
                     trans("adminlte::pages.place.activities")
                 }}</label>
-                <select id="place-activities" class="form-control select2" name="place[activity]" multiple="multiple">
+                <select id="place-activities" class="form-control select2" name="place[activity][]" multiple="multiple">
                     <option>Selecione</option>
                     @foreach ($activities as $key => $activity)
-                    <option value="{{ $key }}" @if ($key==old('place.activity', @$place->activity))
-                        selected="selected"
-                        @endif
-                        >{{ $activity }}</option>
+                    <option value="{{ $key }}" @if(!is_null(@$place)&&
+                        !old('place.activity')){{ @$place->activities->contains('id', $key) ? "selected" : ''}} @endif
+                        {{ (collect(old('place.activity'))->contains($key)) ? "selected" : '' }}>{{ $activity }}
+                    </option>
                     @endforeach
                 </select>
                 @if ($errors->has('place.activity'))

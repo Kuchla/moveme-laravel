@@ -36,7 +36,33 @@
                         </p>
                     </li>
                     <li class="list-group-item">
-                        <b>{{ trans("adminlte::pages.place.name") }}</b>
+                        <b>{{ trans("adminlte::pages.place.city") }}</b>
+                        <p class="text-muted">
+                            {{ $place->city->name }}
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <b>{{ trans("adminlte::pages.place.location") }}</b>
+                        <p class="text-muted">
+                            {{ $place->location }}
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <b>{{ trans("adminlte::pages.place.activities") }}</b>
+                        <p class="text-muted">
+                            @foreach ( $place->activities as $activity)
+                            {{ $activity->name }}<br>
+                            @endforeach
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <b>{{ trans("adminlte::pages.place.visitation") }}</b>
+                        <p class="text-muted">
+                            {{ $place->visitation ? 'Paga' : 'Gratuita' }}
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <b>{{ trans("adminlte::pages.place.description") }}</b>
                         <p class="text-muted">
                             {!! $place->description !!}
                         </p>

@@ -39,18 +39,18 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+
+@include('adminlte::plugins', ['type' => 'js'])
 <!-- File Input -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/fileinput.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/pt-BR.js"></script>
 <script src="{{ asset('js/file-upload.js') }}"></script>
 <!-- Summernote -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <script src="{{ asset('js/summernote-pt-br.js') }}"></script>
 <script src="{{ asset('js/summernote.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('js/select2.js') }}"></script>
-
-@include('adminlte::plugins', ['type' => 'js'])
 @yield('adminlte_js')
 
 </body>

@@ -10,4 +10,10 @@ $("#input-file").fileinput({
     fileActionSettings: {
         showDrag: false
     },
+    showRemove: false,
+            showClose: false,
+            fileActionSettings: {
+                showRemove: false,
+            },
     maxFileSize: 4096});
+

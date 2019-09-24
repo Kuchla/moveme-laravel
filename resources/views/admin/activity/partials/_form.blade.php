@@ -37,7 +37,7 @@
                     trans("adminlte::pages.activity.image")
                 }}</label>
                 <input  id="input-file" type="file" class="file" data-preview-file-type="text" name="activity[image]"
-                value="{{ @url('storage/'.$activity->image) }}"/>
+                value="{{ @$activity->image ? @url('storage/'.@$activity->image) : '' }}"/>
                 <p class="help-block">
                     <small>Example block-level help text here.</small>
                 </p>
