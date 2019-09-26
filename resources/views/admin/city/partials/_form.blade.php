@@ -19,7 +19,7 @@
         <div class="col-md-12 has-feedback {{ $errors->has('city.about') ? 'has-error' : '' }}">
             <div class="form-group">
                 <label for="city-about">{{ trans("adminlte::pages.city.about") }}</label>
-                <textarea id="city-about" name="city[about]">
+                <textarea id="summernote" name="city[about]">
                         {{ old('city.about', @$city->about) }}
                 </textarea>
                 @if ($errors->has('city.about'))

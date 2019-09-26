@@ -36,7 +36,7 @@
                         </p>
                     </li>
                     <li class="list-group-item">
-                        <b>{{ trans("adminlte::pages.city.name") }}</b>
+                        <b>{{ trans("adminlte::pages.city.about") }}</b>
                         <p class="text-muted">
                             {!! $city->about !!}
                         </p>

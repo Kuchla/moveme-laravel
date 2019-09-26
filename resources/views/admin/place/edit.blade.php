@@ -1,18 +1,15 @@
 @extends('adminlte::page') @section('title', 'AdminLTE')
 @section('content_header')
 <h1>
-    {{ trans("adminlte::pages.places.page") }}
+    {{ trans("adminlte::pages.place.page") }}
     <small>{{ trans("adminlte::pages.edit") }}</small>
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="#"
-            ><i class="fa fa-dashboard"></i
-            >{{ trans("adminlte::pages.home") }}</a
-        >
+        <a href="#"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
     </li>
     <li>
-        <a href="#">{{ trans("adminlte::pages.places.page") }}</a>
+        <a href="#">{{ trans("adminlte::pages.place.page") }}</a>
     </li>
     <li class="active">{{ trans("adminlte::pages.edit") }}</li>
 </ol>
@@ -27,12 +24,9 @@
                 </h3>
 
                 <div class="box-tools">
-                    <div
-                        class="input-group input-group-sm hidden-xs"
-                        style="width: 150px;"
-                    ></div>
+                    <div class="input-group input-group-sm hidden-xs" style="width: 150px;"></div>
                 </div>
-                <form method="POST" action="{{ route('admin.places.update') }}" role="form" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.places.update', $place) }}" role="form" enctype="multipart/form-data">
                     @method('PATCH')
                     @include('admin.place.partials._form')
                 </form>

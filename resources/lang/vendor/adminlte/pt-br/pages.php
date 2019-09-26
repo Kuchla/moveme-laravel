@@ -33,6 +33,7 @@ return [
         'location'          => 'Localização',
         'visitation'        => 'Visitação',
         'free'              => 'Gratuíta',
+        'activities'        => 'Atividades',
         'paid'              => 'Paga',
         'empty'             => 'Nenhum ponto turistico cadastrado!'
 
@@ -46,9 +47,12 @@ return [
         'empty'             => 'Nenhuma cidade cadastrada!'
     ],
 
-
-
-
-
-
+    'activity'                =>  [
+        'page'              => 'Atividade',
+        'index'             => 'Atividades',
+        'name'              => 'Nome',
+        'description'             => 'Descrição',
+        'image'             => 'Images',
+        'empty'             => 'Nenhuma cidade cadastrada!'
+    ],
 ];

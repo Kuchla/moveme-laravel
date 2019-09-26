@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\City;
 use App\Models\Admin\Place;
+use App\Models\Admin\Activity;
 use Illuminate\Support\Facades\Auth;
 
 class PlaceController extends Controller
@@ -23,7 +24,8 @@ class PlaceController extends Controller
     public function create()
     {
         $cities = City::all()->pluck('name', 'id');
-        return view('admin.place.create', compact('cities'));
+        $activities = Activity::all()->pluck('name', 'id');
+        return view('admin.place.create', compact('cities', 'activities'));
     }
     /**
      * Store a newly created resource in storage.
@@ -36,17 +38,21 @@ class PlaceController extends Controller
         $this->validation($request);
         $place->user_id = Auth::id();
         $place->name = $request->place['name'];
-        $place->city = $request->place['city'];
+        $place->city_id = $request->place['city'];
         $place->location = $request->place['location'];
+        $place->visitation = $request->place['visitation'];
         $place->description = $request->place['description'];
         $place->image = $request->place['image']->store('places');
         $place->save();
+        $place->activities()->sync((array)$request->input('place.activity'));
+
         return redirect(route('admin.places.show', compact('place')));
     }
     public function edit(Place $place)
     {
         $cities = City::all()->pluck('name', 'id');
-        return view('admin.places.edit', compact('place', 'cities'));
+        $activities = Activity::all()->pluck('name', 'id');
+        return view('admin.place.edit', compact('place', 'cities', 'activities'));
     }
     public function destroy(Place $place)
     {
@@ -58,26 +64,29 @@ class PlaceController extends Controller
         $this->validation($request);
         $place->user_id = Auth::id();
         $place->name = $request->place['name'];
-        $place->city = $request->place['city'];
+        $place->city_id = $request->place['city'];
         $place->location = $request->place['location'];
+        $place->visitation = $request->place['visitation'];
         $place->description = $request->place['description'];
-        $place->image = $request->place['image']->store('places');
+        $place->place_image = isset($request->place['image']) ? $request->place['image']->store('places') : null;
         $place->update();
+        $place->activities()->sync((array)$request->input('place.activity'));
 
         return redirect(route('admin.places.show', compact('place')));
     }
     public function show(Place $place)
     {
-        return view('admin.places.show', compact('news'));
+        return view('admin.place.show', compact('place'));
     }
     private function validation(Request $request)
     {
         $request->validate([
-            'place.name'        => 'required|min:4|max:50',
+            'place.name'        => 'required|min:4',
             'place.city'    => 'required|not_in:Selecione',
-            'place.image'        => 'required|image|mimes:jpeg,png,jpg',
-            'place.location' => 'required|min:50',
-            'place.description' => 'required|min:50',
+            'place.image'        => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
+            'place.location' => 'required|min:10',
+            'place.description' => 'required|min:10',
+            'place.activity' => 'required'
         ]);
     }
 }
