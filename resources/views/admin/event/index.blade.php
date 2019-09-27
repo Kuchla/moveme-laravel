@@ -1,7 +1,7 @@
 @extends('adminlte::page') @section('title', 'AdminLTE')
 @section('content_header')
 <h1>
-    {{ trans("adminlte::pages.place.index") }}
+    {{ trans("adminlte::pages.event.index") }}
     <small>{{ trans("adminlte::pages.index") }}</small>
 </h1>
 <ol class="breadcrumb">
@@ -9,7 +9,7 @@
         <a href="#"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
     </li>
     <li>
-        <a href="#">{{ trans("adminlte::pages.place.index") }}</a>
+        <a href="#">{{ trans("adminlte::pages.event.index") }}</a>
     </li>
     <li class="active">{{ trans("adminlte::pages.index") }}</li>
 </ol>
@@ -23,38 +23,38 @@
                     {{ trans("adminlte::pages.management") }}
                 </h3>
                 <div class="box-tools">
-                    <a class="btn btn-info btn-sm" href="{{ route('admin.places.create') }}">
+                    <a class="btn btn-info btn-sm" href="{{ route('admin.events.create') }}">
                         <i class="fa fa-plus"> {{ trans('adminlte::pages.btn.new') }}</i>
                     </a>
                 </div>
             </div>
             <div class="box-body table-responsive no-padding">
-                @if($places->isNotEmpty())
+                @if($events->isNotEmpty())
                 <table class="table table-hover">
                     <tbody>
                         <tr>
                             <th>{{ trans("adminlte::pages.id") }}</th>
-                            <th>{{ trans("adminlte::pages.place.name") }}</th>
+                            <th>{{ trans("adminlte::pages.event.name") }}</th>
                             <th>{{ trans("adminlte::pages.admin") }}</th>
                         </tr>
-                        @foreach ($places as $place)
+                        @foreach ($events as $event)
                         <tr>
-                            <td>{{ $place->id }}</td>
-                            <td>{{ $place->name }}</td>
+                            <td>{{ $event->id }}</td>
+                            <td>{{ $event->name }}</td>
                             <td>
-                                <a class="btn btn-success btn-sm" href="{{ route('admin.places.show', $place) }}">
+                                <a class="btn btn-success btn-sm" href="{{ route('admin.events.show', $event) }}">
                                     <i class="fa fa-eye">
                                         {{
                                             trans("adminlte::pages.btn.show")
                                         }}</i>
                                 </a>
-                                <a class="btn btn-warning btn-sm" href="{{ route('admin.places.edit', $place) }}">
+                                <a class="btn btn-warning btn-sm" href="{{ route('admin.events.edit', $event) }}">
                                     <i class="fa fa-edit">
                                         {{
                                             trans("adminlte::pages.btn.edit")
                                         }}</i>
                                 </a>
-                                <form action="{{ route('admin.places.destroy', $place) }}" method="post"
+                                <form action="{{ route('admin.events.destroy', $event) }}" method="post"
                                     style="display: inline;">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">
@@ -72,7 +72,7 @@
                     </tbody>
                 </table>
                 @else
-                <h5 class="text-center">{{ trans("adminlte::pages.place.empty") }}</h5>
+                <h5 class="text-center">{{ trans("adminlte::pages.event.empty") }}</h5>
                 @endif
             </div>
         </div>

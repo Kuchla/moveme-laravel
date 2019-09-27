@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('/places', 'PlaceController')->names('admin.places');
     Route::resource('/cities', 'CityController')->names('admin.cities');
     Route::resource('/activities', 'ActivityController')->names('admin.activities');
+    Route::resource('/events', 'EventController')->names('admin.events');
 });
 
 Auth::routes();

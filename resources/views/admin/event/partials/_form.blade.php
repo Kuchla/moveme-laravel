@@ -16,12 +16,12 @@
         </div>
         <div class="col-md-6">
             <div class="form-group {{ $errors->has('event.city') ? 'has-error' : '' }}">
-                <label for="event-city">{{  }}
+                <label for="event-city">{{
                     trans("adminlte::pages.event.city")
                 }}</label>
                 <select id="event-city" class="form-control select2" name="event[city]">
                     <option>Selecione</option>
-                    @foreach ($cities as $key => $city)
+                    @foreach ($places as $key => $city)
                     <option value="{{ $key }}" @if ($key==old('event.city', @$event->city_id))
                         selected="selected"
                         @endif
@@ -74,9 +74,16 @@
         <div class="col-md-9">
             <div class="form-group {{ $errors->has('event.location') ? 'has-error' : '' }}">
                 <label for="event-location">{{ trans("adminlte::pages.event.location") }}</label>
-                <textarea class="form-control" rows="2" id="event-location" name="event[location]">
-                {{ old('event.location', @$event->location) }}
-                </textarea>
+                <div class="well">
+                    <div id="datetimepicker1" class="input-append date">
+                      <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+                      <span class="add-on">
+                        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                        </i>
+                      </span>
+                    </div>
+                  </div>
+
                 @if ($errors->has('event.location'))
                 <span class="help-block">
                     <strong>{{ $errors->first('event.location') }}</strong>
@@ -92,14 +99,14 @@
                     }}</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="event[visitation]" id="event-visitation-free"
-                        value="0" {{ old('event.visitation', $event->visitation)==0 ? 'checked' : '' }} />
+                        value="0" {{ old('event.visitation', @$event->visitation)==0 ? 'checked' : '' }} />
                     <label for="place_visitation_free">{{
                             trans("adminlte::pages.event.free")
                         }}</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="event[visitation]" id="event-visitation-paid"
-                        value="1" {{ old('event.visitation', $event->visitation)==1 ? 'checked' : '' }} />
+                        value="1" {{ old('event.visitation', @$event->visitation)==1 ? 'checked' : '' }} />
                     <label for="place_visitation_paid">{{
                             trans("adminlte::pages.event.paid")
                         }}</label>
@@ -112,13 +119,13 @@
         <div class="col-md-12">
             <div class="form-group {{ $errors->has('event.activity') ? 'has-error' : '' }}">
                 <label for="event-activity">{{
-                    trans("adminlte::pages.event.activities")
+                    trans("adminlte::pages.event.places")
                 }}</label>
-                <select id="event-activities" class="form-control select2" name="event[activity][]" multiple="multiple">
+                <select id="event-places" class="form-control select2" name="event[activity][]" multiple="multiple">
                     <option>Selecione</option>
-                    @foreach ($activities as $key => $activity)
+                    @foreach ($places as $key => $activity)
                     <option value="{{ $key }}" @if(!is_null(@$event)&&
-                        !old('event.activity')){{ @$event->activities->contains('id', $key) ? "selected" : ''}} @endif
+                        !old('event.activity')){{ @$event->places->contains('id', $key) ? "selected" : ''}} @endif
                         {{ (collect(old('event.activity'))->contains($key)) ? "selected" : '' }}>{{ $activity }}
                     </option>
                     @endforeach
