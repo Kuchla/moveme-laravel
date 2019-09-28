@@ -6,10 +6,10 @@
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="#"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
+        <a href="{{ route('admin.home') }}"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
     </li>
     <li>
-        <a href="#">{{ trans("adminlte::pages.place.page") }}</a>
+        <a href="{{ route('admin.places.index') }}">{{ trans("adminlte::pages.place.crud") }}</a>
     </li>
     <li class="active">{{ trans("adminlte::pages.show") }}</li>
 </ol>
