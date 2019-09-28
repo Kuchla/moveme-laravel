@@ -55,4 +55,20 @@ return [
         'image'             => 'Images',
         'empty'             => 'Nenhuma cidade cadastrada!'
     ],
+
+    'event'                =>  [
+        'page'             => 'Evento',
+        'index'             => 'Eventos',
+        'name'              => 'Nome',
+        'image'             => 'Imagem',
+        'description'       => 'Descrição',
+        'place'             => 'Ponto Turístico',
+        'is_limited'        => 'Tem limite de participantes?',
+        'is_free'           => 'A visitação é gratuíta?',
+        'date'              => 'Data e hora',
+        'activities'        => 'Atividades que serão realizadas',
+        'yes'               => 'Sim',
+        'no'                => 'Não',
+        'empty'             => 'Nenhum evento cadastrado!'
+    ],
 ];

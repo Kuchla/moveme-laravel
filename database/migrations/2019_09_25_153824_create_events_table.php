@@ -24,9 +24,6 @@ class CreateEventsTable extends Migration
             $table->text('subscription_info');
             $table->date('date');
 
-
-
-
             $table->unsignedBigInteger('place_id');
             $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
 

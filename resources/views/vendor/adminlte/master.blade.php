@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
     <!-- File Input -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+
     @include('adminlte::plugins', ['type' => 'css'])
 
     <!-- Theme style -->
@@ -51,11 +52,11 @@
 <script src="{{ asset('js/summernote.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('js/select2.js') }}"></script>
-<!-- Datepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-
-
+<!-- Datetimepicker -->
+<script src="{{ asset('js/moment.js') }}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script src="{{ asset('js/datepicker.js') }}"></script>
+
 @yield('adminlte_js')
 
 </body>

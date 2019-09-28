@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Admin\Event;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Activity;
 use App\Models\Admin\Place;
 
 class EventController extends Controller
@@ -17,7 +18,8 @@ class EventController extends Controller
     public function create()
     {
         $places = Place::all()->pluck('name', 'id');
-        return view('admin.event.create', compact('places'));
+        $activities = Activity::all()->pluck('name', 'id');
+        return view('admin.event.create', compact('places', 'activities'));
     }
     public function store(Request $request, Event $event)
     {
@@ -27,13 +29,19 @@ class EventController extends Controller
         $event->name = $request->event['name'];
         $event->image = $request->event['image']->store('events');
         $event->description = $request->event['description'];
+        $event->date = $request->event['date'];
+        $event->place = $request->event['place'];
+        $event->is_free = $request->event['is_free'];
+        $event->is_limited = $request->event['is_limited'];
+
         $event->save();
         return redirect(route('admin.events.show', compact('events')));
     }
     public function edit(Event $event)
     {
+        $activities = Activity::all()->pluck('name', 'id');
         $places = Place::all()->pluck('name', 'id');
-        return view('admin.event.edit', compact('event', 'places'));
+        return view('admin.event.edit', compact('event', 'places', 'activities'));
     }
     public function destroy(Event $event)
     {
@@ -45,8 +53,13 @@ class EventController extends Controller
         $this->validation($request);
         $event->user_id = Auth::id();
         $event->name = $request->event['name'];
-        $event->image_event = isset($request->event['image']) ? $request->event['image']->store('events') : null;
+        $event->event_image = isset($request->event['image']) ? $request->event['image']->store('events') : null;
         $event->description = $request->event['description'];
+        $event->date = $request->event['date'];
+        $event->place = $request->event['place'];
+        $event->is_free = $request->event['is_free'];
+        $event->is_limited = $request->event['is_limited'];
+
         $event->update();
         return redirect(route('admin.events.show', compact('events')));
     }
@@ -57,9 +70,13 @@ class EventController extends Controller
     private function validation(Request $request)
     {
         $request->validate([
-            'events.name'       => 'required|min:4|max:50',
-            'events.description'      => 'required',
-            'events.image'      => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
+            'event.name'        => 'required|min:4|max:50',
+            'event.description' => 'required|min:5',
+            'event.image'       => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
+            'event.date'        => 'required|date|after:tomorrow',
+            'event.place'       => 'required',
+            'event.is_free'     => 'required',
+            'event.is_limited'  => 'required',
         ]);
     }
 }
