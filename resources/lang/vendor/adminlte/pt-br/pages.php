@@ -23,9 +23,9 @@ return [
         'save'                    => 'Salvar',
     ],
 
-    'place'                =>  [
+    'place'                 =>  [
         'page'              => 'Ponto Turístico',
-        'index'             => 'Ponto Turísticos',
+        'crud'              => 'Pontos Turísticos',
         'name'              => 'Nome',
         'image'             => 'Imagem',
         'description'       => 'Descrição',
@@ -36,22 +36,21 @@ return [
         'activities'        => 'Atividades',
         'paid'              => 'Paga',
         'empty'             => 'Nenhum ponto turistico cadastrado!'
-
     ],
 
-    'city'                =>  [
+    'city'                  =>  [
         'page'              => 'Cidade',
-        'index'             => 'Cidades',
+        'crud'              => 'Cidades',
         'name'              => 'Nome',
         'about'             => 'Descrição',
         'empty'             => 'Nenhuma cidade cadastrada!'
     ],
 
-    'activity'                =>  [
+    'activity'              =>  [
         'page'              => 'Atividade',
-        'index'             => 'Atividades',
+        'crud'              => 'Atividades',
         'name'              => 'Nome',
-        'description'             => 'Descrição',
+        'description'       => 'Descrição',
         'image'             => 'Images',
         'empty'             => 'Nenhuma cidade cadastrada!'
     ],

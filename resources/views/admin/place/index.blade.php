@@ -1,15 +1,15 @@
 @extends('adminlte::page') @section('title', 'AdminLTE')
 @section('content_header')
 <h1>
-    {{ trans("adminlte::pages.place.index") }}
+    {{ trans("adminlte::pages.place.crud") }}
     <small>{{ trans("adminlte::pages.index") }}</small>
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="#"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
+        <a href="{{ route('admin.home') }}"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
     </li>
     <li>
-        <a href="#">{{ trans("adminlte::pages.place.index") }}</a>
+        <a href="{{ route('admin.places.index') }}">{{ trans("adminlte::pages.place.crud") }}</a>
     </li>
     <li class="active">{{ trans("adminlte::pages.index") }}</li>
 </ol>

@@ -101,7 +101,7 @@
                     trans("adminlte::pages.event.image")
                 }}</label>
                 <input id="input-file" type="file" class="file" data-preview-file-type="text" name="event[image]"
-                    value="{{ @url('storage/'.$event->image) }}" />
+                    value="{{ @$event->image ? @url('storage/'.@$event->image) : ''  }}" />
                 <p class="help-block">
                     <small>Example block-level help text here.</small>
                 </p>

@@ -1,4 +1,4 @@
-$("#input-file").fileinput({
+$('#input-file').fileinput({
     theme: 'fas',
     showUpload: false,
     previewFileType: 'any',
@@ -6,14 +6,14 @@ $("#input-file").fileinput({
     browseOnZoneClick: true,
     showRemove: false,
     initialPreviewAsData: true,
-    initialPreview: $("#input-file")[0].defaultValue,
+    initialPreview: $('#input-file')[0].defaultValue,
     fileActionSettings: {
         showDrag: false
     },
     showRemove: false,
-            showClose: false,
-            fileActionSettings: {
-                showRemove: false,
-            },
-    maxFileSize: 4096});
-
+    showClose: false,
+    fileActionSettings: {
+        showRemove: false
+    },
+    maxFileSize: 4096
+});

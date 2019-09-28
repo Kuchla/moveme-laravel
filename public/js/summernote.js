@@ -1,6 +1,5 @@
-$(document).ready(function () {
-    $("#summernote").summernote({
-        lang: "pt-BR",
+$(document).ready(function() {
+    $('#summernote').summernote({
+        lang: 'pt-BR'
     });
 });
-
