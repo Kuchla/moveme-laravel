@@ -1,15 +1,15 @@
 @extends('adminlte::page') @section('title', 'AdminLTE')
 @section('content_header')
 <h1>
-    {{ trans("adminlte::pages.event.index") }}
+    {{ trans("adminlte::pages.event.crud") }}
     <small>{{ trans("adminlte::pages.index") }}</small>
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="#"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
+        <a href="{{ route('admin.home') }}"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
     </li>
     <li>
-        <a href="#">{{ trans("adminlte::pages.event.index") }}</a>
+        <a href="{{ route('admin.events.index') }}">{{ trans("adminlte::pages.event.crud") }}</a>
     </li>
     <li class="active">{{ trans("adminlte::pages.index") }}</li>
 </ol>
@@ -54,8 +54,7 @@
                                             trans("adminlte::pages.btn.edit")
                                         }}</i>
                                 </a>
-                                <form action="{{ route('admin.events.destroy', $event) }}" method="post"
-                                    style="display: inline;">
+                                <form action="{{ route('admin.events.destroy', $event) }}" method="post" style="display: inline;">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash">

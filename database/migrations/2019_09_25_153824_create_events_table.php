@@ -21,8 +21,7 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->boolean('is_free')->default(true);
             $table->boolean('is_limited')->default(false);
-            $table->text('subscription_info');
-            $table->date('date');
+            $table->dateTime('date');
 
             $table->unsignedBigInteger('place_id');
             $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');

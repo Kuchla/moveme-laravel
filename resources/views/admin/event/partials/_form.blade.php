@@ -19,8 +19,9 @@
                 <label for="event-date">{{
                     trans("adminlte::pages.event.date")
                 }}</label>
-                <div class='input-group date' id='datepickertime'>
-                    <input id='event-date type=' text' name="event[date]" class="form-control" />
+                <div class="input-group date" id="datepickertime">
+                    <input id="event-date" type="text" name="event[date]" class="form-control"
+                        value="{{ old('event.date', @$event->date) }}" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -120,36 +121,35 @@
                     }}</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="event[is_free]" id="event-is_free-yes" value="1"
-                        {{ old('event.visitation', @$event->visitation)==1 ? 'checked' : '' }} />
+                        {{ old('event.is_free', @$event->is_free)==1 ? 'checked' : '' }} />
                     <label for="event-is_free-yes">{{
                             trans("adminlte::pages.event.yes")
                         }}</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="event[visitation]" id="event-is_free-no"
-                        value="0" {{ old('event.visitation', @$event->visitation)==0 ? 'checked' : '' }} />
+                    <input class="form-check-input" type="radio" name="event[is_free]" id="event-is_free-no" value="0"
+                        {{ old('event.is_free', @$event->is_free)==0 ? 'checked' : '' }} />
                     <label for="event-is_free-no">{{
                             trans("adminlte::pages.event.no")
                         }}</label>
                 </div>
             </div>
         </div>
-
         <div class="col-md-6">
             <div class="form-group">
                 <label for="event-is_limited">{{
                             trans("adminlte::pages.event.is_limited")
                         }}</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="event[visitation]" id="event-is_limited-yes"
-                        value="1" {{ old('event.visitation', @$event->visitation)==1 ? 'checked' : '' }} />
+                    <input class="form-check-input" type="radio" name="event[is_limited]" id="event-is_limited-yes"
+                        value="1" {{ old('event.is_limited', @$event->is_limited)==1 ? 'checked' : '' }} />
                     <label for="event-is_limited-yes">{{
                                 trans("adminlte::pages.event.yes")
                             }}</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="event[visitation]" id="event-is_limited-no"
-                        value="0" {{ old('event.visitation', @$event->visitation)==0 ? 'checked' : '' }} />
+                    <input class="form-check-input" type="radio" name="event[is_limited]" id="event-is_limited-no"
+                        value="0" {{ old('event.is_limited', @$event->is_limited)==0 ? 'checked' : '' }} />
                     <label for="event-is_limited-no">{{
                                 trans("adminlte::pages.event.no")
                             }}</label>

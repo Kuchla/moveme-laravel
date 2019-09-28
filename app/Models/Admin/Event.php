@@ -20,7 +20,7 @@ class Event extends Model
 
     public function activities()
     {
-        return $this->belongsToMany(Activity::class, 'activity_place');
+        return $this->belongsToMany(Activity::class, 'activity_event');
     }
 
     public function place()

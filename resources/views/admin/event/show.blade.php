@@ -6,10 +6,10 @@
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="#"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
+        <a href="{{ route('admin.home') }}"><i class="fa fa-dashboard"></i>{{ trans("adminlte::pages.home") }}</a>
     </li>
     <li>
-        <a href="#">{{ trans("adminlte::pages.event.page") }}</a>
+        <a href="{{ route('admin.events.index') }}">{{ trans("adminlte::pages.event.crud") }}</a>
     </li>
     <li class="active">{{ trans("adminlte::pages.show") }}</li>
 </ol>
@@ -36,15 +36,15 @@
                         </p>
                     </li>
                     <li class="list-group-item">
-                        <b>{{ trans("adminlte::pages.event.city") }}</b>
+                        <b>{{ trans("adminlte::pages.event.place") }}</b>
                         <p class="text-muted">
-                            {{ $event->city->name }}
+                            {{ $event->place->name }}
                         </p>
                     </li>
                     <li class="list-group-item">
-                        <b>{{ trans("adminlte::pages.event.location") }}</b>
+                        <b>{{ trans("adminlte::pages.event.date") }}</b>
                         <p class="text-muted">
-                            {{ $event->location }}
+                            {{ $event->date }}
                         </p>
                     </li>
                     <li class="list-group-item">
@@ -56,9 +56,15 @@
                         </p>
                     </li>
                     <li class="list-group-item">
-                        <b>{{ trans("adminlte::pages.event.visitation") }}</b>
+                        <b>{{ trans("adminlte::pages.event.is_free") }}</b>
                         <p class="text-muted">
-                            {{ $event->visitation ? 'Paga' : 'Gratuita' }}
+                            {{ $event->is_free ? trans("adminlte::pages.event.no") : trans("adminlte::pages.event.yes") }}
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <b>{{ trans("adminlte::pages.event.is_limited") }}</b>
+                        <p class="text-muted">
+                            {{ $event->is_limited ? trans("adminlte::pages.event.no") : trans("adminlte::pages.event.yes") }}
                         </p>
                     </li>
                     <li class="list-group-item">

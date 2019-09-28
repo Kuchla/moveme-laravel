@@ -7,6 +7,7 @@ use App\Models\Admin\Event;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
 use App\Models\Admin\Place;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -30,12 +31,14 @@ class EventController extends Controller
         $event->image = $request->event['image']->store('events');
         $event->description = $request->event['description'];
         $event->date = $request->event['date'];
-        $event->place = $request->event['place'];
+        $event->place_id = $request->event['place'];
         $event->is_free = $request->event['is_free'];
         $event->is_limited = $request->event['is_limited'];
 
         $event->save();
-        return redirect(route('admin.events.show', compact('events')));
+        $event->activities()->sync((array)$request->input('event.activity'));
+
+        return redirect(route('admin.events.show', compact('event')));
     }
     public function edit(Event $event)
     {
@@ -56,16 +59,18 @@ class EventController extends Controller
         $event->event_image = isset($request->event['image']) ? $request->event['image']->store('events') : null;
         $event->description = $request->event['description'];
         $event->date = $request->event['date'];
-        $event->place = $request->event['place'];
+        $event->place_id = $request->event['place'];
         $event->is_free = $request->event['is_free'];
         $event->is_limited = $request->event['is_limited'];
 
         $event->update();
-        return redirect(route('admin.events.show', compact('events')));
+        $event->activities()->sync((array)$request->input('event.activity'));
+
+        return redirect(route('admin.events.show', compact('event')));
     }
     public function show(Event $event)
     {
-        return view('admin.event.show', compact('events'));
+        return view('admin.event.show', compact('event'));
     }
     private function validation(Request $request)
     {

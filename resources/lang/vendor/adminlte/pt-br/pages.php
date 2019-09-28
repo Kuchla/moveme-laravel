@@ -56,9 +56,9 @@ return [
         'empty'             => 'Nenhuma cidade cadastrada!'
     ],
 
-    'event'                =>  [
-        'page'             => 'Evento',
-        'index'             => 'Eventos',
+    'event'                 =>  [
+        'page'              => 'Evento',
+        'crud'              => 'Eventos',
         'name'              => 'Nome',
         'image'             => 'Imagem',
         'description'       => 'Descrição',
