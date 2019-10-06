@@ -92,14 +92,14 @@
                     }}</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="place[visitation]" id="place-visitation-free"
-                        value="0" {{ old('place.visitation', @$place->visitation)==0 ? 'checked' : '' }} />
+                        value="1" {{ old('place.visitation', @$place->visitation)==1 ? 'checked' : '' }} />
                     <label for="place_visitation_free">{{
                             trans("adminlte::pages.place.free")
                         }}</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="place[visitation]" id="place-visitation-paid"
-                        value="1" {{ old('place.visitation', @$place->visitation)==1 ? 'checked' : '' }} />
+                        value="0" {{ old('place.visitation', @$place->visitation)==0 ? 'checked' : '' }} />
                     <label for="place_visitation_paid">{{
                             trans("adminlte::pages.place.paid")
                         }}</label>
