@@ -58,7 +58,7 @@
                     <li class="list-group-item">
                         <b>{{ trans("adminlte::pages.place.visitation") }}</b>
                         <p class="text-muted">
-                            {{ $place->visitation ? 'Paga' : 'Gratuita' }}
+                            {{ $place->visitation ? 'Gratuita' : 'Paga' }}
                         </p>
                     </li>
                     <li class="list-group-item">
