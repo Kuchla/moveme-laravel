@@ -30,4 +30,33 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('/events', 'EventController')->names('admin.events');
 });
 
-Auth::routes();
+// Route::group(['middleware' => ['guest', 'web']], function () {
+//     Route::get('/admin/login', 'Admin\Auth\LoginController@showLoginForm')->name('login');
+//     Route::post('admin/login', 'Admin\Auth\LoginController@login');
+// });
+
+// Route::post('/admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
+
+// Auth::routes();
+
+Route::group([
+    'namespace' => 'Admin\Auth',
+    // 'middleware' => 'admin',
+    'prefix' => 'admin'
+], function () {
+    Route::get('login', 'LoginController@showLoginForm')
+        ->name('admin.login');
+
+    Route::post('login', 'LoginController@login');
+});
+
+Route::post('logout', 'Admin\Auth\LoginController@logout')
+->name('admin.logout');
+
+Route::post('admin/password/email', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+Route::get('admin/password/reset', 'Admin\Auth\ResetPasswordController@showLinkRequestForm')->name('admin.password.request');
+
+Route::post('admin/password/reset', 'Admin\Auth\ResetPasswordController@reset')->name('admin.password.update');
+Route::get('admin/password/reset/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
+
+

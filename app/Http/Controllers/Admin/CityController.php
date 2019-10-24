@@ -60,7 +60,7 @@ class CityController extends Controller
         return view('admin.city.show', compact('city'));
     }
 
-    private function validation(Request $request)
+    public function validation(Request $request)
     {
         $request->validate([
            'city.name'       => 'required|min:4|max:50',
