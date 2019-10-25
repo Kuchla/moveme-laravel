@@ -24,40 +24,11 @@ class LoginController extends Controller
         sendFailedLoginResponse as protected failedLoginResponse;
     }
 
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    // protected $redirectTo = '/admin';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('guest')->except('logout');
-    // }
-
-    public function username(){
-        return 'email';
-    }
     public function login(Request $request)
     {
-        if ($this->hasTooManyLoginAttempts($request)){
-            //Fire the lockout event.
-            $this->fireLockoutEvent($request);
-            //redirect the user back after lockout.
-            return $this->sendLockoutResponse($request);
-        }
-
         if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
             return redirect(route('admin.home'));
         }
-        $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
     }
@@ -75,6 +46,8 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        $loginRoute = route('admin.login');
+        $resetPasswordRoute = route('admin.password.request');
+        return view('auth.login', compact('loginRoute', 'resetPasswordRoute'));
     }
 }

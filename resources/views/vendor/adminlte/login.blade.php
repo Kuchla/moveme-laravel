@@ -15,7 +15,7 @@
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">{{ trans('adminlte::adminlte.login_message') }}</p>
-            <form action="{{ url(config('adminlte.login_url', 'admin.login')) }}" method="post">
+            <form action="{{ $loginRoute }}" method="post">
                 {{ csrf_field() }}
 
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -56,7 +56,7 @@
             </form>
             <br>
             <p>
-                <a href="{{ url(config('adminlte.password_reset_url', 'admin/password/reset')) }}" class="text-center">
+                <a href="{{ url(config('adminlte.password_reset_url', $resetPasswordRoute )) }}" class="text-center">
                     {{ trans('adminlte::adminlte.i_forgot_my_password') }}
                 </a>
             </p>

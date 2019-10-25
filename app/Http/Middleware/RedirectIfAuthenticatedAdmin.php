@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Auth;
 use Closure;
 
 class RedirectIfAuthenticatedAdmin
@@ -15,8 +15,8 @@ class RedirectIfAuthenticatedAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::guard('admin')->check()) {
-            return redirect(route("admin.login"));
+        if (Auth::guard('admin')->check()) {
+            return redirect(route("admin.home"));
         }
 
         return $next($request);

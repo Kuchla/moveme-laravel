@@ -22,12 +22,16 @@ Route::get('/place/filter', 'Site\HomeController@placeFilter')->name('site.place
 Route::get('/place/filter-reset', 'Site\HomeController@placeFilterReset')->name('site.place.filter-reset');
 
 
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => 'admin_auth:admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.home');
     Route::resource('/places', 'PlaceController')->names('admin.places');
     Route::resource('/cities', 'CityController')->names('admin.cities');
     Route::resource('/activities', 'ActivityController')->names('admin.activities');
     Route::resource('/events', 'EventController')->names('admin.events');
+});
+
+Route::group(['middleware' => 'auth', 'namespace' => 'Site'], function () {
+    Route::get('/profile', 'ProfileController@index')->name('site.profile');
 });
 
 // Route::group(['middleware' => ['guest', 'web']], function () {
@@ -37,11 +41,11 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 
 // Route::post('/admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
 
-// Auth::routes();
+Auth::routes();
 
 Route::group([
     'namespace' => 'Admin\Auth',
-    // 'middleware' => 'admin',
+    'middleware' => 'admin_guest',
     'prefix' => 'admin'
 ], function () {
     Route::get('login', 'LoginController@showLoginForm')
@@ -50,12 +54,19 @@ Route::group([
     Route::post('login', 'LoginController@login');
 });
 
-Route::post('logout', 'Admin\Auth\LoginController@logout')
+Route::group([
+    'namespace' => 'Admin\Auth',
+    'middleware' => 'admin_auth',
+    'prefix' => 'admin'
+], function () {
+    Route::post('logout', 'LoginController@logout')
 ->name('admin.logout');
+});
+
+
 
 Route::post('admin/password/email', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-Route::get('admin/password/reset', 'Admin\Auth\ResetPasswordController@showLinkRequestForm')->name('admin.password.request');
-
+Route::get('admin/password/reset', 'Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
 Route::post('admin/password/reset', 'Admin\Auth\ResetPasswordController@reset')->name('admin.password.update');
 Route::get('admin/password/reset/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
 

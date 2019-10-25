@@ -14,9 +14,9 @@
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">{{ trans('adminlte::adminlte.password_reset_message') }}</p>
-            <form action="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}" method="post">
+            <form action="{{ url(config('adminlte.password_reset_url', 'admin/password/reset')) }}" method="post">
                 {{ csrf_field() }}
-
+{{dd('dsa')}}
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">

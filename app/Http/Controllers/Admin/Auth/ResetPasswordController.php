@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
@@ -20,29 +21,21 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    /**
-     * Where to redirect users after resetting their password.
-     *
-     * @var string
-     */
-    protected $redirectTo = 'admin/home';
+    protected $redirectTo = 'admin/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function showResetForm(Request $request, $token = null)
     {
-        $this->middleware('guest:admin');
+        return view('auth.passwords.reset')->with(
+            ['token' => $token, 'email' => decrypt($request->email)]
+        );
     }
 
-    public function showResetForm(Request $request, $token = null){
-        dd('ddd');
-        // return view('auth.passwords.reset');
-    }
-    public function showLinkRequestForm(Type $var = null)
+    protected function rules()
     {
-        dd('kdds');
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
+        ];
     }
 }

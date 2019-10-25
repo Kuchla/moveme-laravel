@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Auth;
 use Closure;
 
 class AuthenticateAdmin
@@ -15,8 +15,8 @@ class AuthenticateAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('admin')->check()) {
-            return redirect(route("admin.home"));
+        if (!Auth::guard('admin')->check()) {
+            return redirect(route("admin.login"));
         }
 
         return $next($request);
