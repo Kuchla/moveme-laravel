@@ -189,5 +189,14 @@ return [
             'visitation' => 'visitação',
             'city' => 'cidade'
         ],
+        'profile'                  => [
+            'info' => 'informação',
+            'image' => 'imagem',
+            'user' => [
+                'name' => 'nome',
+                'email' => 'e-mail',
+                'password' => 'senha'
+            ],
+        ],
     ],
 ];

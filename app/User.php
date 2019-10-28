@@ -2,8 +2,9 @@
 
 namespace App;
 
+use App\Models\Admin\Activity;
+use App\Models\Site\Profile;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -36,4 +37,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function activities()
+    {
+        return $this->belongsToMany(Activity::class, 'activity_user');
+    }
 }

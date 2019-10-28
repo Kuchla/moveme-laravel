@@ -32,14 +32,9 @@ Route::group(['middleware' => 'admin_auth:admin', 'namespace' => 'Admin', 'prefi
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Site'], function () {
     Route::get('/profile', 'ProfileController@index')->name('site.profile');
+    Route::post('/profile/store', 'ProfileController@store')->name('site.profile.store');
+    Route::patch('/profile/update/{profile}', 'ProfileController@update')->name('site.profile.update');
 });
-
-// Route::group(['middleware' => ['guest', 'web']], function () {
-//     Route::get('/admin/login', 'Admin\Auth\LoginController@showLoginForm')->name('login');
-//     Route::post('admin/login', 'Admin\Auth\LoginController@login');
-// });
-
-// Route::post('/admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
 
 Auth::routes();
 
@@ -62,8 +57,6 @@ Route::group([
     Route::post('logout', 'LoginController@logout')
 ->name('admin.logout');
 });
-
-
 
 Route::post('admin/password/email', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
 Route::get('admin/password/reset', 'Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');

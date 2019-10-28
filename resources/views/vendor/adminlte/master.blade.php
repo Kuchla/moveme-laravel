@@ -25,6 +25,9 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
 
+    <!-- Custom admin-lte -->
+    <link rel="stylesheet" href="{{ asset('css/_custom-admin-lte.css') }}">
+
     @yield('adminlte_css')
 
     <!--[if lt IE 9]>

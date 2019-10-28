@@ -1,18 +1,130 @@
-<li>
-    @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') &&
-    version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<')) <a
-        href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
-        <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
-        </a>
-        @else
-        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @if(config('adminlte.logout_method'))
-            {{ method_field(config('adminlte.logout_method')) }}
-            @endif
-            {{ csrf_field() }}
-        </form>
-        @endif
-</li>
+@extends('site.layouts.app')
+
+@section('title', 'Index')
+
+@section('content')
+
+<section id="contact" class="padd-section wow fadeInUp">
+
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>Perfil</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form form-vertical" action="{{ $route }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @if (Auth::user()->profile)
+                        @method('PATCH')
+                    @endif
+                    <div class="row">
+                        <div class="col-md-3 text-center {{ $errors->has('profile.image') ? 'has-error' : '' }}">
+                            <div class="kv-avatar">
+                                <label for="fname">Imagem</label>
+                                <div class="file-loading">
+                                    <input id="avatar-1" type="file" class="file" data-preview-file-type="text"
+                                        name="profile[image]"
+                                        value="{{ @Auth::user()->profile->image ? @url('storage/'.@Auth::user()->profile->image) : ''  }}" />
+                                    @if ($errors->has('profile.image'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('profile.image') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="kv-avatar-hint">
+                                <small>Sugestão</small>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group {{ $errors->has('profile.user.name') ? 'has-error' : '' }}">
+                                        <label for="fname">Nome</label>
+                                        <input type="text" class="form-control" name="profile[user][name]" required
+                                            value="{{ old('user.name', Auth::user()->name) }}">
+                                        @if ($errors->has('profile.user.name'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('profile.user.name') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group {{ $errors->has('profile.user.email') ? 'has-error' : '' }}">
+                                        <label for="email">E-mail</label>
+                                        <input type="email" class="form-control" name="profile[user][email]" required
+                                            value="{{ old('user.email', Auth::user()->email) }}">
+                                        @if ($errors->has('profile.user.email'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('profile.user.email') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div
+                                        class="form-group {{ $errors->has('profile.user.password') ? 'has-error' : '' }}">
+                                        <label for="pwd">Senha</span></label>
+                                        <input type="text" class="form-control" name="profile[user][password]"
+                                            required value="{{ old('user.password', Auth::user()->password) }}">
+                                        @if ($errors->has('profile.user.password'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('profile.user.password') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="lname">Atividades praticadas</label>
+                                        <select id="event-activity" class="form-control select2"
+                                            name="profile[activity][]" multiple="multiple">
+                                            <option>Selecione</option>
+                                            @foreach ($activities as $key => $activity)
+                                            <option value="{{ $key }}" @if(!is_null(@Auth::user())&&
+                                                !old('profile.activity')){{ @Auth::user()->activities->contains('id', $key) ? "selected" : ''}}
+                                                @endif
+                                                {{ (collect(old('user.activity'))->contains($key)) ? "selected" : '' }}>
+                                                {{ $activity }}
+                                            </option>
+                                            @endforeach
+                                            <option>Selecione</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group {{ $errors->has('profile.info') ? 'has-error' : '' }}">
+                                        <label for="lname">Informações</label>
+                                        <textarea class="form-control" id="user[info]" name="profile[info]"
+                                            rows="3">{{ old('profile.info', @Auth::user()->profile->info) }}</textarea>
+                                        @if ($errors->has('profile.info'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('profile.info') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
