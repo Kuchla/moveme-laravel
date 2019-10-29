@@ -28,6 +28,7 @@ Route::group(['middleware' => 'admin_auth:admin', 'namespace' => 'Admin', 'prefi
     Route::resource('/cities', 'CityController')->names('admin.cities');
     Route::resource('/activities', 'ActivityController')->names('admin.activities');
     Route::resource('/events', 'EventController')->names('admin.events');
+    Route::resource('/admins', 'AdminController')->names('admin.admins');
 });
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Site'], function () {

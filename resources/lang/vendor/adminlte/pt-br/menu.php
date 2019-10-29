@@ -22,4 +22,5 @@ return [
     'activities'                    => 'Atividades',
     'categories'                    => 'Categorias',
     'cities'                        => 'Cidades',
+    'account'                       => 'Conta',
 ];

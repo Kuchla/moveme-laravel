@@ -70,4 +70,12 @@ return [
         'no'                => 'Não',
         'empty'             => 'Nenhum evento cadastrado!'
     ],
+
+    'account'               =>  [
+        'page'              => 'Conta',
+        'crud'              => 'Contas',
+        'name'              => 'Nome',
+        'email'             => 'Email',
+        'password'          => 'Senha'
+    ],
 ];
