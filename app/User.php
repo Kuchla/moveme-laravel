@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Admin\Activity;
+use App\Models\Site\Comment;
 use App\Models\Site\Profile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,5 +47,10 @@ class User extends Authenticatable
     public function activities()
     {
         return $this->belongsToMany(Activity::class, 'activity_user');
+    }
+
+    public function comment()
+    {
+        return $this->belongsToMany(Comment::class);
     }
 }

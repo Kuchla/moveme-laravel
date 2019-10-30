@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Favicons -->
     <link href="{{asset('site-assets/img/favicon.png')}}" rel="icon">
@@ -33,6 +34,7 @@
     <!-- Main Stylesheet File -->
     <link href="{{asset('assets/css/site.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/public-profile.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/comment.css')}}" rel="stylesheet">
 
 </head>
 
@@ -206,6 +208,8 @@
     <script src="{{ asset('site-assets/js/main.js') }}"></script>
     <script src="{{ mix('assets/js/event.js') }}"></script>
     <script src="{{ mix('assets/js/place.js') }}"></script>
+    <script src="{{ mix('assets/js/comment.js') }}"></script>
+
 
 
 
