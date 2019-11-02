@@ -5,7 +5,6 @@
                 <h2>Pontos Turísticos</h2>
             </div>
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="container-fluid">
@@ -38,7 +37,6 @@
                                                 <label class="form-check-label" for="visitation_paid">Não</label>
                                             </div>
                                         </li>
-
                                         <li class="list-inline-item ml-4 mb-2">
                                             <div class="form-group">
                                                 <label for="place_activity" class="h6 text-muted">Atividade</label>
@@ -93,7 +91,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="container-fluid">
                     <div class="row place-list">

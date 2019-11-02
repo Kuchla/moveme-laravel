@@ -1,7 +1,9 @@
 {
+    "/assets/js/comment.js": "/assets/js/comment.js",
     "/assets/js/event.js": "/assets/js/event.js",
     "/assets/js/place.js": "/assets/js/place.js",
     "/assets/js/public-profile.js": "/assets/js/public-profile.js",
     "/assets/css/site.css": "/assets/css/site.css",
-    "/assets/css/public-profile.css": "/assets/css/public-profile.css"
+    "/assets/css/public-profile.css": "/assets/css/public-profile.css",
+    "/assets/css/comment.css": "/assets/css/comment.css"
 }

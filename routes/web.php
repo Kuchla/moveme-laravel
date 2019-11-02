@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Site'], function () {
     Route::get('/profile', 'ProfileController@index')->name('site.profile');
     Route::post('/profile/store', 'ProfileController@store')->name('site.profile.store');
     Route::patch('/profile/update/{profile}', 'ProfileController@update')->name('site.profile.update');
+    Route::resource('/comments', 'CommentController')->names('site.comments');
 });
 
 Auth::routes();

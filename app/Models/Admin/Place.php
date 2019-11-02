@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Site\Comment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
@@ -26,6 +27,11 @@ class Place extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }
 
