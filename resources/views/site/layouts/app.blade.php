@@ -51,24 +51,39 @@
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="#event">Eventos</a></li>
                     <li><a href="#place">Pontos Turísticos</a></li>
-                    <li class="menu-has-children"><a href="">Atividades Esportivas</a>
+                    <li><a href="#place">Atividades Esportivas</a></li>
+
+                    {{-- <li class="menu-has-children"><a href="">Perfil</a>
                         <ul>
                             <li><a href="#">Pessoas que Praticam</a></li>
                             <li><a href="#">Lugares para praticar</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     @if ( Auth::user() )
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        {{ Auth::user()->name }} <i class="fa fa-fw fa-power-off"></i>
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @if(config('adminlte.logout_method'))
-                        {{ method_field(config('adminlte.logout_method')) }}
-                        @endif
-                        {{ csrf_field() }}
-                    </form>
+                    <li class="menu-has-children">
+                        <a href="#">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Sair
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('site.profile')}}">
+                                    Perfil
+                                </a>
+                            </li>
+                        </ul>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @if(config('adminlte.logout_method'))
+                            {{ method_field(config('adminlte.logout_method')) }}
+                            @endif
+                            {{ csrf_field() }}
+                        </form>
                     @else
-                    <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
                     @endif
                 </ul>
             </nav><!-- #nav-menu-container -->

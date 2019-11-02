@@ -163,17 +163,11 @@ return [
             'url'         => 'admin/activities',
             'icon'        => 'fas fa-running',
         ],
-        [
-            'text'        => 'categories',
-            'url'         => 'admin/categories',
-            'icon'        => 'far fa-clipboard',
-        ],
-
 
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'account',
+            'url'  => 'admin/admins',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
