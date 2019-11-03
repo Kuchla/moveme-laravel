@@ -81,80 +81,46 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/assets/js/place.js":
-/*!**************************************!*\
-  !*** ./resources/assets/js/place.js ***!
-  \**************************************/
+/***/ "./resources/assets/js/user.js":
+/*!*************************************!*\
+  !*** ./resources/assets/js/user.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var placeHistory;
-$("#search_place").click(function () {
+$("#search-user").click(function () {
   var url = $(this).data("route");
-  var isFree = $("input[name='visitation']:checked").val();
-  var activity = $("#place_activity").val();
-  var city = $("#place_city").val();
-  console.log(isFree + "-" + activity + "" + city + "" + url);
-  fetchData(isFree, activity, city, url);
-});
-$("#search_place_reset").click(function () {
-  $("input[name='visitation']").removeAttr("checked");
-  var url = $(this).data("route");
-  fetchData(null, null, null, url);
+  var activity = $("#user-activity").val();
+  fetchData(activity, url);
 });
 
-var fetchData = function fetchData(is_free, activity, city, url) {
+var fetchData = function fetchData(activity, url) {
   $.ajax({
     type: "GET",
     url: url,
     data: {
-      is_free: is_free,
-      activity: activity,
-      city: city
+      activity: activity
     }
   }).then(function (data) {
-    $(".place-list").html(data);
+    $("#people-list").html(data);
   });
 };
 
-$(".place-card").click(function () {
-  var url = $(this).data("route");
-  $("#place-container").remove();
-  $.ajax({
-    type: "GET",
-    url: url // data: { is_free, activity, city }
-
-  }).then(function (data) {
-    $("#place").html(data);
-  });
-});
-$("#back-show-place").click(function () {
-  var url = $(this).data("route");
-  $("#place-container").remove();
-  $.ajax({
-    type: "GET",
-    url: url // data: { is_free, activity, city }
-
-  }).then(function (data) {
-    $("#place").html(data);
-  });
-});
-
 /***/ }),
 
-/***/ 1:
-/*!********************************************!*\
-  !*** multi ./resources/assets/js/place.js ***!
-  \********************************************/
+/***/ 4:
+/*!*******************************************!*\
+  !*** multi ./resources/assets/js/user.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/kuchla/tcc/moveme-laravel/moveme-app/moveme/resources/assets/js/place.js */"./resources/assets/js/place.js");
+module.exports = __webpack_require__(/*! /home/kuchla/tcc/moveme-laravel/moveme-app/moveme/resources/assets/js/user.js */"./resources/assets/js/user.js");
 
 
 /***/ })

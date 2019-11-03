@@ -8,4 +8,6 @@ mix.js(["resources/assets/js/event.js"], "public/assets/js/event.js");
 mix.js(["resources/assets/js/place.js"], "public/assets/js/place.js");
 mix.js(["resources/assets/js/public-profile.js"], "public/assets/js/public-profile.js");
 mix.js(["resources/assets/js/comment.js"], "public/assets/js/comment.js");
+mix.js(["resources/assets/js/user.js"], "public/assets/js/user.js");
+
 

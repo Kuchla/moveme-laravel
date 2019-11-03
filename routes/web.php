@@ -21,6 +21,7 @@ Route::get('/event/filter-reset', 'Site\HomeController@eventFilterReset')->name(
 Route::get('/place/filter', 'Site\HomeController@placeFilter')->name('site.place.filter');
 Route::get('/place/filter-reset', 'Site\HomeController@placeFilterReset')->name('site.place.filter-reset');
 
+Route::get('/user/filter', 'Site\HomeController@userFilter')->name('site.user.filter');
 
 Route::group(['middleware' => 'admin_auth:admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.home');

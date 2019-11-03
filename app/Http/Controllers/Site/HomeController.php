@@ -8,6 +8,7 @@ use App\Models\Admin\Activity;
 use App\Models\Admin\City;
 use App\Models\Admin\Event;
 use App\Models\Admin\Place;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -17,7 +18,8 @@ class HomeController extends Controller
         $places = Place::all();
         $activities = Activity::all();
         $cities = City::all();
-        return view('site.home.index', compact('events', 'places', 'activities', 'cities'));
+        $users = User::all();
+        return view('site.home.index', compact('events', 'places', 'activities', 'cities', 'users'));
     }
 
     public function eventFilter(Request $request)
@@ -60,5 +62,16 @@ class HomeController extends Controller
     public function placeShow(Place $place)
     {
         return view('site.home.partials._show-place', compact('place'));
+    }
+
+    public function userFilter(Request $request)
+    {
+        $users = User::when($request->activity, function ($query) use ($request) {
+            $query->whereHas('activities', function ($q) use ($request) {
+                $q->where('activity_id', $request->activity);
+            });
+        })->get();
+
+        return view('site.home.partials._people-list', compact('users'));
     }
 }
