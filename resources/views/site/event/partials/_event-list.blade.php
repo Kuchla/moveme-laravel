@@ -57,7 +57,7 @@
                         <div class="h6 text-muted">
                         </div>
                     <div class="text-muted h7" id="event-{{$model->id}}">
-                            @include('site.home.partials._comments', ['modelName' => 'event'])
+                            @include('site.comment._comments', ['modelName' => 'event'])
                         </div>
                     </div>
                 </div>

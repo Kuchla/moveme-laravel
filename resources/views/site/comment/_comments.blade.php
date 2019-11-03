@@ -3,7 +3,7 @@
     <div class="comment-wrap">
         <div class="photo">
             <div class="avatar">
-                <img class="photo avatar"
+                <img class="image-reduce"
                     src="{{ url('storage/'.Auth::user()->profile->image) ?? asset('assets/images/user-default.jpg')}} "
                     alt="user-image-default">
             </div>
@@ -30,4 +30,4 @@
 Para fazer comentarios é preciso criar uma conta!
 <hr>
 @endif
-@include('site.home.partials._comment_list')
+@include('site.comment._comment_list')

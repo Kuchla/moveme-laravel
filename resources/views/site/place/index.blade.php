@@ -1,3 +1,8 @@
+@extends('site.layouts.app')
+
+@section('title', 'Index')
+
+@section('content')
 <section id="place" class="padd-section wow fadeInUp ">
     <div id="place-container">
         <div class="container">
@@ -94,10 +99,12 @@
             <div class="row">
                 <div class="container-fluid">
                     <div class="row place-list">
-                        @include('site.home.partials._place-list')
+                        @include('site.place.partials._place-list')
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+@endsection
+

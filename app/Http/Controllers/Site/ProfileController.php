@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
 use App\Models\Site\Profile;
-use App\Models\user;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 

@@ -15,13 +15,18 @@ Route::get('/', 'Site\HomeController@index')->name('site.home');
 
 Route::get('/place/show/{place}', 'Site\HomeController@placeShow')->name('site.place.show');
 
-Route::get('/event/filter', 'Site\HomeController@eventFilter')->name('site.event.filter');
-Route::get('/event/filter-reset', 'Site\HomeController@eventFilterReset')->name('site.event.filter-reset');
+Route::get('/events', 'Site\EventController@index')->name('site.event.index');
+Route::get('/events/filter', 'Site\EventController@eventFilter')->name('site.event.filter');
+Route::get('/events/filter-reset', 'Site\EventController@eventFilterReset')->name('site.event.filter-reset');
 
-Route::get('/place/filter', 'Site\HomeController@placeFilter')->name('site.place.filter');
-Route::get('/place/filter-reset', 'Site\HomeController@placeFilterReset')->name('site.place.filter-reset');
+Route::get('/places', 'Site\PlaceController@index')->name('site.place.index');
+Route::get('/places/filter', 'Site\PlaceController@placeFilter')->name('site.place.filter');
+Route::get('/places/filter-reset', 'Site\PlaceController@placeFilterReset')->name('site.place.filter-reset');
 
-Route::get('/user/filter', 'Site\HomeController@userFilter')->name('site.user.filter');
+Route::get('/activities', 'Site\ActivityController@index')->name('site.activity.index');
+
+Route::get('/users', 'Site\UserController@index')->name('site.user.index');
+Route::get('/user/filter', 'Site\UserController@userFilter')->name('site.user.filter');
 
 Route::group(['middleware' => 'admin_auth:admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.home');

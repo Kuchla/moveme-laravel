@@ -51,10 +51,10 @@
 
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li class="menu-active"><a href="#event">Eventos</a></li>
-                    <li><a href="#place">Pontos Turísticos</a></li>
-                    <li><a href="#activity">Atividades Esportivas</a></li>
-                    <li><a href="#people">Pessoas</a></li>
+                    <li><a href="{{ route('site.event.index') }}">Eventos</a></li>
+                    <li><a href="{{ route('site.place.index')}}">Pontos Turísticos</a></li>
+                    <li><a href="{{ route('site.activity.index')}}">Atividades Esportivas</a></li>
+                    <li><a href="{{ route('site.user.index')}}">Pessoas</a></li>
 
                     {{-- <li class="menu-has-children"><a href="">Perfil</a>
                         <ul>

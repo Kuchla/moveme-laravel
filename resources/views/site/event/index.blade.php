@@ -1,3 +1,9 @@
+@extends('site.layouts.app')
+
+@section('title', 'Index')
+
+@section('content')
+
 <section id="event" class="padd-section wow fadeInUp">
     <div class="container">
         <div class="section-title text-center">
@@ -37,18 +43,18 @@
                                         </div>
                                     </li>
                                     <li class="list-inline-item ml-4 mb-2">
-                                            <div class="h6 text-muted">Limitado</div>
-                                            <div class="form-check form-check-inline">
-                                                <input type="radio" id="event-is-limited" value="1" name="event-is-limited"
-                                                    class="form-check-input" />
-                                                <label class="form-check-label" for="event-is-limited">Sim</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input type="radio" id="event-is-not-limited" value="0" name="event-is-limited"
-                                                    class="form-check-input" />
-                                                <label class="form-check-label" for="event-is-not-limited">Não</label>
-                                            </div>
-                                        </li>
+                                        <div class="h6 text-muted">Limitado</div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" id="event-is-limited" value="1" name="event-is-limited"
+                                                class="form-check-input" />
+                                            <label class="form-check-label" for="event-is-limited">Sim</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" id="event-is-not-limited" value="0"
+                                                name="event-is-limited" class="form-check-input" />
+                                            <label class="form-check-label" for="event-is-not-limited">Não</label>
+                                        </div>
+                                    </li>
                                     <li class="list-group-item">
                                         <div class="container">
                                             <div class="row justify-content-center">
@@ -71,7 +77,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="event-list">
-                            @include('site.home.partials._event-list')
+                            @include('site.event.partials._event-list')
                         </div>
                     </div>
                 </div>
@@ -79,3 +85,5 @@
         </div>
     </div>
 </section>
+
+@endsection
