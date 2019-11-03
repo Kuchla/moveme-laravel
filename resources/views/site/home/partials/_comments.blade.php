@@ -18,8 +18,8 @@
                 <ul class="comment-actions">
                     <li class="reply">
                         <button data-route-create="{{ route('site.comments.store') }}" data-event="{{$model->id}}"
-                            data-model-name="{{$modelName}}"
-                            type="submit" class="btn btn-success btn-sm create-comment">Enviar</button>
+                            data-model-name="{{$modelName}}" type="submit"
+                            class="btn btn-success btn-sm create-comment">Enviar</button>
                     </li>
                 </ul>
             </div>

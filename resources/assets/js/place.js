@@ -52,11 +52,3 @@ $("#back-show-place").click(function() {
     });
 });
 
-// $(document).on('click', '#more', function () {
-//     page = $('.btn-group').data('current-page');
-
-//     if ($('.btn-group').data('total-pages') > page) {
-//         page++;
-//         fetchData(interval, page, url);
-//     }
-// });

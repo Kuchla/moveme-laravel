@@ -43,7 +43,7 @@ class ActivityController extends Controller
     public function update(Request $request, Activity $activity)
     {
         $this->validation($request);
-        $activity->user_id = Auth::id();
+        $activity->user_id = 1;
         $activity->name = $request->activity['name'];
         $activity->image_activity = isset($request->activity['image']) ? $request->activity['image']->store('activities') : null;
         $activity->description = $request->activity['description'];

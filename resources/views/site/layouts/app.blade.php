@@ -53,7 +53,8 @@
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="#event">Eventos</a></li>
                     <li><a href="#place">Pontos Turísticos</a></li>
-                    <li><a href="#place">Atividades Esportivas</a></li>
+                    <li><a href="#activity">Atividades Esportivas</a></li>
+                    <li><a href="#people">Pessoas</a></li>
 
                     {{-- <li class="menu-has-children"><a href="">Perfil</a>
                         <ul>
@@ -209,6 +210,8 @@
     <script src="{{ mix('assets/js/event.js') }}"></script>
     <script src="{{ mix('assets/js/place.js') }}"></script>
     <script src="{{ mix('assets/js/comment.js') }}"></script>
+    <script src="{{ mix('assets/js/user.js') }}"></script>
+
 
 
 
