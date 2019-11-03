@@ -1,3 +1,8 @@
+@extends('site.layouts.app')
+
+@section('title', 'Index')
+
+@section('content')
 <section id="people" class="padd-section wow fadeInUp ">
     <div id="place-container">
         <div class="container">
@@ -57,13 +62,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="container-fluid d-flex justify-content-center">
+                    <div class="container-fluid">
                         <br>
-                        <div class="row" id="people-list">
-                            @include('site.home.partials._people-list')
+                        <div class="row d-flex justify-content-center" id="people-list">
+                            @include('site.user.partials._user-list')
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 </section>
+@endsection

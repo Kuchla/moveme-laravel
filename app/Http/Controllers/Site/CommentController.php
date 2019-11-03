@@ -26,7 +26,7 @@ class CommentController extends Controller
 
         $modelName = $request->dataComment['model_name'];
 
-        return view('site.home.partials._comments', compact('model', 'modelName'));
+        return view('site.comment._comments', compact('model', 'modelName'));
     }
 
     public function destroy(Request $request, Comment $comment)
@@ -36,7 +36,7 @@ class CommentController extends Controller
 
         $modelName = $request->modelName;
 
-        return view('site.home.partials._comments', compact('model', 'modelName'));
+        return view('site.comment._comments', compact('model', 'modelName'));
     }
 
     public function update(Request $request, Comment $comment)

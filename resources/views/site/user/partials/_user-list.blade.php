@@ -1,8 +1,8 @@
 @forelse ($users as $user)
-<div class="col-md-3 col-lg-3 col-sm-6">
-    <br>
-    <div class="text-center">
-        <img data-toggle="modal" data-target="#myModal{{$user->id}}" style="border:1px solid rgb(221, 218, 218); border-radius:10px; max-width: 150px;
+<div class="text-center">
+    <div class="col-xl-12">
+        <br>
+        <img data-toggle="modal" data-target="#myModal{{$user->id}}" style="border:1px solid rgb(221, 218, 218); border-radius:10px; max-width: 140px;
         " src="{{ !is_null(@$user->profile->image)
                     ? url('storage/'.@$user->profile->image)
                     : asset('assets/images/user-default.jpg')}} " class="img-responsive" alt="img">

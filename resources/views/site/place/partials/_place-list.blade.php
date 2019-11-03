@@ -70,7 +70,7 @@
                                                 <div class="col-md-12">
                                                     <hr>
                                                     <div class="text-muted h7" id="place-{{$model->id}}">
-                                                        @include('site.home.partials._comments', ['modelName' =>
+                                                        @include('site.comment._comments', ['modelName' =>
                                                         'place'])
                                                     </div>
                                                 </div>
