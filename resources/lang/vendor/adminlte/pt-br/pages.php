@@ -35,7 +35,9 @@ return [
         'free'              => 'Gratuíta',
         'activities'        => 'Atividades',
         'paid'              => 'Paga',
-        'empty'             => 'Nenhum ponto turistico cadastrado!'
+        'empty'             => 'Nenhum ponto turistico cadastrado!',
+        'location_info'     => 'Cole aqui o código embed do Google Maps.',
+        'image_info'        => 'Prefencialmente imagem menor que 4MB em formato retangular.',
     ],
 
     'city'                  =>  [

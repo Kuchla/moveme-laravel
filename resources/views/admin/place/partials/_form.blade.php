@@ -60,7 +60,7 @@
                 <input id="input-file" type="file" class="file" data-preview-file-type="text" name="place[image]"
                     value="{{ @$place->image ? @url('storage/'.@$place->image) : '' }}" />
                 <p class="help-block">
-                    <small>Example block-level help text here.</small>
+                    <small>{{ trans("adminlte::pages.place.image_info") }}</small>
                 </p>
                 @if ($errors->has('place.image'))
                 <span class="help-block">
@@ -77,6 +77,9 @@
                 <textarea class="form-control" rows="2" id="place-location" name="place[location]">
                 {{ old('place.location', @$place->location) }}
                 </textarea>
+                <p class="help-block">
+                    <small>{{ trans("adminlte::pages.place.location_info") }}</small>
+                </p>
                 @if ($errors->has('place.location'))
                 <span class="help-block">
                     <strong>{{ $errors->first('place.location') }}</strong>

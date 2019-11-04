@@ -1105,3 +1105,7 @@ ul {
  margin-top:0;
  margin-bottom:0
 }
+
+iframe {
+    width:100%;
+ }

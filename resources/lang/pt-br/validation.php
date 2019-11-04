@@ -198,5 +198,13 @@ return [
                 'password' => 'senha'
             ],
         ],
+        'event'                  => [
+            'name' => 'nome',
+            'description' => 'descrição',
+            'place' => 'local',
+            'image' => 'imagem',
+            'activities' => 'atividades',
+            'date' => 'data e hora',
+        ],
     ],
 ];

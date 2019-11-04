@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\FormatDate;
 use Illuminate\Http\Request;
 use App\Models\Admin\Event;
 use App\Http\Controllers\Controller;
@@ -24,9 +25,11 @@ class EventController extends Controller
     }
     public function store(Request $request, Event $event)
     {
+        // dd($request);
+        // $request->merge(['formated_date' => FormatDate::dateDefault($request->event['date'])]);
         $this->validation($request);
 
-        $event->user_id = Auth::id();
+        $event->user_id = 1;
         $event->name = $request->event['name'];
         $event->image = $request->event['image']->store('events');
         $event->description = $request->event['description'];
@@ -79,7 +82,7 @@ class EventController extends Controller
             'event.description' => 'required|min:5',
             'event.image'       => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
             'event.date'        => 'required|date|after:tomorrow',
-            'event.place'       => 'required',
+            'event.place'       => 'required|not_in:Escolha...',
             'event.is_free'     => 'required',
             'event.is_limited'  => 'required',
         ]);
