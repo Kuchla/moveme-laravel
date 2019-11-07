@@ -36,7 +36,7 @@ class PlaceController extends Controller
     public function store(Request $request, Place $place)
     {
         $this->validation($request);
-        $place->user_id = Auth::id();
+        $place->user_id = 1;
         $place->name = $request->place['name'];
         $place->city_id = $request->place['city'];
         $place->location = $request->place['location'];
@@ -62,7 +62,7 @@ class PlaceController extends Controller
     public function update(Request $request, Place $place)
     {
         $this->validation($request);
-        $place->user_id = Auth::id();
+        $place->user_id = 1;
         $place->name = $request->place['name'];
         $place->city_id = $request->place['city'];
         $place->location = $request->place['location'];

@@ -20,8 +20,9 @@
                     trans("adminlte::pages.event.date")
                 }}</label>
                 <div class="input-group date" id="datepickertime">
-                    <input id="event-date" type="text" name="event[date]" class="form-control"
+                    <input id="event-date" name="event[date]" type="text" class="form-control"
                         value="{{ old('event.date', @$event->date) }}" />
+                    <input type="hidden" name="event[date]" data-date-format="YYYY-MM-DD HH:mm:ss" id="event-date-hidden">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -41,7 +42,7 @@
                             trans("adminlte::pages.event.place")
                         }}</label>
                 <select id="event-place" class="form-control select2" name="event[place]">
-                    <option>Selecione</option>
+                    <option selected disabled>Escolha...</option>
                     @foreach ($places as $key => $place)
                     <option value="{{ $key }}" @if ($key==old('event.place', @$event->place_id))
                         selected="selected"
@@ -62,7 +63,6 @@
                                 trans("adminlte::pages.event.activities")
                             }}</label>
                 <select id="event-activity" class="form-control select2" name="event[activity][]" multiple="multiple">
-                    <option>Selecione</option>
                     @foreach ($activities as $key => $activity)
                     <option value="{{ $key }}" @if(!is_null(@$event)&&
                         !old('event.activity')){{ @$event->activities->contains('id', $key) ? "selected" : ''}} @endif
@@ -103,7 +103,7 @@
                 <input id="input-file" type="file" class="file" data-preview-file-type="text" name="event[image]"
                     value="{{ @$event->image ? @url('storage/'.@$event->image) : ''  }}" />
                 <p class="help-block">
-                    <small>Example block-level help text here.</small>
+                    <small>{{ trans("adminlte::pages.image_info") }}</small>
                 </p>
                 @if ($errors->has('event.image'))
                 <span class="help-block">

@@ -22,4 +22,14 @@ class Admin extends Authenticatable
         'created_at',
         'updated_at',
     ];
+
+    public function setAdminPasswordAttribute($value)
+    {
+        $this->attributes['password'] = is_null($value) ? $this->password :  $value;
+    }
+
+    // public function setAdminEmailAttribute($value)
+    // {
+    //     $this->attributes['email'] = $value != $this->email ? $this->email;
+    // }
 }

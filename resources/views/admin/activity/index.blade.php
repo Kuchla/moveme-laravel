@@ -1,7 +1,7 @@
 @extends('adminlte::page') @section('title', 'AdminLTE')
 @section('content_header')
 <h1>
-    {{ trans("adminlte::pages.place.crud") }}
+    {{ trans("adminlte::pages.activity.crud") }}
     <small>{{ trans("adminlte::pages.index") }}</small>
 </h1>
 <ol class="breadcrumb">
@@ -34,7 +34,7 @@
                     <tbody>
                         <tr>
                             <th>{{ trans("adminlte::pages.id") }}</th>
-                            <th>{{ trans("adminlte::pages.place.name") }}</th>
+                            <th>{{ trans("adminlte::pages.activity.name") }}</th>
                             <th>{{ trans("adminlte::pages.admin") }}</th>
                         </tr>
                         @foreach ($activities as $activity)
@@ -72,7 +72,7 @@
                     </tbody>
                 </table>
                 @else
-                <h5 class="text-center">{{ trans("adminlte::pages.place.empty") }}</h5>
+                <h5 class="text-center">{{ trans("adminlte::pages.activity.empty") }}</h5>
                 @endif
             </div>
         </div>

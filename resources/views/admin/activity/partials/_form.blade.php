@@ -36,7 +36,7 @@
                 }}</label>
                 <input id="input-file" type="file" class="file" data-preview-file-type="text" name="activity[image]" value="{{ @$activity->image ? @url('storage/'.@$activity->image) : '' }}" />
                 <p class="help-block">
-                    <small>Example block-level help text here.</small>
+                    <small>{{ trans("adminlte::pages.image_info") }}</small>
                 </p>
                 @if ($errors->has('activity.image'))
                 <span class="help-block">
