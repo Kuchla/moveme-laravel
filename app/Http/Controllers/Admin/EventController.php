@@ -25,15 +25,13 @@ class EventController extends Controller
     }
     public function store(Request $request, Event $event)
     {
-        // dd($request);
-        // $request->merge(['formated_date' => FormatDate::dateDefault($request->event['date'])]);
         $this->validation($request);
 
         $event->user_id = 1;
         $event->name = $request->event['name'];
         $event->image = $request->event['image']->store('events');
         $event->description = $request->event['description'];
-        $event->date = $request->event['date'];
+        $event->date = FormatDate::dateDefault($request);
         $event->place_id = $request->event['place'];
         $event->is_free = $request->event['is_free'];
         $event->is_limited = $request->event['is_limited'];
@@ -75,13 +73,14 @@ class EventController extends Controller
     {
         return view('admin.event.show', compact('event'));
     }
+
     private function validation(Request $request)
     {
         $request->validate([
             'event.name'        => 'required|min:4|max:50',
             'event.description' => 'required|min:5',
             'event.image'       => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
-            'event.date'        => 'required|date|after:tomorrow',
+            'event.date'        => 'required',
             'event.place'       => 'required|not_in:Escolha...',
             'event.is_free'     => 'required',
             'event.is_limited'  => 'required',

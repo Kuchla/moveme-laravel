@@ -28,7 +28,7 @@ Route::get('/activities', 'Site\ActivityController@index')->name('site.activity.
 Route::get('/users', 'Site\UserController@index')->name('site.user.index');
 Route::get('/user/filter', 'Site\UserController@userFilter')->name('site.user.filter');
 
-Route::group(['middleware' => 'admin_auth:admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => 'admin_auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.home');
     Route::resource('/places', 'PlaceController')->names('admin.places');
     Route::resource('/cities', 'CityController')->names('admin.cities');
@@ -48,7 +48,7 @@ Auth::routes();
 
 Route::group([
     'namespace' => 'Admin\Auth',
-    'middleware' => 'admin_guest',
+    'middleware' => 'admin_guest:admin',
     'prefix' => 'admin'
 ], function () {
     Route::get('login', 'LoginController@showLoginForm')

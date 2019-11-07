@@ -20,7 +20,7 @@
                     trans("adminlte::pages.event.date")
                 }}</label>
                 <div class="input-group date" id="datepickertime">
-                    <input id="event-date" name="event[dated]" type="text" class="form-control"
+                    <input id="event-date" name="event[date]" type="text" class="form-control"
                         value="{{ old('event.date', @$event->date) }}" />
                     <input type="hidden" name="event[date]" data-date-format="YYYY-MM-DD HH:mm:ss" id="event-date-hidden">
                     <span class="input-group-addon">
@@ -103,7 +103,7 @@
                 <input id="input-file" type="file" class="file" data-preview-file-type="text" name="event[image]"
                     value="{{ @$event->image ? @url('storage/'.@$event->image) : ''  }}" />
                 <p class="help-block">
-                    <small>{{ trans("adminlte::pages.place.image_info") }}</small>
+                    <small>{{ trans("adminlte::pages.image_info") }}</small>
                 </p>
                 @if ($errors->has('event.image'))
                 <span class="help-block">

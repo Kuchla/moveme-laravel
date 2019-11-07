@@ -65,7 +65,7 @@
                             @else
                                 <a href="#"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                >
+                                >{{ Auth::guard('admin')->user()->name }} |
                                     <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
                                 </a>
                                 <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">

@@ -30,9 +30,9 @@
         <div class="col-md-4 has-feedback {{ $errors->has('admin.password') ? 'has-error' : '' }}">
             <div class="form-group">
                 <label for="admin-password">{{ trans("adminlte::pages.account.password") }}</label>
-                <input type="text" name="admin[password]" class="form-control" id="admin-password"
+                <input type="password" name="admin[password]" class="form-control" id="admin-password"
                     placeholder="{{ trans('adminlte::pages.account.password') }}"
-                    value="{{ old('admin.password', @$admin->password) }}" />
+                    value="{{ old('admin.password') }}" />
                 @if ($errors->has('admin.password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('admin.password') }}</strong>

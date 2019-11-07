@@ -8,11 +8,12 @@ return [
     'info'                   => 'Dados',
     'new'                    => 'Novo',
     'management'             => 'Gerenciamento',
-    'home'                   => 'Home',
+    'home'                   => 'Dashboard',
     'search'                 => 'Buscar',
     'id'                     => 'Id',
     'admin'                  => 'Administração',
     'form'                   => 'Formulário',
+    'image_info'             => 'Prefencialmente imagem menor que 4MB em formato retangular.',
 
     'btn'                 =>  [
         'new'                     => 'Novo',
@@ -37,7 +38,6 @@ return [
         'paid'              => 'Paga',
         'empty'             => 'Nenhum ponto turistico cadastrado!',
         'location_info'     => 'Cole aqui o código embed do Google Maps.',
-        'image_info'        => 'Prefencialmente imagem menor que 4MB em formato retangular.',
     ],
 
     'city'                  =>  [
@@ -53,7 +53,7 @@ return [
         'crud'              => 'Atividades',
         'name'              => 'Nome',
         'description'       => 'Descrição',
-        'image'             => 'Images',
+        'image'             => 'Imagem',
         'empty'             => 'Nenhuma cidade cadastrada!'
     ],
 
@@ -78,6 +78,18 @@ return [
         'crud'              => 'Contas',
         'name'              => 'Nome',
         'email'             => 'Email',
-        'password'          => 'Senha'
+        'password'          => 'Senha',
+        'admin'             => 'Administrador Supremo',
+        'user'              => 'Administrador Comum',
+        'level'             => 'Nível de Acesso'
+    ],
+
+    'dashboard'              =>  [
+        'page'              => 'Dashboard',
+        'crud'              => 'Dashboard',
+        'events'            => 'Evento(s)',
+        'places'            => 'Ponto(s) Turístico(s)',
+        'activities'          => 'Atividade(s)',
+        'users'             => 'Usuário(s) Cadastrado(s)'
     ],
 ];

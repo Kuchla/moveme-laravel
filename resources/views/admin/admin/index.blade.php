@@ -36,6 +36,7 @@
                             <th>{{ trans("adminlte::pages.id") }}</th>
                             <th>{{ trans("adminlte::pages.account.name") }}</th>
                             <th>{{ trans("adminlte::pages.account.email") }}</th>
+                            <th>{{ trans("adminlte::pages.account.level") }}</th>
                             <th>{{ trans("adminlte::pages.management") }}</th>
                         </tr>
                         @foreach ($admins as $admin)
@@ -43,6 +44,10 @@
                             <td>{{ $admin->id }}</td>
                             <td>{{ $admin->name }}</td>
                             <td>{{ $admin->email }}</td>
+                            <td>{{ $admin->manager
+                                ? trans("adminlte::pages.account.admin")
+                                : trans("adminlte::pages.account.user")}}
+                            </td>
                             <td>
                                 <a class="btn btn-success btn-sm" href="{{ route('admin.admins.show', $admin) }}">
                                     <i class="fa fa-eye">

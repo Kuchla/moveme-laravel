@@ -20,7 +20,7 @@
                     trans("adminlte::pages.place.city")
                 }}</label>
                 <select id="place-city" class="form-control select2" name="place[city]">
-                    <option>Selecione</option>
+                    <option selected disabled>Escolha...</option>
                     @foreach ($cities as $key => $city)
                     <option value="{{ $key }}" @if ($key==old('place.city', @$place->city_id))
                         selected="selected"
@@ -60,7 +60,7 @@
                 <input id="input-file" type="file" class="file" data-preview-file-type="text" name="place[image]"
                     value="{{ @$place->image ? @url('storage/'.@$place->image) : '' }}" />
                 <p class="help-block">
-                    <small>{{ trans("adminlte::pages.place.image_info") }}</small>
+                    <small>{{ trans("adminlte::pages.image_info") }}</small>
                 </p>
                 @if ($errors->has('place.image'))
                 <span class="help-block">
@@ -118,7 +118,6 @@
                     trans("adminlte::pages.place.activities")
                 }}</label>
                 <select id="place-activities" class="form-control select2" name="place[activity][]" multiple="multiple">
-                    <option>Selecione</option>
                     @foreach ($activities as $key => $activity)
                     <option value="{{ $key }}" @if(!is_null(@$place)&&
                         !old('place.activity')){{ @$place->activities->contains('id', $key) ? "selected" : ''}} @endif
