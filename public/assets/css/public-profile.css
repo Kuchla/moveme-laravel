@@ -25,3 +25,12 @@
     font-weight: normal;
 }
 
+.btn-primary {
+    background: #71c55d;
+}
+
+.btn-primary:hover{
+    background: #71c55d;
+    border: #fff;
+}
+

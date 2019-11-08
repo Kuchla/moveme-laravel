@@ -55,13 +55,6 @@
                     <li><a href="{{ route('site.place.index')}}">Pontos Turísticos</a></li>
                     <li><a href="{{ route('site.activity.index')}}">Atividades Esportivas</a></li>
                     <li><a href="{{ route('site.user.index')}}">Pessoas</a></li>
-
-                    {{-- <li class="menu-has-children"><a href="">Perfil</a>
-                        <ul>
-                            <li><a href="#">Pessoas que Praticam</a></li>
-                            <li><a href="#">Lugares para praticar</a></li>
-                        </ul>
-                    </li> --}}
                     @if ( Auth::user() )
                     <li class="menu-has-children">
                         <a href="#">
@@ -69,13 +62,14 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Sair
+                                <a href="{{ route('site.profile')}}">
+                                    Perfil
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('site.profile')}}">
-                                    Perfil
+                                <a href="#"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Sair
                                 </a>
                             </li>
                         </ul>
@@ -85,8 +79,8 @@
                             @endif
                             {{ csrf_field() }}
                         </form>
-                    @else
-                        <li><a href="{{ route('login') }}">Login</a></li>
+                        @else
+                    <li><a href="{{ route('login') }}">Login</a></li>
                     @endif
                 </ul>
             </nav><!-- #nav-menu-container -->
@@ -98,82 +92,6 @@
     Footer
   ============================-->
     <footer class="footer">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-12 col-lg-4">
-                    <div class="footer-logo">
-
-                        <a class="navbar-brand" href="#">MoveME</a>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the.</p>
-
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-2">
-                    <div class="list-menu">
-
-                        <h4>Abou Us</h4>
-
-                        <ul class="list-unstyled">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Features item</a></li>
-                            <li><a href="#">Live streaming</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-2">
-                    <div class="list-menu">
-
-                        <h4>Abou Us</h4>
-
-                        <ul class="list-unstyled">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Features item</a></li>
-                            <li><a href="#">Live streaming</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-2">
-                    <div class="list-menu">
-
-                        <h4>Support</h4>
-
-                        <ul class="list-unstyled">
-                            <li><a href="#">faq</a></li>
-                            <li><a href="#">Editor help</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-2">
-                    <div class="list-menu">
-
-                        <h4>Abou Us</h4>
-
-                        <ul class="list-unstyled">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Features item</a></li>
-                            <li><a href="#">Live streaming</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
         <div class="copyrights">
             <div class="container">
                 <p>&copy; MoveME</p>

@@ -35,7 +35,7 @@
                         </div>
 
                         <span
-                            class="badge badge-success">{{ $model->is_free ? 'Com taxa para participar' : 'Gratuito' }}</span>
+                            class="badge badge-success">{{ $model->is_free ? 'Gratuíto' : 'Com taxa para participar' }}</span>
                         <span
                             class="badge badge-warning">{{ $model->is_limited ? 'Com limite de participantes' : 'Sem limite de participantes' }}</span>
                     </div>

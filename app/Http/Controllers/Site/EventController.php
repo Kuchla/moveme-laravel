@@ -19,13 +19,12 @@ class EventController extends Controller
         $events = Event::where('is_free', $request->is_free)
             ->where('is_limited', $request->is_limited)
             ->get();
-
-        return view('site.home.partials._event-list', compact('events'));
+        return view('site.event.partials._event-list', compact('events'));
     }
 
     public function eventFilterReset(Request $request)
     {
         $events = Event::all();
-        return view('site.home.partials._event-list', compact('events'));
+        return view('site.event.partials._event-list', compact('events'));
     }
 }

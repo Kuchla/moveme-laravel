@@ -3,30 +3,29 @@
 @section('title', 'Index')
 
 @section('content')
-
-<section id="contact" class="padd-section wow fadeInUp">
-
-    <div class="container">
-        <div class="section-title text-center">
-            <h2>Perfil</h2>
+<section id="profile" class="padd-section wow fadeInUp ">
+    <div id="place-container">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="mb-3">Perfil</h2>
+            </div>
         </div>
-    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <form class="form form-vertical" action="{{ $route }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @if (Auth::user()->profile)
-                        @method('PATCH')
+                    @method('PATCH')
                     @endif
                     <div class="row">
                         <div class="col-md-3 text-center {{ $errors->has('profile.image') ? 'has-error' : '' }}">
                             <div class="kv-avatar">
                                 <label for="fname">Imagem</label>
                                 <div class="file-loading">
-                                    <input id="avatar-1" type="file" class="file" data-preview-file-type="text"
+                                    <input id="profile-image" type="file" class="file" data-preview-file-type="text"
                                         name="profile[image]"
-                                        value="{{ @Auth::user()->profile->image ? @url('storage/'.@Auth::user()->profile->image) : ''  }}" />
+                                        value="{{ @Auth::user()->profile->image ? @url('storage/'.@Auth::user()->profile->image) : asset('assets/images/user-default.jpg') }}" />
                                     @if ($errors->has('profile.image'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('profile.image') }}</strong>
@@ -35,7 +34,6 @@
                                 </div>
                             </div>
                             <div class="kv-avatar-hint">
-                                <small>Sugestão</small>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -69,7 +67,7 @@
                                         class="form-group {{ $errors->has('profile.user.password') ? 'has-error' : '' }}">
                                         <label for="pwd">Senha</span></label>
                                         <input type="text" class="form-control" name="profile[user][password]"
-                                            required value="{{ old('user.password', Auth::user()->password) }}">
+                                            value="{{ old('user.password')}}">
                                         @if ($errors->has('profile.user.password'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('profile.user.password') }}</strong>
@@ -84,7 +82,6 @@
                                         <label for="lname">Atividades praticadas</label>
                                         <select id="event-activity" class="form-control select2"
                                             name="profile[activity][]" multiple="multiple">
-                                            <option>Selecione</option>
                                             @foreach ($activities as $key => $activity)
                                             <option value="{{ $key }}" @if(!is_null(@Auth::user())&&
                                                 !old('profile.activity')){{ @Auth::user()->activities->contains('id', $key) ? "selected" : ''}}
@@ -93,8 +90,6 @@
                                                 {{ $activity }}
                                             </option>
                                             @endforeach
-                                            <option>Selecione</option>
-
                                         </select>
                                     </div>
                                 </div>
@@ -115,7 +110,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-success">Salvar</button>
                                 </div>
                                 <hr>
                             </div>

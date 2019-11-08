@@ -30,23 +30,28 @@
                                     <div class="h6 text-muted">
                                         <p>
                                             <a class="btn btn-success btn-sm" data-toggle="collapse"
-                                                href="#collapseExample" role="button" aria-expanded="false"
-                                                aria-controls="collapseExample">
+                                                href="#activity-place" role="button" aria-expanded="false"
+                                                aria-controls="activity-place">
                                                 <i class="fa fa-map"></i> Lugares para praticar
                                             </a>
                                             <a class="btn btn-success btn-sm" data-toggle="collapse"
-                                                href="#collapseExample2" role="button" aria-expanded="false"
-                                                aria-controls="collapseExample">
+                                                href="#activity-user" role="button" aria-expanded="false"
+                                                aria-controls="activity-user">
                                                 <i class="fa fa-users"></i> Pessoas que praticam
                                             </a>
                                         </p>
-                                        <div class="collapse" id="collapseExample">
+                                        <div class="collapse" id="activity-place">
+                                            Lugares:
+                                            <br>
                                             @foreach ($activity->places as $place)
                                             {{$place->name}}
                                             <br>
                                             @endforeach
+                                            <hr>
                                         </div>
-                                        <div class="collapse" id="collapseExample2">
+                                        <div class="collapse" id="activity-user">
+                                            Pessoas:
+                                            <br>
                                             @foreach ($activity->users as $user)
                                             {{$user->name}}
                                             <br>
