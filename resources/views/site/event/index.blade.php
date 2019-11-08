@@ -33,7 +33,7 @@
                                         <div class="h6 text-muted">Gratuíto</div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" id="event-is-free" value="1" name="event-is-free"
-                                                class="form-check-input" />
+                                                class="form-check-input" checked="checked" />
                                             <label class="form-check-label" for="event-is-free">Sim</label>
                                         </div>
                                         <div class="form-check form-check-inline">
@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" id="event-is-not-limited" value="0"
-                                                name="event-is-limited" class="form-check-input" />
+                                                name="event-is-limited" class="form-check-input" checked="checked" />
                                             <label class="form-check-label" for="event-is-not-limited">Não</label>
                                         </div>
                                     </li>

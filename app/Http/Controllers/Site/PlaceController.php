@@ -32,12 +32,12 @@ class PlaceController extends Controller
             })
             ->get();
 
-        return view('site.home.partials._place-list', compact('places'));
+        return view('site.place.partials._place-list', compact('places'));
     }
 
     public function placeFilterReset(Request $request)
     {
         $places = Place::all();
-        return view('site.home.partials._place-list', compact('places'));
+        return view('site.place.partials._place-list', compact('places'));
     }
 }

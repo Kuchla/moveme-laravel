@@ -33,7 +33,7 @@
                                             <div class="h6 text-muted">Gratuíto</div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="visitation_free" value="0" name="visitation"
-                                                    class="form-check-input" />
+                                                    class="form-check-input" checked="checked" />
                                                 <label class="form-check-label" for="visitation_free">Sim</label>
                                             </div>
                                             <div class="form-check form-check-inline">

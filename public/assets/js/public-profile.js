@@ -93,8 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 'onclick="alert(\'Call your custom code here.\')">' + '<i class="fa fa-fw fa-remove"></i>' + '</button>';
-$("#avatar-1").fileinput({
+$("#profile-image").fileinput({
   overwriteInitial: true,
   maxFileSize: 1500,
   showClose: false,
@@ -106,9 +105,9 @@ $("#avatar-1").fileinput({
   removeTitle: 'Cancel or reset changes',
   elErrorContainer: '#kv-avatar-errors-1',
   msgErrorClass: 'alert alert-block alert-danger',
-  defaultPreviewContent: '<img src="' + $('#avatar-1')[0].defaultValue + '" + ' + 'alt="Foto de perfil">',
+  defaultPreviewContent: '<img src="' + $('#profile-image')[0].defaultValue + '" + ' + 'alt="Foto de perfil">',
   layoutTemplates: {
-    main2: '{preview} ' + btnCust + ' {remove} {browse}'
+    main2: '{preview} ' + ' {browse}'
   },
   allowedFileExtensions: ["jpg", "png", "gif"]
 });

@@ -915,7 +915,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
 --------------------------------------------------------------*/
 .footer {
     background: #2a2c30;
-    padding-top: 50px;
+    padding-top: 5px;
 }
 
 .footer .footer-logo .navbar-brand {
@@ -951,8 +951,8 @@ body.mobile-nav-active #mobile-nav-toggle i {
 }
 
 .footer .copyrights {
-    background: #fff;
-    margin-top: 50px;
+    background: #2a2c30;
+    margin-top: 1px;
     text-align: center;
     padding: 25px;
 }
@@ -965,6 +965,8 @@ body.mobile-nav-active #mobile-nav-toggle i {
     font-weight: normal;
     font-size: 14px;
     letter-spacing: 0;
+    color: #fff;
+
 }
 
 .footer .copyrights p a,

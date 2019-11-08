@@ -27,9 +27,4 @@ class Admin extends Authenticatable
     {
         $this->attributes['password'] = is_null($value) ? $this->password :  $value;
     }
-
-    // public function setAdminEmailAttribute($value)
-    // {
-    //     $this->attributes['email'] = $value != $this->email ? $this->email;
-    // }
 }

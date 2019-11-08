@@ -56,9 +56,7 @@ class ProfileController extends Controller
 
     public function updateUser($user, $request)
     {
-        Auth::user()->password != $request['password']
-            ? $user->password = $request['password']
-            : $user->password = Hash::make($request['password']);
+        $user->user_password = isset($request['password']) ? Hash::make($request['password']) : null;
         $user->name = $request['name'];
         $user->email = $request['email'];
 
@@ -69,10 +67,10 @@ class ProfileController extends Controller
     {
         $request->validate([
             'profile.user.name' => 'required|min:4|max:25',
-            'profile.user.email' => 'sometimes|email|unique:users,email,' . Auth::id(),
-            'profile.user.password' => 'min:8',
             'profile.image' => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
             'profile.info' => 'required|min:4|max:50',
+            'profile.user.email' => 'required|email|unique:users,email,'.Auth::user()->id,
+            'profile.user.password' => 'nullable',
         ]);
     }
 }
