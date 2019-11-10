@@ -57,13 +57,13 @@
                         </span>
                     @endif
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-flat">
+                <button type="submit" class="btn btn-success btn-block btn-flat">
                     {{ trans('adminlte::adminlte.register') }}
                 </button>
             </form>
             <br>
             <p>
-                <a href="{{ url(config('adminlte.login_url', 'login')) }}" class="text-center">
+                <a href="{{ route('login') }}" class="text-center">
                     {{ trans('adminlte::adminlte.i_already_have_a_membership') }}
                 </a>
             </p>

@@ -24,7 +24,6 @@ class CityController extends Controller
     {
         $this->validation($request);
 
-        $city->user_id = Auth::id();
         $city->name = $request->city['name'];
         $city->about = $request->city['about'];
         $city->save();
@@ -47,7 +46,6 @@ class CityController extends Controller
     {
         $this->validation($request);
 
-        $city->user_id = Auth::id();
         $city->name = $request->city['name'];
         $city->about = $request->city['about'];
         $city->update();

@@ -17,17 +17,18 @@ class EventController extends Controller
         $events = Event::all();
         return view('admin.event.index', compact('events'));
     }
+
     public function create()
     {
         $places = Place::all()->pluck('name', 'id');
         $activities = Activity::all()->pluck('name', 'id');
         return view('admin.event.create', compact('places', 'activities'));
     }
+
     public function store(Request $request, Event $event)
     {
         $this->validation($request);
 
-        $event->user_id = 1;
         $event->name = $request->event['name'];
         $event->image = $request->event['image']->store('events');
         $event->description = $request->event['description'];
@@ -35,18 +36,21 @@ class EventController extends Controller
         $event->place_id = $request->event['place'];
         $event->is_free = $request->event['is_free'];
         $event->is_limited = $request->event['is_limited'];
-
         $event->save();
+
         $event->activities()->sync((array)$request->input('event.activity'));
 
         return redirect(route('admin.events.show', compact('event')));
     }
+
     public function edit(Event $event)
     {
         $activities = Activity::all()->pluck('name', 'id');
         $places = Place::all()->pluck('name', 'id');
+
         return view('admin.event.edit', compact('event', 'places', 'activities'));
     }
+
     public function destroy(Event $event)
     {
         $event->delete();
@@ -55,7 +59,7 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $this->validation($request);
-        $event->user_id = Auth::id();
+
         $event->name = $request->event['name'];
         $event->event_image = isset($request->event['image']) ? $request->event['image']->store('events') : null;
         $event->description = $request->event['description'];
@@ -63,12 +67,13 @@ class EventController extends Controller
         $event->place_id = $request->event['place'];
         $event->is_free = $request->event['is_free'];
         $event->is_limited = $request->event['is_limited'];
-
         $event->update();
+
         $event->activities()->sync((array)$request->input('event.activity'));
 
         return redirect(route('admin.events.show', compact('event')));
     }
+
     public function show(Event $event)
     {
         return view('admin.event.show', compact('event'));
@@ -77,13 +82,13 @@ class EventController extends Controller
     private function validation(Request $request)
     {
         $request->validate([
-            'event.name'        => 'required|min:4|max:50',
+            'event.name' => 'required|min:4|max:50',
             'event.description' => 'required|min:5',
-            'event.image'       => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
-            'event.date'        => 'required',
-            'event.place'       => 'required|not_in:Escolha...',
-            'event.is_free'     => 'required',
-            'event.is_limited'  => 'required',
+            'event.image' => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
+            'event.date' => 'required',
+            'event.place' => 'required|not_in:Escolha...',
+            'event.is_free' => 'required',
+            'event.is_limited' => 'required',
         ]);
     }
 }

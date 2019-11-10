@@ -14,12 +14,12 @@ class ActivityPlace extends Migration
     public function up()
     {
         Schema::create('activity_place', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
 
-            $table->unsignedBigInteger('activity_id');
+            $table->unsignedInteger('activity_id');
             $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
 
-            $table->unsignedBigInteger('place_id');
+            $table->unsignedInteger('place_id');
             $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
         });
     }

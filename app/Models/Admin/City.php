@@ -10,6 +10,6 @@ class City extends Model
     use Notifiable;
 
     protected $fillable = [
-        'name', 'about', 'user_id',
+        'name', 'about'
     ];
 }

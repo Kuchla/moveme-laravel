@@ -14,8 +14,7 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
+            $table->increments('id');
             $table->string('name');
             $table->string('image');
             $table->text('description');
@@ -23,11 +22,8 @@ class CreateEventsTable extends Migration
             $table->boolean('is_limited')->default(false);
             $table->dateTime('date');
 
-            $table->unsignedBigInteger('place_id');
+            $table->unsignedInteger('place_id');
             $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

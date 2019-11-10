@@ -47,7 +47,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">
+                        <button type="submit" class="btn btn-success btn-block btn-flat">
                             {{ trans('adminlte::adminlte.sign_in') }}
                         </button>
                     </div>
@@ -55,11 +55,6 @@
                 </div>
             </form>
             <br>
-            <p>
-                <a href="{{ url(config('adminlte.password_reset_url', $resetPasswordRoute )) }}" class="text-center">
-                    {{ trans('adminlte::adminlte.i_forgot_my_password') }}
-                </a>
-            </p>
             @if (config('adminlte.register_url', 'register'))
                 <p>
                     <a href="{{ url(config('adminlte.register_url', 'register')) }}" class="text-center">

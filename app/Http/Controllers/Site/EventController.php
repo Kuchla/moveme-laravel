@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Site;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Event;
+use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
@@ -19,6 +19,7 @@ class EventController extends Controller
         $events = Event::where('is_free', $request->is_free)
             ->where('is_limited', $request->is_limited)
             ->get();
+
         return view('site.event.partials._event-list', compact('events'));
     }
 

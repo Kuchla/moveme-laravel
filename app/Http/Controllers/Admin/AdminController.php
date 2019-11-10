@@ -71,7 +71,6 @@ class AdminController extends Controller
         $admin->admin_password = isset($request->admin['password']) ? Hash::make($request->admin['password']) : null;
 
         $admin->update();
-
         return redirect(route('admin.admins.show', compact('admin')));
     }
 
@@ -88,9 +87,9 @@ class AdminController extends Controller
     public function validation(Request $request)
     {
         $request->validate([
-           'admin.name'       => 'required|min:4|max:50',
-           'admin.email'      => $request->isMethod('post') ? 'required|email|unique:admins,email' : 'required|email|unique:admins,email,'.Auth::guard('admin')->user()->id,
-           'admin.password'   => $request->isMethod('post') ? 'required|min:8' : 'nullable',
+           'admin.name' => 'required|min:4|max:50',
+           'admin.email' => $request->isMethod('post') ? 'required|email|unique:admins,email' : 'required|email|unique:admins,email,'.Auth::guard('admin')->user()->id,
+           'admin.password' => $request->isMethod('post') ? 'required|min:8' : 'nullable',
        ]);
     }
 }

@@ -47,7 +47,6 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         $loginRoute = route('admin.login');
-        $resetPasswordRoute = route('admin.password.request');
-        return view('auth.login', compact('loginRoute', 'resetPasswordRoute'));
+        return view('auth.login', compact('loginRoute'));
     }
 }

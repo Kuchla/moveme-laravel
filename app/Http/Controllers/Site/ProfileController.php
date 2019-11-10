@@ -45,6 +45,7 @@ class ProfileController extends Controller
         $profile->profile_image = isset($request->profile['image'])
             ? $request->event['image']->store('profiles')
             : null;
+
         $profile->info = $request->profile['info'];
         $profile->update();
 
