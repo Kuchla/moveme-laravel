@@ -10,7 +10,7 @@
             <h2>Eventos</h2>
         </div>
     </div>
-    <div class="container">
+    <div class="container page-height-default">
         <div class="row">
             <div class="container-fluid">
                 <div class="row">

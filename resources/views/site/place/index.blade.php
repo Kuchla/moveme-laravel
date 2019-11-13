@@ -3,14 +3,14 @@
 @section('title', 'Index')
 
 @section('content')
-<section id="place" class="padd-section wow fadeInUp ">
+<section id="place" class="padd-section wow fadeInUp">
     <div id="place-container">
         <div class="container">
             <div class="section-title text-center">
                 <h2>Pontos Turísticos</h2>
             </div>
         </div>
-        <div class="container">
+        <div class="container page-height-default">
             <div class="row">
                 <div class="container-fluid">
                     <div class="row">

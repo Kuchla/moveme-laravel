@@ -155,6 +155,10 @@ span {
     color: #fff;
 }
 
+.page-height-default {
+    height: calc(100vh - 40px);
+}
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -206,22 +210,22 @@ span {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-#hero {
+#intro {
     width: 100%;
     height: calc(100vh - 40px);
-    background: url(../img/mountains-bg.png) center bottom no-repeat;
+    background: url(../images/mountains-bg.png) center bottom no-repeat;
     background-size: 100%;
     position: relative;
     margin-top: 40px;
 }
 
 @media (min-width: 1025px) {
-    #hero {
+    #intro {
         background-attachment: fixed;
     }
 }
 
-#hero .hero-container {
+#intro .intro-container {
     position: absolute;
     bottom: 0;
     top: 0;
@@ -234,7 +238,7 @@ span {
     text-align: center;
 }
 
-#hero h1 {
+#intro h1 {
     margin: 0 0 10px 0;
     font-size: 48px;
     font-weight: 700;
@@ -244,13 +248,13 @@ span {
 }
 
 @media (max-width: 768px) {
-    #hero h1 {
+    #intro h1 {
         font-size: 28px;
         line-height: 36px;
     }
 }
 
-#hero h2 {
+#intro h2 {
     color: #777;
     margin-bottom: 30px;
     font-size: 20px;
@@ -259,19 +263,19 @@ span {
 }
 
 @media (max-width: 768px) {
-    #hero h2 {
+    #intro h2 {
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 30px;
     }
 }
 
-#hero img {
+#intro img {
     max-width: 95%;
     margin-bottom: 30px;
 }
 
-#hero .btn-get-started {
+#intro .btn-get-started {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     font-weight: 400;
@@ -288,12 +292,12 @@ span {
     text-decoration: none;
 }
 
-#hero .btn-get-started:hover {
+#intro .btn-get-started:hover {
     background: #71c55d;
     color: #fff;
 }
 
-#hero .btns a {
+#intro .btns a {
     color: #555;
     font-size: 11px;
     font-weight: 600;
@@ -304,12 +308,12 @@ span {
 }
 
 @media (max-width: 575px) {
-    #hero .btns a {
+    #intro .btns a {
         margin: 4px 8px;
     }
 }
 
-#hero .btns a:hover {
+#intro .btns a:hover {
     color: #71c55d;
 }
 
@@ -599,86 +603,6 @@ body.mobile-nav-active #mobile-nav-toggle i {
     text-transform: capitalize;
 }
 
-/* Get Started Section
---------------------------------*/
-#get-started {
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-}
-
-#get-started .feature-block {
-    background: #fff none repeat scroll 0 0;
-    padding: 30px 20px;
-    transition: all 0.5s ease-in-out 0s;
-}
-
-@media (max-width: 991px) {
-    #get-started .feature-block {
-        margin-bottom: 30px;
-    }
-}
-
-#get-started .feature-block:hover {
-    box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s ease-in-out 0s;
-}
-
-#get-started .feature-block h4 {
-    margin-bottom: 20px;
-}
-
-#get-started .feature-block p {
-    margin-bottom: 20px;
-}
-
-#get-started .feature-block a {
-    color: #505050;
-    font-size: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    text-transform: capitalize;
-    transition: 0.3s;
-}
-
-#get-started .feature-block a:hover {
-    color: #71c55d;
-}
-
-/* About Us Section
---------------------------------*/
-#about-us img {
-    max-width: 100%;
-}
-
-#about-us .about-content {
-    padding-top: 60px;
-}
-
-#about-us .about-content h2 {
-    color: #252525;
-    font-family: "roboto";
-    font-size: 39px;
-    font-weight: 100;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    text-transform: capitalize;
-}
-
-#about-us .about-content span {
-    font-weight: 700;
-    padding-right: 10px;
-    text-transform: uppercase;
-}
-
-#about-us .about-content ul li {
-    line-height: 36px;
-}
-
-#about-us .about-content ul li .fa {
-    padding-right: 20px;
-}
-
 /* Screenshots Section
 --------------------------------*/
 .owl-dot.active > span {
@@ -713,93 +637,6 @@ body.mobile-nav-active #mobile-nav-toggle i {
     background: #ddd;
 }
 
-/* Event Section
---------------------------------*/
-@media (max-width: 991px) {
-    #event .block-event {
-        margin-bottom: 30px;
-    }
-}
-
-#event .block-event img {
-    width: 100%;
-}
-
-#event .block-event .content-event {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 4px 0 rgba(0, 0, 0, 0.19);
-    display: inline-block;
-    min-height: 125px;
-    padding: 20px 10px;
-    width: 100%;
-}
-
-#event .block-event .content-event h4 {
-    line-height: 24px;
-    margin-bottom: 20px;
-    text-transform: capitalize;
-    font-weight: normal;
-    letter-spacing: 0;
-    font-size: 16px;
-}
-
-#event .block-event .content-event h4 a {
-    color: #555;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-#event .block-event .content-event h4 a:hover {
-    color: #71c55d;
-}
-
-#event .block-event .content-event > span {
-    float: left;
-    font-size: 12px;
-}
-
-#event .block-event .content-event a.readmore {
-    color: #505050;
-    font-size: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
-    letter-spacing: 0;
-    text-transform: capitalize;
-}
-
-#event .block-event .content-event a.readmore:hover {
-    color: #71c55d;
-}
-
-#event .btn-get-green {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 13px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 5px 22px;
-    border-radius: 5px;
-    transition: 0.5s;
-    margin-bottom: 1px;
-    border: 2px solid #71c55d;
-    background: #fff;
-    color: #71c55d;
-    text-decoration: none;
-}
-
-#event .btn-get-green:hover {
-    background: #71c55d;
-    color: #fff;
-}
-
-/* Contact Section
---------------------------------*/
-#contact {
-    background: #fff;
-    padding-top: 100px;;
-}
-
 .section-title h2 {
     font-family: "Roboto", sans-serif;
     font-size: 35px;
@@ -809,113 +646,13 @@ body.mobile-nav-active #mobile-nav-toggle i {
     text-transform: capitalize;
 }
 
-
-#contact .info {
-    color: #222;
-}
-
-#contact .info i {
-    font-size: 32px;
-    color: #71c55d;
-    float: left;
-}
-
-#contact .info p {
-    padding: 0 0 10px 50px;
-    margin-bottom: 20px;
-    line-height: 22px;
-    font-size: 14px;
-}
-
-#contact .info .email p {
-    padding-top: 5px;
-}
-
-#contact .social-links {
-    padding-bottom: 20px;
-}
-
-#contact .social-links a {
-    font-size: 18px;
-    display: inline-block;
-    background: #71c55d;
-    color: #fff;
-    line-height: 1;
-    padding: 6px 0 8px 0;
-    border-radius: 50%;
-    text-align: center;
-    width: 36px;
-    height: 36px;
-    transition: 0.3s;
-}
-
-#contact .social-links a:hover {
-    background: #55b03f;
-    color: #fff;
-}
-
-#contact .form #sendmessage {
-    color: #71c55d;
-    border: 1px solid #71c55d;
-    display: none;
-    text-align: center;
-    padding: 15px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-#contact .form #errormessage {
-    color: red;
-    display: none;
-    border: 1px solid red;
-    text-align: center;
-    padding: 15px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-#contact .form #sendmessage.show,
-#contact .form #errormessage.show,
-#contact .form .show {
-    display: block;
-}
-
-#contact .form .validation {
-    color: red;
-    display: none;
-    margin: 0 0 20px;
-    font-weight: 400;
-    font-size: 13px;
-}
-
-#contact .form input,
-#contact .form textarea {
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 14px;
-    padding: 12px 10px;
-    line-height: 1;
-}
-
-#contact .form button[type="submit"] {
-    background: #71c55d;
-    border: 0;
-    padding: 10px 24px;
-    color: #fff;
-    transition: 0.4s;
-}
-
-#contact .form button[type="submit"]:hover {
-    background: #92d283;
-}
-
-
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 .footer {
     background: #2a2c30;
     padding-top: 5px;
+    float: bottom;
 }
 
 .footer .footer-logo .navbar-brand {

@@ -3,13 +3,12 @@
 @section('title', 'Index')
 
 @section('content')
-<section id="profile" class="padd-section wow fadeInUp ">
-    <div id="place-container">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2 class="mb-3">Perfil</h2>
-            </div>
+<section id="profile" class="padd-section wow fadeInUp">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2 class="mb-3">Perfil</h2>
         </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">

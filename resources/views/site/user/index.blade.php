@@ -3,14 +3,14 @@
 @section('title', 'Index')
 
 @section('content')
-<section id="people" class="padd-section wow fadeInUp ">
+<section id="people" class="padd-section wow fadeInUp">
     <div id="place-container">
         <div class="container">
             <div class="section-title text-center">
                 <h2>Pessoas</h2>
             </div>
         </div>
-        <div class="container">
+        <div class="container page-height-default">
             <div class="container">
                 <div class="row">
                     <div class="container-fluid">
