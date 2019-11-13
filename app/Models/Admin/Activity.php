@@ -11,7 +11,7 @@ class Activity extends Model
     use Notifiable;
 
     protected $fillable = [
-        'name', 'description', 'image', 'user_id'
+        'name', 'description', 'image'
     ];
 
     public function setImageActivityAttribute($image)
@@ -28,5 +28,4 @@ class Activity extends Model
     {
         return $this->belongsToMany(User::class);
     }
-
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Site;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
 use App\Models\Admin\City;
 use App\Models\Admin\Place;
+use Illuminate\Http\Request;
 
 class PlaceController extends Controller
 {

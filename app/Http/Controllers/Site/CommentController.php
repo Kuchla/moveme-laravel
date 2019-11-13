@@ -33,26 +33,15 @@ class CommentController extends Controller
     {
         $model = $comment->commentable;
         $comment->delete();
-
         $modelName = $request->modelName;
 
         return view('site.comment._comments', compact('model', 'modelName'));
     }
 
-    public function update(Request $request, Comment $comment)
-    {
-        $this->validation($request);
-
-        $comment->text = $request->comment['text'];
-        $comment->update();
-
-        return back();
-    }
-
     public function validation(Request $request)
     {
         $request->validate([
-            'comment.text'       => 'required|min:4|max:50',
+            'comment.text' => 'required|min:4|max:50',
         ]);
     }
 }

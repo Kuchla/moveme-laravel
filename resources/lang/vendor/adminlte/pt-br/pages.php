@@ -74,8 +74,8 @@ return [
     ],
 
     'account'               =>  [
-        'page'              => 'Conta',
-        'crud'              => 'Contas',
+        'page'              => 'Gerenciamento de Conta',
+        'crud'              => 'Gerenciamento de Contas',
         'name'              => 'Nome',
         'email'             => 'Email',
         'password'          => 'Senha',

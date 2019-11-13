@@ -16,10 +16,10 @@ class CreateActivityEventTable extends Migration
         Schema::create('activity_event', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('activity_id');
+            $table->unsignedInteger('activity_id');
             $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
 
-            $table->unsignedBigInteger('event_id');
+            $table->unsignedInteger('event_id');
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
 
             $table->timestamps();

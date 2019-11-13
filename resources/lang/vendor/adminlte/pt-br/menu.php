@@ -5,7 +5,7 @@ return [
     'main_navigation'               => 'Navegação Principal',
     'blog'                          => 'Blog',
     'pages'                         => 'Página',
-    'account_settings'              => 'Usuário(s)',
+    'account_settings'              => 'Conta(s)',
     'profile'                       => 'Perfil',
     'change_password'               => 'Mudar Senha',
     'multilevel'                    => 'Multinível',
@@ -22,5 +22,5 @@ return [
     'activities'                    => 'Atividades',
     'categories'                    => 'Categorias',
     'cities'                        => 'Cidades',
-    'account'                       => 'Gerenciamento de Conta',
+    'account'                       => 'Gerenciamento de Contas',
 ];

@@ -164,7 +164,7 @@ return [
         [
             'text' => 'account',
             'url'  => 'admin/admins',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-users',
         ],
     ],
 
