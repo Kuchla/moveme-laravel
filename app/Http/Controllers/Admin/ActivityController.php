@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ImageResize;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
@@ -27,6 +28,8 @@ class ActivityController extends Controller
         $activity->name = $request->activity['name'];
         $activity->image = $request->activity['image']->store('activities');
         $activity->description = $request->activity['description'];
+
+        ImageResize::reduce($activity->image);
         $activity->save();
 
         return redirect(route('admin.activities.show', compact('activity')));
@@ -50,6 +53,8 @@ class ActivityController extends Controller
         $activity->name = $request->activity['name'];
         $activity->image_activity = isset($request->activity['image']) ? $request->activity['image']->store('activities') : null;
         $activity->description = $request->activity['description'];
+
+        ImageResize::reduce($activity->image);
         $activity->update();
 
         return redirect(route('admin.activities.show', compact('activity')));

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ImageResize;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\City;
@@ -34,8 +35,9 @@ class PlaceController extends Controller
         $place->visitation = $request->place['visitation'];
         $place->description = $request->place['description'];
         $place->image = $request->place['image']->store('places');
-        $place->save();
 
+        ImageResize::reduce($place->image);
+        $place->save();
         $place->activities()->sync((array)$request->input('place.activity'));
 
         return redirect(route('admin.places.show', compact('place')));
@@ -65,6 +67,8 @@ class PlaceController extends Controller
         $place->visitation = $request->place['visitation'];
         $place->description = $request->place['description'];
         $place->place_image = isset($request->place['image']) ? $request->place['image']->store('places') : null;
+
+        ImageResize::reduce($place->image);
         $place->update();
 
         $place->activities()->sync((array)$request->input('place.activity'));
