@@ -16,7 +16,8 @@ class HomeController extends Controller
         $places = Place::count();
         $activities = Activity::count();
         $users = User::count();
+        $siteUsers = User::take(8)->get();
 
-        return view('admin.home.index', compact('events', 'places', 'activities', 'users'));
+        return view('admin.home.index', compact('events', 'places', 'activities', 'users', 'siteUsers'));
     }
 }

@@ -96,6 +96,7 @@
 $("#search-user").click(function () {
   var url = $(this).data("route");
   var activity = $("#user-activity").val();
+  $('.pagination').hide();
   fetchData(activity, url);
 });
 

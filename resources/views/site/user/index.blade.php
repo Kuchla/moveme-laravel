@@ -1,16 +1,16 @@
 @extends('site.layouts.app')
 
-@section('title', 'Index')
+@section('title', 'Pessoas')
 
 @section('content')
-<section id="people" class="padd-section wow fadeInUp">
+<section id="people" class="padd-section wow fadeInUp page-height-default">
     <div id="place-container">
         <div class="container">
             <div class="section-title text-center">
                 <h2>Pessoas</h2>
             </div>
         </div>
-        <div class="container page-height-default">
+        <div class="container">
             <div class="container">
                 <div class="row">
                     <div class="container-fluid">
@@ -48,9 +48,17 @@
                                             <li class="list-inline-item ml-4 mb-2">
                                                 <div class="form-group">
                                                     <p class="separator">
-                                                        <a href="#get-started" id="search-user"
+                                                        <button id="search-user"
                                                             data-route="{{ route('site.user.filter') }}"
-                                                            class="btn-get-green scrollto">Buscar</a>
+                                                            class="btn btn-success">Buscar</button>
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li class="list-inline-item ml-4 mb-2">
+                                                <div class="form-group">
+                                                    <p class="separator">
+                                                        <a href="{{route('site.user.index')}}" id="search-user-reset"
+                                                            class="btn btn-secondary">Resetar</a>
                                                     </p>
                                                 </div>
                                             </li>
@@ -67,6 +75,9 @@
                         <div class="row d-flex justify-content-center" id="people-list">
                             @include('site.user.partials._user-list')
                         </div>
+                        <p>
+                            {{ $users->links() }}
+                        </p>
                     </div>
                 </div>
             </div>

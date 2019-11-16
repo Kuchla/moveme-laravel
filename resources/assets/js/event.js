@@ -2,23 +2,20 @@ $("#event_search").click(function() {
     var url = $(this).data('route');
     var isFree = $("input[name='event-is-free']:checked").val();
     var isLimited = $("input[name='event-is-limited']:checked").val();
-    // console.log(isFree + isLimited);
+    var month = $("input[name='event-month']:checked").val();
+    var activity = $("#event-activity").val();
 
-    fetchData(isFree, isLimited, url)
+    $('.pagination').hide();
+
+    fetchData(isFree, isLimited, url, month, activity)
 });
 
-$("#event_search_reset").click(function() {
-    var url = $(this).data('route');
-    fetchData(null, null, url)
-});
-
-const fetchData = (is_free, is_limited, url) => {
+const fetchData = (is_free, is_limited, url, month, activity) => {
     $.ajax({
         type: "GET",
         url: url,
-        data: { is_free, is_limited }
+        data: { is_free, is_limited, month, activity }
     }).then(function(data) {
-
         $(".event-list").html(data);
     });
 };

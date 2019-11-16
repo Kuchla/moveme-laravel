@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Helpers\ImageResize;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
@@ -26,7 +27,11 @@ class ProfileController extends Controller
     {
         $this->validation($request);
 
-        $profile->image = $request->profile['image']->store('profiles');
+        if(isset($request->profile['image'])){
+            $profile->image = $request->profile['image']->store('profiles');
+            ImageResize::reduceUser($profile->image);
+        }
+
         $profile->info = $request->profile['info'];
         $profile->user_id = Auth::id();
         $profile->save();
@@ -34,7 +39,6 @@ class ProfileController extends Controller
         Auth::user()->activities()->sync((array) $request->input('profile.activity'));
         $this->updateUser($profile->user, $request->profile['user']);
 
-        Auth::user()->activities()->sync((array) $request->input('user.activity'));
         return back();
     }
 
@@ -43,8 +47,9 @@ class ProfileController extends Controller
         $this->validation($request);
 
         $profile->profile_image = isset($request->profile['image'])
-            ? $request->event['image']->store('profiles')
+            ? $request->profile['image']->store('profiles')
             : null;
+        ImageResize::reduceUser($profile->image);
 
         $profile->info = $request->profile['info'];
         $profile->update();
@@ -68,8 +73,8 @@ class ProfileController extends Controller
     {
         $request->validate([
             'profile.user.name' => 'required|min:4|max:25',
-            'profile.image' => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
-            'profile.info' => 'required|min:4|max:50',
+            'profile.image' => 'nullable',
+            'profile.info' => 'required|min:4|max:250',
             'profile.user.email' => 'required|email|unique:users,email,'.Auth::user()->id,
             'profile.user.password' => 'nullable',
         ]);

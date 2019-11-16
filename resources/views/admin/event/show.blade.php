@@ -1,4 +1,4 @@
-@extends('adminlte::page') @section('title', 'AdminLTE')
+@extends('adminlte::page') @section('title', trans("adminlte::pages.event.crud"))
 @section('content_header')
 <h1>
     {{ trans("adminlte::pages.event.page") }}
@@ -58,13 +58,13 @@
                     <li class="list-group-item">
                         <b>{{ trans("adminlte::pages.event.is_free") }}</b>
                         <p class="text-muted">
-                            {{ $event->is_free ? trans("adminlte::pages.event.no") : trans("adminlte::pages.event.yes") }}
+                            {{ $event->is_free ? trans("adminlte::pages.event.yes") : trans("adminlte::pages.event.no") }}
                         </p>
                     </li>
                     <li class="list-group-item">
                         <b>{{ trans("adminlte::pages.event.is_limited") }}</b>
                         <p class="text-muted">
-                            {{ $event->is_limited ? trans("adminlte::pages.event.no") : trans("adminlte::pages.event.yes") }}
+                            {{ $event->is_limited ? trans("adminlte::pages.event.yes") : trans("adminlte::pages.event.no") }}
                         </p>
                     </li>
                     <li class="list-group-item">

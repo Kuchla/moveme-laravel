@@ -1,4 +1,4 @@
-@extends('adminlte::page') @section('title', 'AdminLTE')
+@extends('adminlte::page') @section('title', trans("adminlte::pages.place.crud"))
 @section('content_header')
 <h1>
     {{ trans("adminlte::pages.place.page") }}
@@ -44,7 +44,7 @@
                     <li class="list-group-item">
                         <b>{{ trans("adminlte::pages.place.location") }}</b>
                         <p class="text-muted">
-                            {{ $place->location }}
+                            {!! $place->location !!}
                         </p>
                     </li>
                     <li class="list-group-item">

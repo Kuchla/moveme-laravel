@@ -15,4 +15,14 @@ class ImageResize
 
         $imageResize->save($imagePath);
     }
+
+    public static function ReduceUser($image)
+    {
+        $imagePath = public_path('storage/' . $image);
+        $imageResize = Image::make($imagePath)->resize(
+            150,
+            150
+        );
+        $imageResize->save($imagePath);
+    }
 }

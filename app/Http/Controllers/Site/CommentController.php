@@ -37,11 +37,4 @@ class CommentController extends Controller
 
         return view('site.comment._comments', compact('model', 'modelName'));
     }
-
-    public function validation(Request $request)
-    {
-        $request->validate([
-            'comment.text' => 'required|min:4|max:50',
-        ]);
-    }
 }

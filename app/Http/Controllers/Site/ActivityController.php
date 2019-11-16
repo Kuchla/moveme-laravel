@@ -9,7 +9,7 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        $activities = Activity::orderBy('name', 'asc')->get();
+        $activities = Activity::orderBy('name', 'asc')->paginate(6);
         return view('site.activity.index', compact('activities'));
     }
 }

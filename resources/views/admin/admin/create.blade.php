@@ -1,4 +1,4 @@
-@extends('adminlte::page') @section('title', 'AdminLTE')
+@extends('adminlte::page') @section('title', trans("adminlte::pages.account.crud"))
 @section('content_header')
 <h1>
     {{ trans("adminlte::pages.city.page") }}

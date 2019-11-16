@@ -96,22 +96,22 @@
 $("#event_search").click(function () {
   var url = $(this).data('route');
   var isFree = $("input[name='event-is-free']:checked").val();
-  var isLimited = $("input[name='event-is-limited']:checked").val(); // console.log(isFree + isLimited);
-
-  fetchData(isFree, isLimited, url);
-});
-$("#event_search_reset").click(function () {
-  var url = $(this).data('route');
-  fetchData(null, null, url);
+  var isLimited = $("input[name='event-is-limited']:checked").val();
+  var month = $("input[name='event-month']:checked").val();
+  var activity = $("#event-activity").val();
+  $('.pagination').hide();
+  fetchData(isFree, isLimited, url, month, activity);
 });
 
-var fetchData = function fetchData(is_free, is_limited, url) {
+var fetchData = function fetchData(is_free, is_limited, url, month, activity) {
   $.ajax({
     type: "GET",
     url: url,
     data: {
       is_free: is_free,
-      is_limited: is_limited
+      is_limited: is_limited,
+      month: month,
+      activity: activity
     }
   }).then(function (data) {
     $(".event-list").html(data);

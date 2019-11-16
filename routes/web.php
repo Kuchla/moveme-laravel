@@ -17,11 +17,9 @@ Route::get('/place/show/{place}', 'Site\HomeController@placeShow')->name('site.p
 
 Route::get('/events', 'Site\EventController@index')->name('site.event.index');
 Route::get('/events/filter', 'Site\EventController@eventFilter')->name('site.event.filter');
-Route::get('/events/filter-reset', 'Site\EventController@eventFilterReset')->name('site.event.filter-reset');
 
 Route::get('/places', 'Site\PlaceController@index')->name('site.place.index');
 Route::get('/places/filter', 'Site\PlaceController@placeFilter')->name('site.place.filter');
-Route::get('/places/filter-reset', 'Site\PlaceController@placeFilterReset')->name('site.place.filter-reset');
 
 Route::get('/activities', 'Site\ActivityController@index')->name('site.activity.index');
 

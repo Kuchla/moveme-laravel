@@ -1,4 +1,4 @@
-@foreach ($model->comments as $comment)
+@foreach ($model->comments->reverse() as $comment)
 <div class="row">
 
 <div class="comment-wrap  col-xl-12">
@@ -6,13 +6,13 @@
         <div class="avatar">
             <img class="image-reduce" src="{{ !is_null(@$comment->user->profile->image)
                     ? url('storage/'.@$comment->user->profile->image)
-                    : asset('assets/images/user-default.jpg')}} " alt="user-image-default">
+                    : asset('assets/images/user-default.png')}} " alt="user-image-default">
         </div>
     </div>
     <div class="comment-block">
         <p class="comment-text" >{{ $comment->text }}</p>
         <div class="bottom-comment">
-            <div class="comment-date">{{ $comment->user->name }} - {{ $comment->updated_at }}</div>
+            <div class="comment-date">{{ $comment->user->name }} - {{ dateToPtBr($comment->created_at) }}</div>
             <ul class="comment-actions">
                 <li>
                     @if(Auth::id() == $comment->user_id)

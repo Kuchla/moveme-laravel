@@ -1,4 +1,4 @@
-@extends('adminlte::page') @section('title', 'AdminLTE')
+@extends('adminlte::page') @section('title', trans("adminlte::pages.dashboard.crud"))
 @section('content_header')
 <h1>
     {{ trans("adminlte::pages.dashboard.crud") }}
@@ -18,7 +18,6 @@
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3>{{ $events }}</h3>
-
                 <p>{{ trans("adminlte::pages.dashboard.events") }}</p>
             </div>
             <div class="icon">
@@ -28,7 +27,6 @@
                     class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    <!-- ./col -->
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-green">
@@ -44,7 +42,6 @@
                     class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    <!-- ./col -->
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-yellow">
@@ -60,7 +57,6 @@
                     class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    <!-- ./col -->
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-red">
@@ -75,6 +71,34 @@
             <a class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    <!-- ./col -->
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{ trans("adminlte::pages.dashboard.latest_users") }}</h3>
+                <div class="box-tools pull-right">
+                    <span class="label label-danger">{{ trans("adminlte::pages.dashboard.users_quantity") }}</span>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body no-padding">
+                <ul class="users-list clearfix">
+                    @foreach ($siteUsers as $user)
+                    <li>
+                        <img src="{{ !is_null(@$user->profile->image)
+                            ? url('storage/'.$user->profile->image)
+                            : asset('assets/images/user-default.png')}}" alt="User Image">
+                        <a class="users-list-name" href="#">{{ $user->name }}</a>
+                        <span class="users-list-date">{{ dateToPtBr($user->created_at) }}</span>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 @stop

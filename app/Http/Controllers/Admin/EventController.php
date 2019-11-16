@@ -8,7 +8,6 @@ use App\Models\Admin\Event;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
 use App\Models\Admin\Place;
-use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -32,7 +31,7 @@ class EventController extends Controller
         $event->name = $request->event['name'];
         $event->image = $request->event['image']->store('events');
         $event->description = $request->event['description'];
-        $event->date = FormatDate::dateDefault($request);
+        $event->date = FormatDate::dateDefault($request->event['date']);
         $event->place_id = $request->event['place'];
         $event->is_free = $request->event['is_free'];
         $event->is_limited = $request->event['is_limited'];
@@ -63,7 +62,7 @@ class EventController extends Controller
         $event->name = $request->event['name'];
         $event->event_image = isset($request->event['image']) ? $request->event['image']->store('events') : null;
         $event->description = $request->event['description'];
-        $event->date = $request->event['date'];
+        $event->date = FormatDate::dateDefault($request->event['date']);
         $event->place_id = $request->event['place'];
         $event->is_free = $request->event['is_free'];
         $event->is_limited = $request->event['is_limited'];

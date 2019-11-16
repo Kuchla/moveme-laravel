@@ -28,44 +28,19 @@
                             <div class="row">
                                 <div class="col-md-12 mb-2">
                                     <div class="h6 text-muted">
-                                        <p>
-                                            <a class="btn btn-success btn-sm" data-toggle="collapse"
-                                                href="#activity-place" role="button" aria-expanded="false"
-                                                aria-controls="activity-place">
-                                                <i class="fa fa-map"></i> Lugares para praticar
-                                            </a>
-                                            <a class="btn btn-success btn-sm" data-toggle="collapse"
-                                                href="#activity-user" role="button" aria-expanded="false"
-                                                aria-controls="activity-user">
-                                                <i class="fa fa-users"></i> Pessoas que praticam
-                                            </a>
-                                        </p>
-                                        <div class="collapse" id="activity-place">
-                                            Lugares:
-                                            <br>
-                                            @foreach ($activity->places as $place)
-                                            {{$place->name}}
-                                            <br>
-                                            @endforeach
-                                            <hr>
-                                        </div>
-                                        <div class="collapse" id="activity-user">
-                                            Pessoas:
-                                            <br>
-                                            @foreach ($activity->users as $user)
-                                            {{$user->name}}
-                                            <br>
-                                            @endforeach
-                                        </div>
+                                        <i class="fa fa-map"></i> Lugares para praticar
                                     </div>
+                                    @foreach ($activity->places as $place)
+                                    <span class="badge badge-success">{{$place->name}}</span>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>

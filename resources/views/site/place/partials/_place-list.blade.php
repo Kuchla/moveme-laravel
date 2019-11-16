@@ -1,4 +1,4 @@
-@foreach ( $places as $model)
+@forelse ( $places as $model)
 <div class="col-md-4 mt-5">
     <div class="card text-center place-cardX" data-place="{{ $model->id }}" data-toggle="modal"
         data-target="#myModal{{$model->id}}" data-route="{{ route('site.place.show', $model) }}">
@@ -22,7 +22,7 @@
                             alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text">
-                                {{ $model->description }}
+                                {!! $model->description !!}
                                 <hr>
                             </p>
                             <div class="row mb-2">
@@ -86,4 +86,10 @@
         </div>
     </div>
 </div>
-@endforeach
+@empty
+<div class="col-md-12 mt-5">
+    <p>
+        <h5>Nenhum ponto turístico encontrado com os termos de busca!</h5>
+    </p>
+</div>
+@endforelse

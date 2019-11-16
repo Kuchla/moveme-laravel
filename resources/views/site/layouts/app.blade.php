@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>eStartup Bootstrap Template</title>
+    <title>MoveMe | @yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -39,16 +39,11 @@
 </head>
 
 <body>
-
     <header id="header" class="header header-hide">
         <div class="container">
-
             <div id="logo" class="pull-left">
                 <h1><a href="/" class="scrollto"><span>Move</span>ME</a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
             </div>
-
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li><a href="{{ route('site.event.index') }}">Eventos</a></li>
@@ -88,9 +83,6 @@
     </header><!-- #header -->
     @yield('content')
 
-    <!--==========================
-    Footer
-  ============================-->
     <footer class="footer">
         <div class="copyrights">
             <div class="container">
@@ -100,7 +92,6 @@
                 </div>
             </div>
         </div>
-
     </footer>
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

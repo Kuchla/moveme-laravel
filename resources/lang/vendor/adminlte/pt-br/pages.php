@@ -89,7 +89,9 @@ return [
         'crud'              => 'Dashboard',
         'events'            => 'Evento(s)',
         'places'            => 'Ponto(s) Turístico(s)',
-        'activities'          => 'Atividade(s)',
-        'users'             => 'Usuário(s) Cadastrado(s)'
+        'activities'        => 'Atividade(s)',
+        'users'             => 'Usuário(s) Cadastrado(s)',
+        'latest_users'      => 'Novos membros',
+        'users_quantity'    => 'Cadastros mais recentes'
     ],
 ];

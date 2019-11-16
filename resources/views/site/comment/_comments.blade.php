@@ -3,9 +3,9 @@
     <div class="comment-wrap">
         <div class="photo">
             <div class="avatar">
-                <img class="image-reduce" src="{{ !is_null(@$comment->user->profile->image)
-                        ? url('storage/'.@$comment->user->profile->image)
-                        : asset('assets/images/user-default.jpg')}} " alt="user-image-default">
+                <img class="image-reduce" src="{{ !is_null(@Auth::user()->profile->image)
+                        ? url('storage/'.Auth::user()->profile->image)
+                        : asset('assets/images/user-default.png')}} " alt="user-image-default">
             </div>
         </div>
         <div class="comment-block-create">
