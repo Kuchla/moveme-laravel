@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Helpers\DeleteImage;
 use App\Helpers\ImageResize;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -46,10 +47,14 @@ class ProfileController extends Controller
     {
         $this->validation($request);
 
-        $profile->profile_image = isset($request->profile['image'])
-            ? $request->profile['image']->store('profiles')
-            : null;
-        ImageResize::reduceUser($profile->image);
+        if(isset($request->profile['image'])){
+            if($profile->image){
+                DeleteImage::unlink($profile->image);
+            }
+
+            $profile->profile_image= $request->profile['image']->store('profiles');
+            ImageResize::reduceUser($profile->image);
+        }
 
         $profile->info = $request->profile['info'];
         $profile->update();

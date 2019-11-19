@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\DeleteImage;
 use App\Helpers\ImageResize;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -53,6 +54,7 @@ class PlaceController extends Controller
 
     public function destroy(Place $place)
     {
+        DeleteImage::unlink($place->image);
         $place->delete();
         return redirect(route('admin.places.index'));
     }
@@ -61,12 +63,18 @@ class PlaceController extends Controller
     {
         $this->validation($request);
 
+        if(isset($request->place['image'])){
+            DeleteImage::unlink($place->image);
+
+            $place->place_image = $request->place['image']->store('places');
+            ImageResize::reduce($place->image);
+        }
+
         $place->name = $request->place['name'];
         $place->city_id = $request->place['city'];
         $place->location = $request->place['location'];
         $place->visitation = $request->place['visitation'];
         $place->description = $request->place['description'];
-        $place->place_image = isset($request->place['image']) ? $request->place['image']->store('places') : null;
 
         ImageResize::reduce($place->image);
         $place->update();

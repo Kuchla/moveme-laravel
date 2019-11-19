@@ -28,7 +28,6 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>{{ $places }}<sup style="font-size: 20px"></sup></h3>
@@ -43,11 +42,9 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>{{ $activities }}</h3>
-
                 <p>{{ trans("adminlte::pages.dashboard.activities") }}</p>
             </div>
             <div class="icon">
@@ -58,11 +55,9 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
                 <h3>{{ $users }}</h3>
-
                 <p>{{ trans("adminlte::pages.dashboard.users") }}</p>
             </div>
             <div class="icon">
@@ -79,15 +74,11 @@
                 <h3 class="box-title">{{ trans("adminlte::pages.dashboard.latest_users") }}</h3>
                 <div class="box-tools pull-right">
                     <span class="label label-danger">{{ trans("adminlte::pages.dashboard.users_quantity") }}</span>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                    </button>
                 </div>
             </div>
             <div class="box-body no-padding">
                 <ul class="users-list clearfix">
-                    @foreach ($siteUsers as $user)
+                    @forelse ($siteUsers as $user)
                     <li>
                         <img src="{{ !is_null(@$user->profile->image)
                             ? url('storage/'.$user->profile->image)
@@ -95,7 +86,9 @@
                         <a class="users-list-name" href="#">{{ $user->name }}</a>
                         <span class="users-list-date">{{ dateToPtBr($user->created_at) }}</span>
                     </li>
-                    @endforeach
+                    @empty
+                    <p class="text-center">Nenhum usuário cadastrado na área pública do sistema!</p>
+                    @endforelse
                 </ul>
             </div>
         </div>

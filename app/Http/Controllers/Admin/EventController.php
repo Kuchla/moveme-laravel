@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\DeleteImage;
 use App\Helpers\FormatDate;
 use Illuminate\Http\Request;
 use App\Models\Admin\Event;
@@ -52,15 +53,21 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
+        DeleteImage::unlink($event->image);
         $event->delete();
+
         return redirect(route('admin.events.index'));
     }
     public function update(Request $request, Event $event)
     {
         $this->validation($request);
 
+        if(isset($request->event['image'])){
+            DeleteImage::unlink($event->image);
+            $event->event_image = $request->event['image']->store('events');
+        }
+
         $event->name = $request->event['name'];
-        $event->event_image = isset($request->event['image']) ? $request->event['image']->store('events') : null;
         $event->description = $request->event['description'];
         $event->date = FormatDate::dateDefault($request->event['date']);
         $event->place_id = $request->event['place'];

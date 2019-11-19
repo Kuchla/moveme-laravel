@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\DeleteImage;
 use App\Helpers\ImageResize;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
-use Illuminate\Support\Facades\Auth;
 
 class ActivityController extends Controller
 {
@@ -26,9 +26,8 @@ class ActivityController extends Controller
         $this->validation($request);
 
         $activity->name = $request->activity['name'];
-        $activity->image = $request->activity['image']->store('activities');
         $activity->description = $request->activity['description'];
-
+        $activity->image = $request->activity['image']->store('activities');
         ImageResize::reduce($activity->image);
         $activity->save();
 
@@ -42,7 +41,9 @@ class ActivityController extends Controller
 
     public function destroy(Activity $activity)
     {
+        DeleteImage::unlink($activity->image);
         $activity->delete();
+
         return redirect(route('admin.activities.index'));
     }
 
@@ -50,11 +51,14 @@ class ActivityController extends Controller
     {
         $this->validation($request);
 
-        $activity->name = $request->activity['name'];
-        $activity->image_activity = isset($request->activity['image']) ? $request->activity['image']->store('activities') : null;
-        $activity->description = $request->activity['description'];
+        if(isset($request->activity['image'])){
+            DeleteImage::unlink($activity->image);
 
-        ImageResize::reduce($activity->image);
+            $activity->image_activity = $request->activity['image']->store('activities');
+            ImageResize::reduce($activity->image);
+        }
+        $activity->name = $request->activity['name'];
+        $activity->description = $request->activity['description'];
         $activity->update();
 
         return redirect(route('admin.activities.show', compact('activity')));
