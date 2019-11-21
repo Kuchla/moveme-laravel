@@ -15,7 +15,8 @@
         "jeroennoten/laravel-adminlte": "^1.27",
         "kartik-v/bootstrap-fileinput": "@dev",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

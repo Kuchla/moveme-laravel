@@ -10,6 +10,7 @@ use App\Models\Admin\Activity;
 use App\Models\Site\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Alert;
 
 class ProfileController extends Controller
 {
@@ -40,6 +41,7 @@ class ProfileController extends Controller
         Auth::user()->activities()->sync((array) $request->input('profile.activity'));
         $this->updateUser($profile->user, $request->profile['user']);
 
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return back();
     }
 
@@ -62,6 +64,7 @@ class ProfileController extends Controller
         Auth::user()->activities()->sync((array) $request->input('profile.activity'));
         $this->updateUser($profile->user, $request->profile['user']);
 
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return back();
     }
 

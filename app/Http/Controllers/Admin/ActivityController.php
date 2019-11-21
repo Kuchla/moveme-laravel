@@ -7,6 +7,7 @@ use App\Helpers\ImageResize;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
+use Alert;
 
 class ActivityController extends Controller
 {
@@ -31,6 +32,7 @@ class ActivityController extends Controller
         ImageResize::reduce($activity->image);
         $activity->save();
 
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.activities.show', compact('activity')));
     }
 
@@ -61,6 +63,7 @@ class ActivityController extends Controller
         $activity->description = $request->activity['description'];
         $activity->update();
 
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.activities.show', compact('activity')));
     }
 

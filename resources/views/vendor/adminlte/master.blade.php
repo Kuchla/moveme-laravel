@@ -62,6 +62,9 @@
     <script src="{{ asset('js/moment.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script src="{{ asset('js/datepicker.js') }}"></script>
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
 
     @yield('adminlte_js')
 

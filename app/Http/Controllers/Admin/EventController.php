@@ -9,6 +9,7 @@ use App\Models\Admin\Event;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
 use App\Models\Admin\Place;
+use Alert;
 
 class EventController extends Controller
 {
@@ -40,6 +41,7 @@ class EventController extends Controller
 
         $event->activities()->sync((array)$request->input('event.activity'));
 
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.events.show', compact('event')));
     }
 
@@ -77,6 +79,7 @@ class EventController extends Controller
 
         $event->activities()->sync((array)$request->input('event.activity'));
 
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.events.show', compact('event')));
     }
 

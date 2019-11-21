@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\City;
 use Illuminate\Support\Facades\Auth;
+use Alert;
+
 
 class CityController extends Controller
 {
@@ -28,12 +30,15 @@ class CityController extends Controller
         $city->about = $request->city['about'];
         $city->save();
 
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.cities.show', compact('city')));
     }
 
     public function edit(City $city)
     {
         return view('admin.city.edit', compact('city'));
+        Alert::warning('Are you sure?', 'message')->persistent('Close');
+
     }
 
     public function destroy(City $city)
@@ -50,6 +55,7 @@ class CityController extends Controller
         $city->about = $request->city['about'];
         $city->update();
 
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.cities.show', compact('city')));
     }
 

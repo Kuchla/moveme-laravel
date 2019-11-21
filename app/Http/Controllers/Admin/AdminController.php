@@ -9,6 +9,7 @@ use App\Models\Admin\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Alert;
 
 class AdminController extends Controller
 {
@@ -41,6 +42,7 @@ class AdminController extends Controller
         $admin->password = Hash::make($request->admin['password']);
         $admin->save();
 
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.admins.show', compact('admin')));
     }
 
@@ -71,6 +73,7 @@ class AdminController extends Controller
         $admin->admin_password = isset($request->admin['password']) ? Hash::make($request->admin['password']) : null;
 
         $admin->update();
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.admins.show', compact('admin')));
     }
 

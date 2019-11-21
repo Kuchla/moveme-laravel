@@ -114,19 +114,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
     <script src="{{ asset('js/select2.js') }}"></script>
 
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
+
     <!-- Template Main Javascript File -->
     <script src="{{ asset('site-assets/js/main.js') }}"></script>
     <script src="{{ mix('assets/js/event.js') }}"></script>
     <script src="{{ mix('assets/js/place.js') }}"></script>
     <script src="{{ mix('assets/js/comment.js') }}"></script>
     <script src="{{ mix('assets/js/user.js') }}"></script>
-
-
-
-
-
-
-
 
 </body>
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\City;
 use App\Models\Admin\Place;
 use App\Models\Admin\Activity;
+use Alert;
 
 class PlaceController extends Controller
 {
@@ -41,6 +42,7 @@ class PlaceController extends Controller
         $place->save();
         $place->activities()->sync((array)$request->input('place.activity'));
 
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.places.show', compact('place')));
     }
 
@@ -78,9 +80,9 @@ class PlaceController extends Controller
 
         ImageResize::reduce($place->image);
         $place->update();
-
         $place->activities()->sync((array)$request->input('place.activity'));
 
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.places.show', compact('place')));
     }
 

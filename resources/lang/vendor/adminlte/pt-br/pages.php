@@ -94,4 +94,9 @@ return [
         'latest_users'      => 'Novos membros',
         'users_quantity'    => 'Cadastros mais recentes'
     ],
+
+    'messages'                 =>  [
+        'updated'           =>  'Atualização realizada com sucesso!',
+        'saved'             =>  'Registro realizado com sucesso!'
+    ]
 ];
