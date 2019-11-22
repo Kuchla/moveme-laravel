@@ -46,6 +46,7 @@ class ActivityController extends Controller
         DeleteImage::unlink($activity->image);
         $activity->delete();
 
+        Alert::success(trans('adminlte::pages.messages.deleted'));
         return redirect(route('admin.activities.index'));
     }
 

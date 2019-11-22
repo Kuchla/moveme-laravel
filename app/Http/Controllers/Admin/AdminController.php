@@ -61,6 +61,7 @@ class AdminController extends Controller
         }
 
         $admin->delete();
+        Alert::success(trans('adminlte::pages.messages.deleted'));
         return redirect(route('admin.admins.index'));
     }
 

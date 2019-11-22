@@ -58,6 +58,8 @@ class PlaceController extends Controller
     {
         DeleteImage::unlink($place->image);
         $place->delete();
+
+        Alert::success(trans('adminlte::pages.messages.deleted'));
         return redirect(route('admin.places.index'));
     }
 

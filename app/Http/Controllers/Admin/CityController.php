@@ -44,6 +44,8 @@ class CityController extends Controller
     public function destroy(City $city)
     {
         $city->delete();
+
+        Alert::success(trans('adminlte::pages.messages.deleted'));
         return redirect(route('admin.cities.index'));
     }
 

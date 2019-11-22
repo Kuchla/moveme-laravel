@@ -84,7 +84,7 @@ return [
         'level'             => 'Nível de Acesso'
     ],
 
-    'dashboard'              =>  [
+    'dashboard'             =>  [
         'page'              => 'Dashboard',
         'crud'              => 'Dashboard',
         'events'            => 'Evento(s)',
@@ -95,8 +95,9 @@ return [
         'users_quantity'    => 'Cadastros mais recentes'
     ],
 
-    'messages'                 =>  [
+    'messages'              =>  [
         'updated'           =>  'Atualização realizada com sucesso!',
-        'saved'             =>  'Registro realizado com sucesso!'
+        'saved'             =>  'Registro realizado com sucesso!',
+        'deleted'           =>  'Registro deletado com sucesso!'
     ]
 ];

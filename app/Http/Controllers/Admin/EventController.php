@@ -58,6 +58,7 @@ class EventController extends Controller
         DeleteImage::unlink($event->image);
         $event->delete();
 
+        Alert::success(trans('adminlte::pages.messages.deleted'));
         return redirect(route('admin.events.index'));
     }
     public function update(Request $request, Event $event)
