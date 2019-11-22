@@ -11,6 +11,7 @@ use App\Models\Site\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Alert;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -75,6 +76,13 @@ class ProfileController extends Controller
         $user->email = $request['email'];
 
         $user->update();
+    }
+
+    public function destroy(User $user)
+    {
+        Profile::where('user_id', $user->id)->delete();
+        $user->delete();
+        return redirect(route('site.home'));
     }
 
     private function validation(Request $request)

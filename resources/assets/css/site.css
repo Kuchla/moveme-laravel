@@ -802,3 +802,7 @@ iframe {
 .page-link{
     color: #333;
 }
+
+.nav-menu, .nav-menu * {
+    margin-left: 9px
+}

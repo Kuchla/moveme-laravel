@@ -67,6 +67,14 @@
                                     Sair
                                 </a>
                             </li>
+                            <li>
+                                <form action="{{ route('site.profile.destroy', Auth::id()) }}" method="post">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        Delete Perfil
+                                    </button>
+                                </form>
+                            </li>
                         </ul>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @if(config('adminlte.logout_method'))
