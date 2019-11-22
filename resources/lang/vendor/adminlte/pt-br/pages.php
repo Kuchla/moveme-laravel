@@ -98,6 +98,7 @@ return [
     'messages'              =>  [
         'updated'           =>  'Atualização realizada com sucesso!',
         'saved'             =>  'Registro realizado com sucesso!',
-        'deleted'           =>  'Registro deletado com sucesso!'
+        'deleted'           =>  'Registro deletado com sucesso!',
+        'not_allowed'       =>  'Impossivel deletar, o registro está em uso!'
     ]
 ];

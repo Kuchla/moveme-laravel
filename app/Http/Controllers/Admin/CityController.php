@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\City;
-use Illuminate\Support\Facades\Auth;
 use Alert;
-
+use App\Models\Admin\Place;
 
 class CityController extends Controller
 {
@@ -37,15 +36,18 @@ class CityController extends Controller
     public function edit(City $city)
     {
         return view('admin.city.edit', compact('city'));
-        Alert::warning('Are you sure?', 'message')->persistent('Close');
-
     }
 
     public function destroy(City $city)
     {
-        $city->delete();
+        if (Place::where('city_id', $city->id)->count()) {
+            Alert::info(trans('adminlte::pages.messages.not_allowed'));
+            return back();
+        } else {
+            $city->delete();
+            Alert::success(trans('adminlte::pages.messages.deleted'));
+        }
 
-        Alert::success(trans('adminlte::pages.messages.deleted'));
         return redirect(route('admin.cities.index'));
     }
 
@@ -69,8 +71,8 @@ class CityController extends Controller
     public function validation(Request $request)
     {
         $request->validate([
-           'city.name'       => 'required|min:4|max:50',
-           'city.about'      => 'required',
-       ]);
+            'city.name'       => 'required|min:4|max:50',
+            'city.about'      => 'required',
+        ]);
     }
 }

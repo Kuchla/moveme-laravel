@@ -54,7 +54,7 @@ class ActivityController extends Controller
     {
         $this->validation($request);
 
-        if(isset($request->activity['image'])){
+        if (isset($request->activity['image'])) {
             DeleteImage::unlink($activity->image);
 
             $activity->image_activity = $request->activity['image']->store('activities');

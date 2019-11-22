@@ -15,7 +15,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin()) {
             $admin = AccessLevel::isSimpleAdmin();
             return redirect(route('admin.admins.show', compact('admin')));
         }
@@ -26,7 +26,7 @@ class AdminController extends Controller
 
     public function create()
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin()) {
             return Redirect::back();
         }
 
@@ -48,7 +48,7 @@ class AdminController extends Controller
 
     public function edit(Admin $admin)
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin()) {
             $admin = Admin::where('id', AccessLevel::isSimpleAdmin())->first();
         }
         return view('admin.admin.edit', compact('admin'));
@@ -56,7 +56,7 @@ class AdminController extends Controller
 
     public function destroy(Admin $admin)
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin()) {
             return Redirect::back();
         }
 
@@ -80,7 +80,7 @@ class AdminController extends Controller
 
     public function show(Admin $admin)
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin()) {
             $admin = Admin::where('id', AccessLevel::isSimpleAdmin())->first();
             return view('admin.admin.show', compact('admin'));
         }
@@ -91,9 +91,9 @@ class AdminController extends Controller
     public function validation(Request $request)
     {
         $request->validate([
-           'admin.name' => 'required|min:4|max:50',
-           'admin.email' => $request->isMethod('post') ? 'required|email|unique:admins,email' : 'required|email|unique:admins,email,'.Auth::guard('admin')->user()->id,
-           'admin.password' => $request->isMethod('post') ? 'required|min:8' : 'nullable',
-       ]);
+            'admin.name' => 'required|min:4|max:50',
+            'admin.email' => $request->isMethod('post') ? 'required|email|unique:admins,email' : 'required|email|unique:admins,email,' . Auth::guard('admin')->user()->id,
+            'admin.password' => $request->isMethod('post') ? 'required|min:8' : 'nullable',
+        ]);
     }
 }

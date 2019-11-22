@@ -187,7 +187,8 @@ return [
             'location' => 'localização',
             'image' => 'image',
             'visitation' => 'visitação',
-            'city' => 'cidade'
+            'city' => 'cidade',
+            'activity' => 'atividade'
         ],
         'profile'                  => [
             'info' => 'informação',

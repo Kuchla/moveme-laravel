@@ -10,6 +10,7 @@ use App\Models\Admin\City;
 use App\Models\Admin\Place;
 use App\Models\Admin\Activity;
 use Alert;
+use App\Models\Admin\Event;
 
 class PlaceController extends Controller
 {
@@ -40,7 +41,7 @@ class PlaceController extends Controller
 
         ImageResize::reduce($place->image);
         $place->save();
-        $place->activities()->sync((array)$request->input('place.activity'));
+        $place->activities()->sync((array) $request->input('place.activity'));
 
         Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.places.show', compact('place')));
@@ -56,10 +57,15 @@ class PlaceController extends Controller
 
     public function destroy(Place $place)
     {
-        DeleteImage::unlink($place->image);
-        $place->delete();
+        if (Event::where('place_id', $place->id)->count()) {
+            Alert::info(trans('adminlte::pages.messages.not_allowed'));
+            return back();
+        } else {
+            DeleteImage::unlink($place->image);
+            $place->delete();
+            Alert::success(trans('adminlte::pages.messages.deleted'));
+        }
 
-        Alert::success(trans('adminlte::pages.messages.deleted'));
         return redirect(route('admin.places.index'));
     }
 
@@ -67,7 +73,7 @@ class PlaceController extends Controller
     {
         $this->validation($request);
 
-        if(isset($request->place['image'])){
+        if (isset($request->place['image'])) {
             DeleteImage::unlink($place->image);
 
             $place->place_image = $request->place['image']->store('places');
@@ -82,7 +88,7 @@ class PlaceController extends Controller
 
         ImageResize::reduce($place->image);
         $place->update();
-        $place->activities()->sync((array)$request->input('place.activity'));
+        $place->activities()->sync((array) $request->input('place.activity'));
 
         Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.places.show', compact('place')));

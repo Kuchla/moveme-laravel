@@ -39,7 +39,7 @@ class EventController extends Controller
         $event->is_limited = $request->event['is_limited'];
         $event->save();
 
-        $event->activities()->sync((array)$request->input('event.activity'));
+        $event->activities()->sync((array) $request->input('event.activity'));
 
         Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.events.show', compact('event')));
@@ -65,7 +65,7 @@ class EventController extends Controller
     {
         $this->validation($request);
 
-        if(isset($request->event['image'])){
+        if (isset($request->event['image'])) {
             DeleteImage::unlink($event->image);
             $event->event_image = $request->event['image']->store('events');
         }
@@ -78,7 +78,7 @@ class EventController extends Controller
         $event->is_limited = $request->event['is_limited'];
         $event->update();
 
-        $event->activities()->sync((array)$request->input('event.activity'));
+        $event->activities()->sync((array) $request->input('event.activity'));
 
         Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.events.show', compact('event')));
