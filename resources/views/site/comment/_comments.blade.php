@@ -16,11 +16,9 @@
             <input type="hidden" class="comment-model-name" value="{{$modelName}}">
             <div class="bottom-comment">
                 <ul class="comment-actions">
-                    <li class="reply">
-                        <button data-route-create="{{ route('site.comments.store') }}" data-event="{{$model->id}}"
-                            data-model-name="{{$modelName}}" type="submit"
-                            class="btn btn-success btn-sm create-comment">Enviar</button>
-                    </li>
+                    <button data-route-create="{{ route('site.comments.store') }}" data-event="{{$model->id}}"
+                        data-model-name="{{$modelName}}" type="submit"
+                        class="btn btn-success btn-sm create-comment">Enviar</button>
                 </ul>
             </div>
         </div>

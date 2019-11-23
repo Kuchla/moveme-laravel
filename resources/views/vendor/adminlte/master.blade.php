@@ -25,9 +25,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
 
-    <!-- Custom admin-lte -->
-    <link rel="stylesheet" href="{{ asset('css/_custom-admin-lte.css') }}">
-
     @yield('adminlte_css')
 
     <!--[if lt IE 9]>
@@ -63,7 +60,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script src="{{ asset('js/datepicker.js') }}"></script>
     <!-- Sweet Alert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     @include('sweet::alert')
 
     @yield('adminlte_js')

@@ -65,7 +65,7 @@ return [
         'description'       => 'Descrição',
         'place'             => 'Ponto Turístico',
         'is_limited'        => 'Tem limite de participantes?',
-        'is_free'           => 'A visitação é gratuíta?',
+        'is_free'           => 'A participação é gratuíta?',
         'date'              => 'Data e hora',
         'activities'        => 'Atividades que serão realizadas',
         'yes'               => 'Sim',

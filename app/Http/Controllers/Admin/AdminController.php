@@ -56,7 +56,8 @@ class AdminController extends Controller
 
     public function destroy(Admin $admin)
     {
-        if (AccessLevel::isSimpleAdmin()) {
+        if (AccessLevel::isSimpleAdmin() || $admin->manager) {
+            Alert::info(trans('adminlte::pages.messages.not_allowed'));
             return Redirect::back();
         }
 

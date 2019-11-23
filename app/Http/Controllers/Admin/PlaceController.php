@@ -16,7 +16,7 @@ class PlaceController extends Controller
 {
     public function index(Place $place)
     {
-        $places = Place::all();
+        $places = Place::orderBy('created_at', 'desc')->get();
         return view('admin.place.index', compact('places'));
     }
 

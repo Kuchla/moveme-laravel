@@ -22,7 +22,7 @@
                             <div class="kv-avatar">
                                 <label for="fname">Imagem</label>
                                 <div class="file-loading">
-                                    <input id="profile-image" type="file" class="file" data-preview-file-type="text"
+                                    <input id="profile-image" type="file" class="file show-file" data-preview-file-type="text"
                                         name="profile[image]"
                                         value="{{ @Auth::user()->profile->image ? @url('storage/'.@Auth::user()->profile->image) : asset('assets/images/user-default.png') }}" />
                                     @if ($errors->has('profile.image'))

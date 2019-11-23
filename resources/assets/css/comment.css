@@ -6,6 +6,7 @@ textarea {
     padding: 0;
     font-size: 1rem;
     color: #555f77;
+    width:100%;
 }
 
 p {
@@ -26,7 +27,7 @@ p {
 }
 
 .comment-block {
-    padding: 1rem;
+    padding: 0.5rem;
     display: table-cell;
     vertical-align: top;
     border-radius: 0.1875rem;
