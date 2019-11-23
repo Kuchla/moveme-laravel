@@ -1,9 +1,9 @@
 @extends('site.layouts.app')
 
-@section('title', 'Index')
+@section('title', 'Pontos Turísticos')
 
 @section('content')
-<section id="place" class="padd-section wow fadeInUp ">
+<section id="place" class="padd-section wow fadeInUp page-height-default">
     <div id="place-container">
         <div class="container">
             <div class="section-title text-center">
@@ -32,12 +32,12 @@
                                         <li class="list-inline-item ml-4 mb-2">
                                             <div class="h6 text-muted">Gratuíto</div>
                                             <div class="form-check form-check-inline">
-                                                <input type="radio" id="visitation_free" value="0" name="visitation"
+                                                <input type="radio" id="visitation_free" value="1" name="visitation"
                                                     class="form-check-input" checked="checked" />
                                                 <label class="form-check-label" for="visitation_free">Sim</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input type="radio" id="visitation_paid" value="1" name="visitation"
+                                                <input type="radio" id="visitation_paid" value="0" name="visitation"
                                                     class="form-check-input" />
                                                 <label class="form-check-label" for="visitation_paid">Não</label>
                                             </div>
@@ -74,18 +74,19 @@
                                         <li class="list-inline-item ml-4 mb-2">
                                             <div class="form-group">
                                                 <p class="separator">
-                                                    <a href="#get-started" id="search_place"
+                                                    <button id="search_place"
                                                         data-route="{{ route('site.place.filter') }}"
-                                                        class="btn-get-green scrollto">Buscar</a>
+                                                        data-identifier="0"
+                                                        data-route-paginate="{{ route('site.place.index') }}"
+                                                        class="btn btn-success scrollto">Buscar</button>
                                                 </p>
                                             </div>
                                         </li>
                                         <li class="list-inline-item ml-4 mb-2">
                                             <div class="form-group">
                                                 <p class="separator">
-                                                    <a href="#get-started" id="search_place_reset"
-                                                        data-route="{{ route('site.place.filter-reset') }}"
-                                                        class="btn-get-green scrollto">Resetar</a>
+                                                    <a href="{{route('site.place.index')}}" id="search_place_reset"
+                                                        class="btn btn-secondary">Resetar</a>
                                                 </p>
                                             </div>
                                         </li>
@@ -101,10 +102,12 @@
                     <div class="row place-list">
                         @include('site.place.partials._place-list')
                     </div>
+                    <p>
+                        {{ $places->links() }}
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 @endsection
-

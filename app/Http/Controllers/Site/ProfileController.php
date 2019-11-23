@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Helpers\DeleteImage;
+use App\Helpers\ImageResize;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
 use App\Models\Site\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Alert;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -26,7 +30,11 @@ class ProfileController extends Controller
     {
         $this->validation($request);
 
-        $profile->image = $request->profile['image']->store('profiles');
+        if(isset($request->profile['image'])){
+            $profile->image = $request->profile['image']->store('profiles');
+            ImageResize::reduceUser($profile->image);
+        }
+
         $profile->info = $request->profile['info'];
         $profile->user_id = Auth::id();
         $profile->save();
@@ -34,7 +42,7 @@ class ProfileController extends Controller
         Auth::user()->activities()->sync((array) $request->input('profile.activity'));
         $this->updateUser($profile->user, $request->profile['user']);
 
-        Auth::user()->activities()->sync((array) $request->input('user.activity'));
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return back();
     }
 
@@ -42,9 +50,14 @@ class ProfileController extends Controller
     {
         $this->validation($request);
 
-        $profile->profile_image = isset($request->profile['image'])
-            ? $request->event['image']->store('profiles')
-            : null;
+        if(isset($request->profile['image'])){
+            if($profile->image){
+                DeleteImage::unlink($profile->image);
+            }
+
+            $profile->profile_image= $request->profile['image']->store('profiles');
+            ImageResize::reduceUser($profile->image);
+        }
 
         $profile->info = $request->profile['info'];
         $profile->update();
@@ -52,6 +65,7 @@ class ProfileController extends Controller
         Auth::user()->activities()->sync((array) $request->input('profile.activity'));
         $this->updateUser($profile->user, $request->profile['user']);
 
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return back();
     }
 
@@ -64,12 +78,19 @@ class ProfileController extends Controller
         $user->update();
     }
 
+    public function destroy(User $user)
+    {
+        Profile::where('user_id', $user->id)->delete();
+        $user->delete();
+        return redirect(route('site.home'));
+    }
+
     private function validation(Request $request)
     {
         $request->validate([
             'profile.user.name' => 'required|min:4|max:25',
-            'profile.image' => $request->isMethod('post') ? 'required|image|mimes:jpeg,png,jpg' : 'nullable',
-            'profile.info' => 'required|min:4|max:50',
+            'profile.image' => 'nullable',
+            'profile.info' => 'required|min:4|max:250',
             'profile.user.email' => 'required|email|unique:users,email,'.Auth::user()->id,
             'profile.user.password' => 'nullable',
         ]);

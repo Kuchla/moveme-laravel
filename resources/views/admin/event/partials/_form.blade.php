@@ -21,8 +21,7 @@
                 }}</label>
                 <div class="input-group date" id="datepickertime">
                     <input id="event-date" name="event[date]" type="text" class="form-control"
-                        value="{{ old('event.date', @$event->date) }}" />
-                    <input type="hidden" name="event[date]" data-date-format="YYYY-MM-DD HH:mm:ss" id="event-date-hidden">
+                        value="{{ old('event.date', @$event->date ? dateToPtBr($event->date): '') }}" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>

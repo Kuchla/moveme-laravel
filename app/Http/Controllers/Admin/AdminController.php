@@ -9,12 +9,13 @@ use App\Models\Admin\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Alert;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin()) {
             $admin = AccessLevel::isSimpleAdmin();
             return redirect(route('admin.admins.show', compact('admin')));
         }
@@ -25,7 +26,7 @@ class AdminController extends Controller
 
     public function create()
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin()) {
             return Redirect::back();
         }
 
@@ -41,12 +42,13 @@ class AdminController extends Controller
         $admin->password = Hash::make($request->admin['password']);
         $admin->save();
 
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.admins.show', compact('admin')));
     }
 
     public function edit(Admin $admin)
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin()) {
             $admin = Admin::where('id', AccessLevel::isSimpleAdmin())->first();
         }
         return view('admin.admin.edit', compact('admin'));
@@ -54,11 +56,13 @@ class AdminController extends Controller
 
     public function destroy(Admin $admin)
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin() || $admin->manager) {
+            Alert::info(trans('adminlte::pages.messages.not_allowed'));
             return Redirect::back();
         }
 
         $admin->delete();
+        Alert::success(trans('adminlte::pages.messages.deleted'));
         return redirect(route('admin.admins.index'));
     }
 
@@ -71,12 +75,13 @@ class AdminController extends Controller
         $admin->admin_password = isset($request->admin['password']) ? Hash::make($request->admin['password']) : null;
 
         $admin->update();
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.admins.show', compact('admin')));
     }
 
     public function show(Admin $admin)
     {
-        if(AccessLevel::isSimpleAdmin()){
+        if (AccessLevel::isSimpleAdmin()) {
             $admin = Admin::where('id', AccessLevel::isSimpleAdmin())->first();
             return view('admin.admin.show', compact('admin'));
         }
@@ -87,9 +92,9 @@ class AdminController extends Controller
     public function validation(Request $request)
     {
         $request->validate([
-           'admin.name' => 'required|min:4|max:50',
-           'admin.email' => $request->isMethod('post') ? 'required|email|unique:admins,email' : 'required|email|unique:admins,email,'.Auth::guard('admin')->user()->id,
-           'admin.password' => $request->isMethod('post') ? 'required|min:8' : 'nullable',
-       ]);
+            'admin.name' => 'required|min:4|max:50',
+            'admin.email' => $request->isMethod('post') ? 'required|email|unique:admins,email' : 'required|email|unique:admins,email,' . Auth::guard('admin')->user()->id,
+            'admin.password' => $request->isMethod('post') ? 'required|min:8' : 'nullable',
+        ]);
     }
 }

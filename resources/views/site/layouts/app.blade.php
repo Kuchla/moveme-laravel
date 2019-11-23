@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>eStartup Bootstrap Template</title>
+    <title>MoveMe | @yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -32,31 +32,27 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
 
     <!-- Main Stylesheet File -->
-    <link href="{{asset('assets/css/site.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/public-profile.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/comment.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/app.css')}}" rel="stylesheet">
+
+    {{-- <link href="{{asset('assets/css/public-profile.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/comment.css')}}" rel="stylesheet"> --}}
 
 </head>
 
 <body>
-
     <header id="header" class="header header-hide">
         <div class="container">
-
             <div id="logo" class="pull-left">
                 <h1><a href="/" class="scrollto"><span>Move</span>ME</a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
             </div>
-
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="{{ route('site.event.index') }}">Eventos</a></li>
-                    <li><a href="{{ route('site.place.index')}}">Pontos Turísticos</a></li>
-                    <li><a href="{{ route('site.activity.index')}}">Atividades Esportivas</a></li>
-                    <li><a href="{{ route('site.user.index')}}">Pessoas</a></li>
+                    <li id="events"><a href="{{ route('site.event.index') }}">Eventos</a></li>
+                    <li id="places"><a href="{{ route('site.place.index')}}">Pontos Turísticos</a></li>
+                    <li id="activities"><a href="{{ route('site.activity.index')}}">Atividades Esportivas</a></li>
+                    <li id="users"><a href="{{ route('site.user.index')}}">Pessoas</a></li>
                     @if ( Auth::user() )
-                    <li class="menu-has-children">
+                    <li id="profiles" class="menu-has-children">
                         <a href="#">
                             {{ Auth::user()->name }}
                         </a>
@@ -71,6 +67,14 @@
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Sair
                                 </a>
+                            </li>
+                            <li>
+                                <form action="{{ route('site.profile.destroy', Auth::id()) }}" method="post">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        Delete Perfil
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -88,9 +92,6 @@
     </header><!-- #header -->
     @yield('content')
 
-    <!--==========================
-    Footer
-  ============================-->
     <footer class="footer">
         <div class="copyrights">
             <div class="container">
@@ -100,7 +101,6 @@
                 </div>
             </div>
         </div>
-
     </footer>
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
@@ -118,24 +118,17 @@
     <!-- File Input -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/fileinput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/pt-BR.js"></script>
-    <script src="{{ mix('assets/js/public-profile.js') }}"></script>
 
+    <!-- Select2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
     <script src="{{ asset('js/select2.js') }}"></script>
 
-    <!-- Template Main Javascript File -->
-    <script src="{{ asset('site-assets/js/main.js') }}"></script>
-    <script src="{{ mix('assets/js/event.js') }}"></script>
-    <script src="{{ mix('assets/js/place.js') }}"></script>
-    <script src="{{ mix('assets/js/comment.js') }}"></script>
-    <script src="{{ mix('assets/js/user.js') }}"></script>
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
 
-
-
-
-
-
-
+    <!-- Mix -->
+    <script src="{{ mix('assets/js/app.js') }}"></script>
 
 </body>
 

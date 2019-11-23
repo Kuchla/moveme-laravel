@@ -17,11 +17,9 @@ Route::get('/place/show/{place}', 'Site\HomeController@placeShow')->name('site.p
 
 Route::get('/events', 'Site\EventController@index')->name('site.event.index');
 Route::get('/events/filter', 'Site\EventController@eventFilter')->name('site.event.filter');
-Route::get('/events/filter-reset', 'Site\EventController@eventFilterReset')->name('site.event.filter-reset');
 
 Route::get('/places', 'Site\PlaceController@index')->name('site.place.index');
 Route::get('/places/filter', 'Site\PlaceController@placeFilter')->name('site.place.filter');
-Route::get('/places/filter-reset', 'Site\PlaceController@placeFilterReset')->name('site.place.filter-reset');
 
 Route::get('/activities', 'Site\ActivityController@index')->name('site.activity.index');
 
@@ -38,9 +36,10 @@ Route::group(['middleware' => 'admin_auth', 'namespace' => 'Admin', 'prefix' => 
 });
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Site'], function () {
-    Route::get('/profile', 'ProfileController@index')->name('site.profile');
-    Route::post('/profile/store', 'ProfileController@store')->name('site.profile.store');
-    Route::patch('/profile/update/{profile}', 'ProfileController@update')->name('site.profile.update');
+    Route::get('/profiles', 'ProfileController@index')->name('site.profile');
+    Route::post('/profiles/store', 'ProfileController@store')->name('site.profile.store');
+    Route::delete('/profiles/{user}', 'ProfileController@destroy')->name('site.profile.destroy');
+    Route::patch('/profiles/update/{profile}', 'ProfileController@update')->name('site.profile.update');
     Route::resource('/comments', 'CommentController')->names('site.comments');
 });
 

@@ -10,12 +10,11 @@ use Illuminate\Http\Request;
 
 class PlaceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $places = Place::paginate(6);
         $activities = Activity::all();
-        $places = Place::all();
         $cities = City::all();
-
         return view('site.place.index', compact('places', 'activities', 'cities'));
     }
 
@@ -32,12 +31,6 @@ class PlaceController extends Controller
             })
             ->get();
 
-        return view('site.place.partials._place-list', compact('places'));
-    }
-
-    public function placeFilterReset(Request $request)
-    {
-        $places = Place::all();
         return view('site.place.partials._place-list', compact('places'));
     }
 }

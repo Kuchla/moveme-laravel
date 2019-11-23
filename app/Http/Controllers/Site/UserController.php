@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(6);
         $activities = Activity::all();
 
         return view('site.user.index', compact('users', 'activities'));

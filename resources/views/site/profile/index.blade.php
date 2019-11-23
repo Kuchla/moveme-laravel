@@ -1,15 +1,14 @@
 @extends('site.layouts.app')
 
-@section('title', 'Index')
+@section('title', 'Perfil')
 
 @section('content')
-<section id="profile" class="padd-section wow fadeInUp ">
-    <div id="place-container">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2 class="mb-3">Perfil</h2>
-            </div>
+<section id="profile" class="padd-section wow fadeInUp  page-height-default">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2 class="mb-3">Perfil</h2>
         </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -23,9 +22,9 @@
                             <div class="kv-avatar">
                                 <label for="fname">Imagem</label>
                                 <div class="file-loading">
-                                    <input id="profile-image" type="file" class="file" data-preview-file-type="text"
+                                    <input id="profile-image" type="file" class="file show-file" data-preview-file-type="text"
                                         name="profile[image]"
-                                        value="{{ @Auth::user()->profile->image ? @url('storage/'.@Auth::user()->profile->image) : asset('assets/images/user-default.jpg') }}" />
+                                        value="{{ @Auth::user()->profile->image ? @url('storage/'.@Auth::user()->profile->image) : asset('assets/images/user-default.png') }}" />
                                     @if ($errors->has('profile.image'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('profile.image') }}</strong>
@@ -80,7 +79,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="lname">Atividades praticadas</label>
-                                        <select id="event-activity" class="form-control select2"
+                                        <select id="profile-activity" class="form-control select2"
                                             name="profile[activity][]" multiple="multiple">
                                             @foreach ($activities as $key => $activity)
                                             <option value="{{ $key }}" @if(!is_null(@Auth::user())&&
@@ -99,7 +98,7 @@
                                     <div class="form-group {{ $errors->has('profile.info') ? 'has-error' : '' }}">
                                         <label for="lname">Informações</label>
                                         <textarea class="form-control" id="user[info]" name="profile[info]"
-                                            rows="3">{{ old('profile.info', @Auth::user()->profile->info) }}</textarea>
+                                            rows="3" placeholder="Escreva algo sobre você ou compatilhe suas redes sociais.">{{ old('profile.info', @Auth::user()->profile->info) }}</textarea>
                                         @if ($errors->has('profile.info'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('profile.info') }}</strong>

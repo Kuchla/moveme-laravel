@@ -47,6 +47,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         $loginRoute = route('admin.login');
-        return view('auth.login', compact('loginRoute'));
+        $loginType = 'Admin';
+        return view('auth.login', compact('loginRoute', 'loginType'));
     }
 }

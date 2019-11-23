@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\City;
-use Illuminate\Support\Facades\Auth;
+use Alert;
+use App\Models\Admin\Place;
 
 class CityController extends Controller
 {
     public function index(City $city)
     {
-        $cities = City::all();
+        $cities = City::orderBy('created_at', 'desc')->get();
         return view('admin.city.index', compact('cities'));
     }
 
@@ -28,6 +29,7 @@ class CityController extends Controller
         $city->about = $request->city['about'];
         $city->save();
 
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.cities.show', compact('city')));
     }
 
@@ -38,7 +40,14 @@ class CityController extends Controller
 
     public function destroy(City $city)
     {
-        $city->delete();
+        if (Place::where('city_id', $city->id)->count()) {
+            Alert::info(trans('adminlte::pages.messages.not_allowed'));
+            return back();
+        } else {
+            $city->delete();
+            Alert::success(trans('adminlte::pages.messages.deleted'));
+        }
+
         return redirect(route('admin.cities.index'));
     }
 
@@ -50,6 +59,7 @@ class CityController extends Controller
         $city->about = $request->city['about'];
         $city->update();
 
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.cities.show', compact('city')));
     }
 
@@ -61,8 +71,8 @@ class CityController extends Controller
     public function validation(Request $request)
     {
         $request->validate([
-           'city.name'       => 'required|min:4|max:50',
-           'city.about'      => 'required',
-       ]);
+            'city.name'       => 'required|min:4|max:50',
+            'city.about'      => 'required',
+        ]);
     }
 }

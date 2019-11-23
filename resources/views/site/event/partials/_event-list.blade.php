@@ -1,4 +1,4 @@
-@foreach ( $events as $model)
+@forelse ( $events as $model)
 <div class="card event-list">
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
@@ -16,7 +16,7 @@
             <div class="col-md-12">
                 <img src="{{ url('storage/'.$model->image) }}" class="event-img" />
                 <p class="card-text event-text">
-                    {{ $model->description }}
+                    {!! $model->description !!}
                 </p>
                 <hr>
                 <div class="row">
@@ -37,7 +37,7 @@
                         <span
                             class="badge badge-success">{{ $model->is_free ? 'Gratuíto' : 'Com taxa para participar' }}</span>
                         <span
-                            class="badge badge-warning">{{ $model->is_limited ? 'Com limite de participantes' : 'Sem limite de participantes' }}</span>
+                            class="badge badge-secondary">{{ $model->is_limited ? 'Com limite de participantes' : 'Sem limite de participantes' }}</span>
                     </div>
                 </div>
                 <hr>
@@ -47,7 +47,7 @@
                             Local: {{ $model->place->name }}
                         </div>
                         <div class="text-muted h7">
-                            <i class="fa fa-clock-o"></i> {{ $model->date }}
+                            <i class="fa fa-clock-o"></i> {{ dateToPtBr($model->date) }}
                         </div>
                     </div>
                 </div>
@@ -68,4 +68,8 @@
         </div>
     </div>
 </div>
-@endforeach
+@empty
+<p>
+    <h5>Nenhum evento encontrado com os termos de busca!</h5>
+</p>
+@endforelse

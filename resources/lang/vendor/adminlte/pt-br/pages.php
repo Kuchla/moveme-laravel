@@ -65,7 +65,7 @@ return [
         'description'       => 'Descrição',
         'place'             => 'Ponto Turístico',
         'is_limited'        => 'Tem limite de participantes?',
-        'is_free'           => 'A visitação é gratuíta?',
+        'is_free'           => 'A participação é gratuíta?',
         'date'              => 'Data e hora',
         'activities'        => 'Atividades que serão realizadas',
         'yes'               => 'Sim',
@@ -84,12 +84,21 @@ return [
         'level'             => 'Nível de Acesso'
     ],
 
-    'dashboard'              =>  [
+    'dashboard'             =>  [
         'page'              => 'Dashboard',
         'crud'              => 'Dashboard',
         'events'            => 'Evento(s)',
         'places'            => 'Ponto(s) Turístico(s)',
-        'activities'          => 'Atividade(s)',
-        'users'             => 'Usuário(s) Cadastrado(s)'
+        'activities'        => 'Atividade(s)',
+        'users'             => 'Usuário(s) Cadastrado(s)',
+        'latest_users'      => 'Novos membros',
+        'users_quantity'    => 'Cadastros mais recentes'
     ],
+
+    'messages'              =>  [
+        'updated'           =>  'Atualização realizada com sucesso!',
+        'saved'             =>  'Registro realizado com sucesso!',
+        'deleted'           =>  'Registro deletado com sucesso!',
+        'not_allowed'       =>  'Impossivel deletar, o registro está em uso!'
+    ]
 ];

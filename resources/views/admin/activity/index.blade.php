@@ -1,4 +1,4 @@
-@extends('adminlte::page') @section('title', 'AdminLTE')
+@extends('adminlte::page') @section('title', trans("adminlte::pages.activity.crud"))
 @section('content_header')
 <h1>
     {{ trans("adminlte::pages.activity.crud") }}
@@ -42,13 +42,15 @@
                             <td>{{ $activity->id }}</td>
                             <td>{{ $activity->name }}</td>
                             <td>
-                                <a class="btn btn-success btn-sm" href="{{ route('admin.activities.show', $activity) }}">
+                                <a class="btn btn-success btn-sm"
+                                    href="{{ route('admin.activities.show', $activity) }}">
                                     <i class="fa fa-eye">
                                         {{
                                             trans("adminlte::pages.btn.show")
                                         }}</i>
                                 </a>
-                                <a class="btn btn-warning btn-sm" href="{{ route('admin.activities.edit', $activity) }}">
+                                <a class="btn btn-warning btn-sm"
+                                    href="{{ route('admin.activities.edit', $activity) }}">
                                     <i class="fa fa-edit">
                                         {{
                                             trans("adminlte::pages.btn.edit")

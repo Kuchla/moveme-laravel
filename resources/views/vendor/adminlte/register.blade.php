@@ -1,5 +1,7 @@
 @extends('adminlte::master')
 
+@section('title', 'Registro')
+
 @section('adminlte_css')
     @yield('css')
 @stop

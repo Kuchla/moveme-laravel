@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\DeleteImage;
 use App\Helpers\FormatDate;
 use Illuminate\Http\Request;
 use App\Models\Admin\Event;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Activity;
 use App\Models\Admin\Place;
-use Illuminate\Support\Facades\Auth;
+use Alert;
 
 class EventController extends Controller
 {
     public function index(Event $event)
     {
-        $events = Event::all();
+        $events = Event::orderBy('created_at', 'desc')->get();
         return view('admin.event.index', compact('events'));
     }
 
@@ -32,14 +33,15 @@ class EventController extends Controller
         $event->name = $request->event['name'];
         $event->image = $request->event['image']->store('events');
         $event->description = $request->event['description'];
-        $event->date = FormatDate::dateDefault($request);
+        $event->date = FormatDate::dateDefault($request->event['date']);
         $event->place_id = $request->event['place'];
         $event->is_free = $request->event['is_free'];
         $event->is_limited = $request->event['is_limited'];
         $event->save();
 
-        $event->activities()->sync((array)$request->input('event.activity'));
+        $event->activities()->sync((array) $request->input('event.activity'));
 
+        Alert::success(trans('adminlte::pages.messages.saved'));
         return redirect(route('admin.events.show', compact('event')));
     }
 
@@ -53,24 +55,32 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
+        DeleteImage::unlink($event->image);
         $event->delete();
+
+        Alert::success(trans('adminlte::pages.messages.deleted'));
         return redirect(route('admin.events.index'));
     }
     public function update(Request $request, Event $event)
     {
         $this->validation($request);
 
+        if (isset($request->event['image'])) {
+            DeleteImage::unlink($event->image);
+            $event->event_image = $request->event['image']->store('events');
+        }
+
         $event->name = $request->event['name'];
-        $event->event_image = isset($request->event['image']) ? $request->event['image']->store('events') : null;
         $event->description = $request->event['description'];
-        $event->date = $request->event['date'];
+        $event->date = FormatDate::dateDefault($request->event['date']);
         $event->place_id = $request->event['place'];
         $event->is_free = $request->event['is_free'];
         $event->is_limited = $request->event['is_limited'];
         $event->update();
 
-        $event->activities()->sync((array)$request->input('event.activity'));
+        $event->activities()->sync((array) $request->input('event.activity'));
 
+        Alert::success(trans('adminlte::pages.messages.updated'));
         return redirect(route('admin.events.show', compact('event')));
     }
 

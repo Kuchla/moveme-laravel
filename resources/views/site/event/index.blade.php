@@ -1,10 +1,10 @@
 @extends('site.layouts.app')
 
-@section('title', 'Index')
+@section('title', 'Eventos')
 
 @section('content')
 
-<section id="event" class="padd-section wow fadeInUp">
+<section id="event" class="padd-section wow fadeInUp page-height-default">
     <div class="container">
         <div class="section-title text-center">
             <h2>Eventos</h2>
@@ -55,18 +55,46 @@
                                             <label class="form-check-label" for="event-is-not-limited">Não</label>
                                         </div>
                                     </li>
+
+                                    <li class="list-inline-item ml-4 mb-2">
+                                        <div class="h6 text-muted">Mês</div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" id="event-actual-month" value="0" name="event-month"
+                                                class="form-check-input" checked="checked" />
+                                            <label class="form-check-label" for="event-actual-month">Atual</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" id="event-next-month" value="1" name="event-month"
+                                                class="form-check-input" />
+                                            <label class="form-check-label" for="event-next-month">Próximo</label>
+                                        </div>
+                                    </li>
+
+                                    <li class="list-inline-item ml-4 mb-2">
+                                        <div class="form-group">
+                                            <label for="event_activity" class="h6 text-muted">Atividade</label>
+                                            <select class="form-control" id="event-activity" name="activity">
+                                                <option value="0">Todas</option>
+                                                @foreach ($activities as $key => $activity)
+                                                <option value="{{ $activity->id }}" @if ($key==old('activity',
+                                                    @$activity->id))
+                                                    selected="selected"
+                                                    @endif
+                                                    >{{ $activity->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </li>
                                     <li class="list-group-item">
                                         <div class="container">
                                             <div class="row justify-content-center">
                                                 <p class="separator">
-                                                    <a href="#get-started" data-route="{{ route('site.event.filter')}}"
-                                                        id="event_search" class="btn-get-green scrollto">Buscar</a>
+                                                    <button data-route="{{ route('site.event.filter')}}"
+                                                        id="event_search" class="btn btn-success">Buscar</button>
                                                 </p>
                                                 <p class="separator ml-2">
-                                                    <a href="#get-started"
-                                                        data-route="{{ route('site.event.filter-reset')}}"
-                                                        id="event_search_reset"
-                                                        class="btn-get-green scrollto">Resetar</a>
+                                                    <a href="{{route('site.event.index')}}" id="event_search_reset"
+                                                        class="btn btn-secondary">Resetar</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -79,6 +107,9 @@
                         <div class="event-list">
                             @include('site.event.partials._event-list')
                         </div>
+                        <p>
+                            {{ $events->links() }}
+                        </p>
                     </div>
                 </div>
             </div>
