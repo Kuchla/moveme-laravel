@@ -13,18 +13,26 @@
 
 Route::get('/', 'Site\HomeController@index')->name('site.home');
 
-Route::get('/place/show/{place}', 'Site\HomeController@placeShow')->name('site.place.show');
+Route::get('/eventos', 'Site\EventController@index')->name('site.event.index');
+Route::get('/eventos/filtro', 'Site\EventController@eventFilter')->name('site.event.filter');
 
-Route::get('/events', 'Site\EventController@index')->name('site.event.index');
-Route::get('/events/filter', 'Site\EventController@eventFilter')->name('site.event.filter');
+Route::get('/pontos-turisticos', 'Site\PlaceController@index')->name('site.place.index');
+Route::get('/pontos-turisticos/filtro', 'Site\PlaceController@placeFilter')->name('site.place.filter');
 
-Route::get('/places', 'Site\PlaceController@index')->name('site.place.index');
-Route::get('/places/filter', 'Site\PlaceController@placeFilter')->name('site.place.filter');
+Route::get('/atividades', 'Site\ActivityController@index')->name('site.activity.index');
 
-Route::get('/activities', 'Site\ActivityController@index')->name('site.activity.index');
+Route::get('/usuarios', 'Site\UserController@index')->name('site.user.index');
+Route::get('/usuarios/filtro', 'Site\UserController@userFilter')->name('site.user.filter');
 
-Route::get('/users', 'Site\UserController@index')->name('site.user.index');
-Route::get('/user/filter', 'Site\UserController@userFilter')->name('site.user.filter');
+Route::group(['middleware' => 'auth', 'namespace' => 'Site'], function () {
+    Route::get('/perfis', 'ProfileController@index')->name('site.profile');
+    Route::post('/perfis/salvar', 'ProfileController@store')->name('site.profile.store');
+    Route::delete('/perfis/{user}', 'ProfileController@destroy')->name('site.profile.destroy');
+    Route::patch('/perfis/atualizar/{profile}', 'ProfileController@update')->name('site.profile.update');
+    Route::resource('/comentarios', 'CommentController')->names('site.comments');
+});
+
+Auth::routes();
 
 Route::group(['middleware' => 'admin_auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('admin.home');
@@ -34,16 +42,6 @@ Route::group(['middleware' => 'admin_auth', 'namespace' => 'Admin', 'prefix' => 
     Route::resource('/events', 'EventController')->names('admin.events');
     Route::resource('/admins', 'AdminController')->names('admin.admins');
 });
-
-Route::group(['middleware' => 'auth', 'namespace' => 'Site'], function () {
-    Route::get('/profiles', 'ProfileController@index')->name('site.profile');
-    Route::post('/profiles/store', 'ProfileController@store')->name('site.profile.store');
-    Route::delete('/profiles/{user}', 'ProfileController@destroy')->name('site.profile.destroy');
-    Route::patch('/profiles/update/{profile}', 'ProfileController@update')->name('site.profile.update');
-    Route::resource('/comments', 'CommentController')->names('site.comments');
-});
-
-Auth::routes();
 
 Route::group([
     'namespace' => 'Admin\Auth',
@@ -64,10 +62,4 @@ Route::group([
     Route::post('logout', 'LoginController@logout')
 ->name('admin.logout');
 });
-
-// Route::post('admin/password/email', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-// Route::get('admin/password/reset', 'Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-// Route::post('admin/password/reset', 'Admin\Auth\ResetPasswordController@reset')->name('admin.password.update');
-// Route::get('admin/password/reset/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
-
 

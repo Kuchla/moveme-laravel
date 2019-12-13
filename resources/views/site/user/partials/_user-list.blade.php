@@ -5,7 +5,7 @@
         <img data-toggle="modal" data-target="#myModal{{$user->id}}" style="border:1px solid rgb(221, 218, 218); border-radius:10px; max-width: 140px;
         " src="{{ !is_null(@$user->profile->image)
                     ? url('storage/'.@$user->profile->image)
-                    : asset('assets/images/user-default.png')}} " class="img-responsive" alt="img">
+                    : asset('assets/images/user-default.png')}}" class="img-responsive pointer" alt="img">
         <br>
         <h5>{{$user->name}}</h5>
         <br>

@@ -828,6 +828,10 @@ iframe {
   margin-left: 9px;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 textarea {
   outline: none;
   border: none;

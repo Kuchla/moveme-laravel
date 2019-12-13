@@ -1,8 +1,8 @@
 @foreach ( $activities as $activity)
 <div class="col-md-4 mt-5">
     <div class="card text-center place-cardX" data-place="{{ $activity->id }}" data-toggle="modal"
-        data-target="#myModal{{$activity->id}}" data-route="{{ route('site.place.show', $activity) }}">
-        <img class="card-img-top" src="{{ url('storage/'.$activity->image) }}" alt="Card image cap">
+        data-target="#myModal{{$activity->id}}">
+        <img class="card-img-top pointer" src="{{ url('storage/'.$activity->image) }}" alt="Card image cap">
         <div class="card-body" id="card">
             <h5 class="card-title">{{ $activity->name }}</h5>
         </div>
