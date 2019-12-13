@@ -30,7 +30,7 @@
                                 <div class="card-body">
                                     <ul class="list-inline">
                                         <li class="list-inline-item ml-4 mb-2">
-                                            <div class="h6 text-muted">Gratuíto</div>
+                                            <div class="h6 text-muted">Gratuito</div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" id="visitation_free" value="1" name="visitation"
                                                     class="form-check-input" checked="checked" />
@@ -86,7 +86,7 @@
                                             <div class="form-group">
                                                 <p class="separator">
                                                     <a href="{{route('site.place.index')}}" id="search_place_reset"
-                                                        class="btn btn-secondary">Resetar</a>
+                                                        class="btn btn-secondary">Limpar</a>
                                                 </p>
                                             </div>
                                         </li>

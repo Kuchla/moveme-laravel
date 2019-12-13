@@ -30,7 +30,7 @@
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-inline-item ml-4 mb-2">
-                                        <div class="h6 text-muted">Gratuíto</div>
+                                        <div class="h6 text-muted">Gratuito</div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" id="event-is-free" value="1" name="event-is-free"
                                                 class="form-check-input" checked="checked" />
@@ -94,7 +94,7 @@
                                                 </p>
                                                 <p class="separator ml-2">
                                                     <a href="{{route('site.event.index')}}" id="event_search_reset"
-                                                        class="btn btn-secondary">Resetar</a>
+                                                        class="btn btn-secondary">Limpar</a>
                                                 </p>
                                             </div>
                                         </div>

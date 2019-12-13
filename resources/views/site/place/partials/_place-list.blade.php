@@ -1,8 +1,8 @@
 @forelse ( $places as $model)
 <div class="col-md-4 mt-5">
     <div class="card text-center place-cardX" data-place="{{ $model->id }}" data-toggle="modal"
-        data-target="#myModal{{$model->id}}" data-route="{{ route('site.place.show', $model) }}">
-        <img class="card-img-top" src="{{ url('storage/'.$model->image) }}" alt="Card image cap">
+        data-target="#myModal{{$model->id}}">
+        <img class="card-img-top pointer" src="{{ url('storage/'.$model->image) }}" alt="Card image cap">
         <div class="card-body" id="card">
             <h5 class="card-title">{{ $model->name }}</h5>
         </div>

@@ -58,7 +58,7 @@
                                                 <div class="form-group">
                                                     <p class="separator">
                                                         <a href="{{route('site.user.index')}}" id="search-user-reset"
-                                                            class="btn btn-secondary">Resetar</a>
+                                                            class="btn btn-secondary">Limpar</a>
                                                     </p>
                                                 </div>
                                             </li>
